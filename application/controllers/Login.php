@@ -19,22 +19,80 @@ class Login extends CI_Controller {
 
 	public function authenticate()
 	{
-		return true;
+		$user_data = $this->_user_exist();
+
+		if ($this->_validate_input() && is_array($user_data))
+		{
+			$this->session->set_userdata($user_data);
+
+			if($user_data['user_type'] == 'admin')
+			{
+				redirect(base_url('index.php/admin/dashboard'));
+			}
+			
+			redirect(base_url('index.php/requestor/dashboard'));
+		}
+
+		$data['message'] = '<span class="col-sm-12 alert alert-warning">You have no rights to access this system.</span>';
+
+		$this->load->view('login_view', $data);
+
 	}
 
-	public function redirect_user()
+	public function dashboard()
 	{
-		if ($this->authenticate()) {
-			$data = array(
-				'title' => 'Dashboard',
-				'content' => 'dashboard_view'
-			);
-			$this->load->view('include/template', $data);
-		}
+		$data = array(
+			'title' => 'Dashboard',
+			'content' => 'dashboard_view',
+		);
+
+		$this->load->view('include/template', $data);
 	}
 
 	public function logout()
 	{
-		$this->index();
+		$this->session->sess_destroy();
+
+		redirect('index.php/login/index');
+	}
+
+	protected function _validate_input()
+	{
+		$this->load->library('form_validation');
+
+		$config = array(
+		        array(
+		                'field' => 'username',
+		                'label' => 'Username',
+		                'rules' => 'required|trim',
+		                'errors' => array(
+		                	'required' => 'You must provide a %s.',
+		                ),
+		        ),
+		        array(
+		                'field' => 'password',
+		                'label' => 'Password',
+		                'rules' => 'required|trim',
+		                'errors' => array(
+		                        'required' => 'You must provide a %s.',
+		                ),
+		        ),
+			);
+
+		$this->form_validation->set_rules($config);
+
+		if ($this->form_validation->run() == false)
+		{
+			return false;
+		}
+
+		return true;
+	}
+
+	protected function _user_exist()
+	{
+		$this->load->model('user_model', 'user');
+
+		return is_array($this->user->exist()) ? $this->user->exist() : false;
 	}
 }
