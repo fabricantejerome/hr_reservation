@@ -84,4 +84,12 @@ class Room_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function store_approved_request($params)
+	{
+		$this->db->insert('approved_res_tbl', $params);
+
+		redirect(base_url('index.php/admin/get_pending_request'));
+		//var_dump($this->db->last_query()); die;
+	}
+
 }
