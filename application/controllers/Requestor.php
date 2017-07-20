@@ -71,6 +71,33 @@ class Requestor extends CI_Controller {
 		redirect(base_url('index.php/requestor/reservation_form'));
 	}
 
+	// Return true if available
+	protected function _is_available($params, $ts, $te)
+	{
+		$items = $this->rooms->get_possible_conflict($params);
+
+		// Convert to standard format
+		$params['date_reserved'] = date('Y-m-d', strtotime($params['date_reserved']));
+
+		// Convert to standard format
+		$new_datetime_start = DateTime::createFromFormat('Y-m-d H:i:s', $params['date_reserved'] . $ts . ':00');
+		$new_datetime_end   = DateTime::createFromFormat('Y-m-d H:i:s', $params['date_reserved'] . ' ' . $te . ':00');
+
+		foreach ($items as $row) 
+		{
+			$datetime_start = DateTime::createFromFormat('Y-m-d H:i:s', $row->date_reserved . ' ' . $row->time_start);
+			$datetime_end   = DateTime::createFromFormat('Y-m-d H:i:s', $row->date_reserved . ' ' . $row->time_end);
+
+			if (($new_datetime_start > $datetime_start && $new_datetime_start < $datetime_end) 
+				|| ($new_datetime_end > $datetime_start && $new_datetime_end < $datetime_end))
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	public function show_room_reserved()
 	{
 		$id = $this->uri->segment(3);
