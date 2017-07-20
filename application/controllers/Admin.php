@@ -122,4 +122,24 @@ class Admin extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	public function disapproved_request()
+	{
+		$room_res_id  = $this->input->post('room_res_id');
+		$current_date = date('Y/m/d H:i:s');
+		$reason       = $this->input->post('reason');
+		$user_id      = $this->session->userdata('id');
+
+		$config = array(
+				'room_res_id'     => $room_res_id,
+				'denied_datetime' => $current_date,
+				'reason'          => $this->input->post('reason'),
+				'user_id'         => $user_id
+
+			);
+
+		$this->rooms->store_disapproved_request($config);
+
+		redirect(base_url('index.php/admin/display_pending_request'));
+	}
+
 }
