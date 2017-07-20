@@ -93,6 +93,9 @@ class Admin extends CI_Controller {
 			);
 
 		$this->rooms->store_approved_request($config);
+
+		redirect(base_url('index.php/admin/display_pending_request'));
+
 	}
 
 }
