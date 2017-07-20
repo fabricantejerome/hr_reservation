@@ -73,7 +73,18 @@ class Room_model extends CI_Model {
 
 	public function get_pending_request()
 	{
-		$query = $this->db->select('a.id, a.purpose, a.date_reserved, a.time_start, a.time_end, a.date_filed, c.fullname, d.room_no')
+		$fields = array(
+				'a.id',
+				'a.purpose',
+				'a.date_reserved',
+				'a.time_start',
+				'a.time_end',
+				'a.date_filed',
+				'c.fullname',
+				'd.room_no'
+			);
+
+		$query = $this->db->select($fields)
 				->from('room_res_tbl AS a')
 				->join('approved_res_tbl AS b', 'a.id = b.room_res_id', 'LEFT')
 				->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
