@@ -133,6 +133,12 @@ class Room_model extends CI_Model {
 		}
 	}
 
+	public function store_disapproved_request($params)
+	{
+		$query = $this->db->insert('disapproved_res_tbl', $params);
+
+		return $this;
+		//var_dump($this->db->last_query());;
 	}
 
 }
