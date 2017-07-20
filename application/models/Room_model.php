@@ -100,8 +100,6 @@ class Room_model extends CI_Model {
 	public function store_approved_request($params)
 	{
 		$this->db->insert('approved_res_tbl', $params);
-
-		redirect(base_url('index.php/admin/get_pending_request'));
 		//var_dump($this->db->last_query()); die;
 	}
 
@@ -128,11 +126,12 @@ class Room_model extends CI_Model {
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
 					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = c.id', 'INNER')
+					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->get();
 
 			return $query->result();
 		}
+	}
 
 	}
 
