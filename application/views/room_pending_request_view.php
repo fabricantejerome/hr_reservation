@@ -1,10 +1,4 @@
 <?php //var_dump($rooms); ?>
-<style type="text/css">
-	/* Control Button */
-	.control-btn {
-		padding: 10px;
-	}
-</style>
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-10">
