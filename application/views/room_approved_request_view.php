@@ -13,10 +13,9 @@
 								<th>#</th>
 								<th>Room No.</th>
 								<th>Purpose</th>
-								<th>Reservation Date</th>
+								<th>Date Reserved</th>
 								<th>Time Start</th>
 								<th>Time End</th>
-								<th>Date Reserved</th>
 								<th>Reserved by</th>
 								<th>Date Approved</th>
 								<th>Approved by</th>
@@ -24,7 +23,7 @@
 						</thead>
 						<tbody>
 							<?php $counter = 1; ?>
-							<?php foreach($rooms as $row): ?>
+							<?php foreach($requests as $row): ?>
 								<tr>
 									<td><?php echo $counter ?></td>
 									<td><?php echo $row->room_no ?></td>
@@ -32,7 +31,6 @@
 									<td><?php echo $row->date_reserved ?></td>
 									<td><?php echo $row->time_start ?></td>
 									<td><?php echo $row->time_end ?></td>
-									<td><?php echo $row->date_reserved ?></td>
 									<td><?php echo $row->fullname ?></td>
 									<td><?php echo $row->approved_datetime ?></td>
 									<td><?php echo $row->approver ?></td>
