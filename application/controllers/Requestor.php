@@ -56,6 +56,8 @@ class Requestor extends CI_Controller {
 			);
 
 		$this->rooms->store_reservation($config);
+
+		redirect(base_url('index.php/requestor/reservation_form'));
 		//var_dump($this->input->post());
 	}
 
