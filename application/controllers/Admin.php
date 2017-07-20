@@ -68,11 +68,11 @@ class Admin extends CI_Controller {
 		redirect('index.php/admin/rooms');
 	}
 
-	public function get_pending_request()
+	public function display_pending_request()
 	{
 
 		$data = array(
-				'title'   => 'Pending Request',
+				'title'   => 'List of Pending Request',
 				'content' => 'room_pending_request_view',
 				'rooms'   => $this->rooms->get_pending_request()
 			);
