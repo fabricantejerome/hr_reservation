@@ -30,9 +30,9 @@ class Requestor extends CI_Controller {
 	public function reservation_form()
 	{
 		$data = array(
-				'title' => 'Reservation Form',
+				'title'   => 'File Reservation',
 				'content' => 'room_reservation_form_view',
-				'rooms' => $this->rooms->browse()
+				'rooms'   => $this->rooms->browse()
 			);
 
 		$this->load->view('/include/template', $data);
