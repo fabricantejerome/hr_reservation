@@ -89,7 +89,9 @@ class Room_model extends CI_Model {
 				->join('approved_res_tbl AS b', 'a.id = b.room_res_id', 'LEFT')
 				->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
 				->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
+				->join('disapproved_res_tbl AS e', 'a.id = e.room_res_id', 'LEFT')
 				->where('b.room_res_id IS NULL')
+				->where('e.room_res_id IS NULL')
 				->get();
 
 		return $query->result();
