@@ -79,4 +79,20 @@ class Admin extends CI_Controller {
 
 		$this->load->view('include/template', $data);
 	}
+
+	public function approved_request()
+	{
+		$room_res_id  = $this->uri->segment(3);
+		$current_date = date('Y/m/d H:i:s');
+		$user_id      = $this->session->userdata('id');
+
+		$config = array(
+				'room_res_id'       => $room_res_id,
+				'approved_datetime' => $current_date,
+				'user_id'           => $user_id
+			);
+
+		$this->rooms->store_approved_request($config);
+	}
+
 }
