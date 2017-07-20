@@ -1,12 +1,7 @@
 <?php 
 	//var_dump($this->session->userdata());
 ?>
-<style type="text/css">
-	/* Control Button */
-	.control-btn > .btn.btn-flat {
-		margin: 10px;
-	}
-</style>
+<link href="<?php echo base_url('resources/plugins/select2/css/select2.min.css') ?>" rel="stylesheet" >
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('resources/plugins/datepicker/css/bootstrap-datepicker.min.css'); ?>">
 <section class="content rooms">
 	<div class="row">
@@ -82,8 +77,11 @@
 </section>
 <script src="<?php echo base_url('resources/plugins/input-mask/jquery.inputmask.date.extensions.js'); ?>"></script>
 <script src="<?php echo base_url('resources/plugins/datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
+<script src="<?php echo base_url('resources/plugins/select2/js/select2.min.js');?>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+
+		$("select").select2({ width: 'resolve' });
 
 		$("#time_start").inputmask("h:s",{ "placeholder": "hh/mm" });
 

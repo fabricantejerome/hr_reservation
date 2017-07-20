@@ -1,12 +1,6 @@
 <?php 
 	//var_dump($room);
 ?>
-<style type="text/css">
-	/* Control Button */
-	.control-btn > .btn.btn-flat {
-		margin: 10px;
-	}
-</style>
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-3">
