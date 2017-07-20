@@ -103,4 +103,35 @@ class Room_model extends CI_Model {
 		//var_dump($this->db->last_query()); die;
 	}
 
+	public function get_approved_request($params)
+	{
+		
+		$fields = array(
+				'a.id',
+				'a.room_res_id',
+				'a.approved_datetime',
+				'b.date_reserved',
+				'b.purpose',
+				'b.time_start',
+				'b.time_end',
+				'c.fullname',
+				'd.room_no',
+				'e.fullname AS approver'
+			);
+
+		if (!is_array($params))
+		{
+			$query = $this->db->select($fields)
+					->from('approved_res_tbl AS a')
+					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
+					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
+					->join('users_tbl AS e', 'a.user_id = c.id', 'INNER')
+					->get();
+
+			return $query->result();
+		}
+
+	}
+
 }
