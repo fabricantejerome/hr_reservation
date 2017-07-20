@@ -68,8 +68,8 @@
 							<th>Date Reserved</th>
 							<th>Time Start</th>
 							<th>Time End</th>
-							<th>Date Filed</th>
 							<th>Reserved by</th>
+							<th>Approved by</th>
 						</tr>
 					</thead>
 					<tbody id="content-area">
@@ -122,8 +122,8 @@
 							markup += '<td>' + item.date_reserved + '</td>\n';
 							markup += '<td>' + item.time_start + '</td>\n';
 							markup += '<td>' + item.time_end + '</td>\n';
-							markup += '<td>' + item.date_filed + '</td>\n';
 							markup += '<td>' + item.fullname + '</td>\n';
+							markup += '<td>' + item.approver + '</td>\n';
 							markup += '<tr>';
 						}
 
