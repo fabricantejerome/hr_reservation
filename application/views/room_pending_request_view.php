@@ -40,7 +40,7 @@
 									<td><?php echo $row->date_filed ?></td>
 									<td><?php echo $row->fullname ?></td>
 									<td>
-										<button class="btn btn-flat btn-success">Approve <i class="fa fa-check" aria-hidden="true"></i></button>
+										<a href="<?php echo base_url('index.php/admin/approved_request/') . $row->id ?>"><button class="btn btn-flat btn-success">Approve <i class="fa fa-check" aria-hidden="true"></i></button></a>
 									</td>
 									<td>
 										<button class="btn btn-flat btn-danger">Deny <i class="fa fa-times" aria-hidden="true"></i></button>
