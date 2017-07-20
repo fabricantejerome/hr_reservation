@@ -47,7 +47,7 @@
 
 						<div class="form-group">
 							<label for="purpose">Purpose</label>
-							<textarea class="form-control" id="purpose" name="purpose" rows="3"><?php echo isset($room['purpose']) ? $room['purpose'] : ''; ?></textarea>
+							<textarea class="form-control" id="purpose" name="purpose" rows="3" required><?php echo isset($room['purpose']) ? $room['purpose'] : ''; ?></textarea>
 						</div>
 
 						<div class="form-group">
