@@ -1,14 +1,8 @@
-<style type="text/css">
-	/* Control Button */
-	.control-btn {
-		padding: 10px;
-	}
-</style>
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-6">
 			<div class="box box-danger">
-				<div class="control-btn">
+				<div class="box-header with-border">
 					<a href="<?php echo base_url('index.php/admin/room_form') ?>">
 						<button class="btn btn-flat btn-danger pull-right">Add Room <i class="fa fw fa-plus" aria-hidden="true"></i></button>
 					</a>
