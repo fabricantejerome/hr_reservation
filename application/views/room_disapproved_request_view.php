@@ -7,7 +7,7 @@
 					
 				<div class="box-body">
 					<!-- Room table -->
-					<table id="room_pending_tbl" class="table table-condensed table-striped table-bordered" >
+					<table id="disapproved-request" class="table table-condensed table-striped table-bordered" >
 						<thead>
 							<tr>
 								<th>#</th>
@@ -46,3 +46,10 @@
 		</div>	
 	</div>
 </section>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('#disapproved-request').DataTable();
+		
+	})
+</script>

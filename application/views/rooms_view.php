@@ -16,7 +16,7 @@
 					
 				<div class="box-body">
 					<!-- Room table -->
-					<table id="room_tbl" class="table table-condensed table-striped table-bordered" >
+					<table id="room-tbl" class="table table-condensed table-striped table-bordered" >
 						<thead>
 							<tr>
 								<th>#</th>
@@ -51,3 +51,10 @@
 		</div>	
 	</div>
 </section>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('#room-tbl').DataTable();
+		
+	})
+</script>

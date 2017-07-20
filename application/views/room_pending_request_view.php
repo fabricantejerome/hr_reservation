@@ -6,7 +6,7 @@
 					
 				<div class="box-body">
 					<!-- Room table -->
-					<table id="room_pending_tbl" class="table table-condensed table-striped table-bordered" >
+					<table id="pending-request" class="table table-condensed table-striped table-bordered" >
 						<thead>
 							<tr>
 								<th>#</th>
@@ -40,7 +40,7 @@
 									</td>
 									<td>
 										<a href="<?php echo base_url('index.php/admin/display_disapproved_form/') . $row->id ?>" >	
-											<button class="btn btn-flat btn-danger">Disapproved <i class="fa fa-times" aria-hidden="true"></i></button>
+											<button class="btn btn-flat btn-danger">Disapprove <i class="fa fa-times" aria-hidden="true"></i></button>
 										</a>
 									</td>
 								</tr>
@@ -53,3 +53,9 @@
 		</div>	
 	</div>
 </section>
+<script type="text/javascript">
+	$(document).ready(function() {
+
+		$('#pending-request').DataTable();
+	})
+</script>
