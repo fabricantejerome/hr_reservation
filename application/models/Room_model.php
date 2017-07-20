@@ -61,13 +61,30 @@ class Room_model extends CI_Model {
 
 	public function get_taken_slot($params)
 	{
-		$query = $this->db->select('*')
-				->from('room_res_tbl AS a')
-				->join('users_tbl as b', 'a.user_id = b.id', 'INNER')
+		$fields = array(
+				'a.id',
+				'a.room_res_id',
+				'a.approved_datetime',
+				'b.date_reserved',
+				'b.purpose',
+				'b.time_start',
+				'b.time_end',
+				'c.fullname',
+				'd.room_no',
+				'e.fullname AS approver'
+			);
+
+		$query = $this->db->select($fields)
+				->from('approved_res_tbl AS a')
+				->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+				->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
+				->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
+				->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 				->where($params)
 				->get();
-		
+
 		return $query->result();
+
 		//var_dump($this->db->last_query()); die;
 	}
 

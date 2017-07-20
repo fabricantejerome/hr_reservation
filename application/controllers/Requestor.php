@@ -72,7 +72,7 @@ class Requestor extends CI_Controller {
 				'date_reserved >=' => $current_date,
 			);
 
-		echo $this->rooms->get_taken_slot($config)? json_encode($this->rooms->get_taken_slot($config)) : '';
+		echo $this->rooms->get_taken_slot($config) ? json_encode($this->rooms->get_taken_slot($config)) : '';
 	}
 
 
