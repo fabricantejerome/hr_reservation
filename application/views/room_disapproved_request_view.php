@@ -29,11 +29,11 @@
 									<td><?php echo $counter ?></td>
 									<td><?php echo $row->room_no ?></td>
 									<td><?php echo $row->purpose ?></td>
-									<td><?php echo $row->date_reserved ?></td>
+									<td><?php echo date('m/d/Y', strtotime($row->date_reserved)) ?></td>
 									<td><?php echo $row->time_start ?></td>
 									<td><?php echo $row->time_end ?></td>
 									<td><?php echo $row->fullname ?></td>
-									<td><?php echo $row->denied_datetime ?></td>
+									<td><?php echo date('m/d/Y H:i:s', strtotime($row->denied_datetime)) ?></td>
 									<td><?php echo $row->reason ?></td>
 									<td><?php echo $row->approver ?></td>
 								</tr>

@@ -28,10 +28,10 @@
 									<td><?php echo $counter ?></td>
 									<td><?php echo $row->room_no ?></td>
 									<td><?php echo $row->purpose ?></td>
-									<td><?php echo $row->date_reserved ?></td>
+									<td><?php echo date('m/d/Y', strtotime($row->date_reserved)) ?></td>
 									<td><?php echo $row->time_start ?></td>
 									<td><?php echo $row->time_end ?></td>
-									<td><?php echo $row->date_filed ?></td>
+									<td><?php echo date('m/d/Y H:i:s', strtotime($row->date_filed)) ?></td>
 									<td><?php echo $row->fullname ?></td>
 									<td>
 										<a href="<?php echo base_url('index.php/admin/approved_request/') . $row->id ?>">
@@ -57,5 +57,6 @@
 	$(document).ready(function() {
 
 		$('#pending-request').DataTable();
+
 	})
 </script>
