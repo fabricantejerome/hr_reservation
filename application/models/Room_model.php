@@ -71,4 +71,17 @@ class Room_model extends CI_Model {
 		//var_dump($this->db->last_query()); die;
 	}
 
+	public function get_pending_request()
+	{
+		$query = $this->db->select('a.id, a.purpose, a.date_reserved, a.time_start, a.time_end, a.date_filed, c.fullname, d.room_no')
+				->from('room_res_tbl AS a')
+				->join('approved_res_tbl AS b', 'a.id = b.room_res_id', 'LEFT')
+				->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
+				->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
+				->where('b.room_res_id IS NULL')
+				->get();
+
+		return $query->result();
+	}
+
 }
