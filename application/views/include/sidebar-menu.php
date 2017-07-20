@@ -35,7 +35,11 @@
 				
 				<li class=""><a href="<?php echo base_url('index.php/admin/rooms'); ?>"><i class="fa fa-table"></i><span>Rooms</span></a></li>
 
-				<li class=""><a href="<?php echo base_url('index.php/requestor/reservation_form'); ?>"><i class="fa fa-wpforms"></i><span>Reservation Form</span></a></li>
+				<li class=""><a href="<?php echo base_url('index.php/requestor/reservation_form'); ?>"><i class="fa fa-wpforms"></i><span>File Room Reservation</span></a></li>
+
+				<li class=""><a href="<?php echo base_url('index.php/admin/get_pending_request'); ?>"><i class="fa fa-wpforms"></i><span>Pending Request</span></a></li>
+
+				
 
 			</ul><!-- /.sidebar-menu -->
 	</section>
