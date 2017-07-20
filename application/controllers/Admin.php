@@ -98,4 +98,28 @@ class Admin extends CI_Controller {
 
 	}
 
+	public function display_approved_request()
+	{
+		$data = array(
+				'title'   => 'List of Approved Request',
+				'content' => 'room_approved_request_view',
+				'requests'   => $this->rooms->get_approved_request(0)
+			);
+		
+		$this->load->view('include/template', $data);
+	}
+
+	public function display_disapproved_form()
+	{
+		$room_res_id = $this->uri->segment(3);
+
+		$data = array(
+				'title'       => 'Disapproved Request',
+				'content'     => 'room_disapproved_form_view',
+				'room_res_id' => $room_res_id
+			);
+
+		$this->load->view('include/template', $data);
+	}
+
 }
