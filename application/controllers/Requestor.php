@@ -41,24 +41,34 @@ class Requestor extends CI_Controller {
 	public function reservation_submit()
 	{
 
-		$current_date = date('Y/m/d H:i:s');
+		$current_date  = date('Y/m/d H:i:s');
 		$date_reserved = date('Y/m/d', strtotime($this->input->post('date_reserved')));
+		$room_id       = $this->input->post('room_id');
+		$time_start    = $this->input->post('time_start');
+		$time_end      = $this->input->post('time_end');
+
+		$params = array(
+				'room_id'       => $room_id,
+				'date_reserved' => $date_reserved
+			);
 
 		$config = array(
-				'room_id'       => $this->input->post('room_id'),
+				'room_id'       => $room_id,
 				'user_id'       => $this->session->userdata('id'),
 				'purpose'       => $this->input->post('purpose'),
 				'date_reserved' => $date_reserved,
-				'time_start'    => $this->input->post('time_start'),
-				'time_end'      => $this->input->post('time_end'),
+				'time_start'    => $time_start,
+				'time_end'      => $time_end,
 				'date_filed'    => $current_date
 
 			);
 
-		$this->rooms->store_reservation($config);
+		if ($this->_is_available($params, $time_start, $time_end))
+		{
+			$this->rooms->store_reservation($config);
+		}
 
 		redirect(base_url('index.php/requestor/reservation_form'));
-		//var_dump($this->input->post());
 	}
 
 	public function show_room_reserved()
