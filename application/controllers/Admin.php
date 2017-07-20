@@ -142,4 +142,15 @@ class Admin extends CI_Controller {
 		redirect(base_url('index.php/admin/display_pending_request'));
 	}
 
+	public function display_disapproved_request()
+	{
+		$data = array(
+				'title'   => 'List of Denied Request',
+				'content' => 'room_disapproved_request_view',
+				'requests' => $this->rooms->get_disapproved_request(0)
+			);
+
+		$this->load->view('include/template', $data);
+	}
+
 }
