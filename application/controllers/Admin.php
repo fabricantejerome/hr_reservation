@@ -6,6 +6,8 @@ class Admin extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+		// Set the timezone
+		date_default_timezone_set('Asia/Manila');
 
 		// Load helpers
 		$helpers = array('form');
