@@ -82,6 +82,17 @@ class Admin extends CI_Controller {
 		redirect('index.php/admin/rooms');
 	}
 
+	public function reservation_form()
+	{
+		$data = array(
+				'title'   => 'File Reservation',
+				'content' => 'room_reservation_form_view',
+				'rooms'   => $this->rooms->browse()
+			);
+
+		$this->load->view('/include/template', $data);
+	}
+
 	public function display_pending_request()
 	{
 
