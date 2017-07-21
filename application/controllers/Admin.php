@@ -6,6 +6,9 @@ class Admin extends CI_Controller {
 	public function __construct()
 	{
 		parent::__construct();
+
+		$this->_redirect_unauthorized();
+
 		// Set the timezone
 		date_default_timezone_set('Asia/Manila');
 
@@ -153,4 +156,13 @@ class Admin extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	protected function _redirect_unauthorized()
+	{
+		if (count($this->session->userdata()) < 2)
+		{
+			$this->session->set_flashdata('message', '<span class="col-sm-12 alert alert-warning">You must Login first!</span>');
+			
+			redirect(base_url('index.php/login/index'));
+		}
+	}
 }
