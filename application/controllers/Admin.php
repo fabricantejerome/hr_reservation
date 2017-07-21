@@ -199,4 +199,15 @@ class Admin extends CI_Controller {
 
 		redirect($this->agent->referrer());
 	}
+
+	public function display_cancelled_request()
+	{
+		$data = array(
+				'title'    => 'List of Cancelled Request',
+				'content'  => 'room_cancelled_request_view',
+				'requests' => $this->rooms->get_cancelled_request()
+			);
+
+		$this->load->view('include/template', $data);
+	}
 }
