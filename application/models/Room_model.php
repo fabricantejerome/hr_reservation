@@ -105,7 +105,7 @@ class Room_model extends CI_Model {
 		//var_dump($this->db->last_query()); die;
 	}
 
-	public function get_pending_request()
+	public function get_pending_request($id = 0)
 	{
 		$fields = array(
 				'a.id',
@@ -118,16 +118,36 @@ class Room_model extends CI_Model {
 				'd.room_no'
 			);
 
-		$query = $this->db->select($fields)
-				->from('room_res_tbl AS a')
-				->join('approved_res_tbl AS b', 'a.id = b.room_res_id', 'LEFT')
-				->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
-				->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
-				->join('disapproved_res_tbl AS e', 'a.id = e.room_res_id', 'LEFT')
-				->where('b.room_res_id IS NULL')
-				->where('e.room_res_id IS NULL')
-				->get();
+		if ($id == 0)
+		{
+			$query = $this->db->select($fields)
+					->from('room_res_tbl AS a')
+					->join('approved_res_tbl AS b', 'a.id = b.room_res_id', 'LEFT')
+					->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
+					->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
+					->join('disapproved_res_tbl AS e', 'a.id = e.room_res_id', 'LEFT')
+					->where('b.room_res_id IS NULL')
+					->where('e.room_res_id IS NULL')
+					->get();
+		}
+		else
+		{
+			$clause = array(
+					'a.user_id' => $id
+				);
 
+			$query = $this->db->select($fields)
+					->from('room_res_tbl AS a')
+					->join('approved_res_tbl AS b', 'a.id = b.room_res_id', 'LEFT')
+					->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
+					->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
+					->join('disapproved_res_tbl AS e', 'a.id = e.room_res_id', 'LEFT')
+					->where('b.room_res_id IS NULL')
+					->where('e.room_res_id IS NULL')
+					->where($clause)
+					->get();
+		}
+		
 		return $query->result();
 	}
 
@@ -137,7 +157,7 @@ class Room_model extends CI_Model {
 		//var_dump($this->db->last_query()); die;
 	}
 
-	public function get_approved_request($params)
+	public function get_approved_request($id = 0)
 	{
 		
 		$fields = array(
@@ -153,7 +173,7 @@ class Room_model extends CI_Model {
 				'e.fullname AS approver'
 			);
 
-		if (!is_array($params))
+		if ($id == 0)
 		{
 			$query = $this->db->select($fields)
 					->from('approved_res_tbl AS a')
@@ -163,8 +183,24 @@ class Room_model extends CI_Model {
 					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->get();
 
-			return $query->result();
 		}
+		else
+		{
+			$clause = array(
+					'b.user_id' => $id
+				);
+
+			$query = $this->db->select($fields)
+					->from('approved_res_tbl AS a')
+					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
+					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
+					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
+					->where($clause)
+					->get();
+		}
+
+		return $query->result();
 	}
 
 	public function store_disapproved_request($params)
@@ -175,7 +211,7 @@ class Room_model extends CI_Model {
 		//var_dump($this->db->last_query());;
 	}
 
-	public function get_disapproved_request($params)
+	public function get_disapproved_request($id = 0)
 	{
 		$fields = array(
 				'a.id',
@@ -191,7 +227,7 @@ class Room_model extends CI_Model {
 				'e.fullname AS approver'
 			);
 
-		if (!is_array($params))
+		if ($id == 0)
 		{
 			$query = $this->db->select($fields)
 					->from('disapproved_res_tbl AS a')
@@ -200,8 +236,23 @@ class Room_model extends CI_Model {
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
 					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->get();
-
-			return $query->result();
 		}
+		else
+		{
+			$clause = array(
+					'b.user_id' => $id
+				);
+
+			$query = $this->db->select($fields)
+					->from('disapproved_res_tbl AS a')
+					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
+					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
+					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
+					->where($clause)
+					->get();
+		}
+
+		return $query->result();
 	}
 }
