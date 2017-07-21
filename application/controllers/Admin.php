@@ -180,4 +180,23 @@ class Admin extends CI_Controller {
 			redirect(base_url('index.php/login/index'));
 		}
 	}
+
+	public function cancel_request()
+	{
+		$room_res_id  = $this->uri->segment(3);
+		$current_date = date('Y/m/d H:i:s');
+		$user_id      = $this->session->userdata('id');
+
+		$config = array(
+				'room_res_id'        => $room_res_id,
+				'cancelled_datetime' => $current_date,
+				'user_id'            => $user_id
+			);
+
+		$this->rooms->store_cancel_request($config);
+
+		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been cancelled!</span>');
+
+		redirect($this->agent->referrer());
+	}
 }
