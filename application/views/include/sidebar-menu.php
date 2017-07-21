@@ -37,6 +37,8 @@
 
 				<li class="<?php echo $menu == 'display_disapproved_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_disapproved_request') : base_url('index.php/requestor/display_disapproved_request'); ?>"><i class="fa fa-wpforms"></i><span>Denied Request</span></a></li>
 
+				<li class="<?php echo $menu == 'display_cancelled_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_cancelled_request') : base_url('index.php/requestor/display_cancelled_request'); ?>"><i class="fa fa-wpforms"></i><span>Cancelled Request</span></a></li>
+
 			</ul><!-- /.sidebar-menu -->
 	</section>
 <!-- /.sidebar -->
