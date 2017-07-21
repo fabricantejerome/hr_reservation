@@ -23,6 +23,7 @@
 									<th></th>
 									<th></th>
 								<?php endif; ?>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -49,6 +50,11 @@
 											</a>
 										</td>
 									<?php endif; ?>
+									<td>
+										<a href="<?php echo base_url('index.php/admin/cancel_request/') . $row->id ?>">
+											<button class="btn btn-flat btn-warning">Cancel <i class="fa fa-times" aria-hidden="true"></i></button>
+										</a>
+									</td>
 								</tr>
 								<?php $counter++; ?>
 							<?php endforeach; ?>
