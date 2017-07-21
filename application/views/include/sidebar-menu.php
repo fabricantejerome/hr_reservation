@@ -8,7 +8,7 @@
 				<img src="<?php echo base_url('resources/images/default.png');?>" class="img-circle" alt="User Image">
 			</div>
 			<div class="pull-left info">
-<!-- 				<p>	<?php echo $this->session->get_userdata()['fullname']; ?></p> -->
+				<p>	<?php echo $this->session->userdata('fullname'); ?></p>
 			</div>
 		</div>
 		<form action="../history/search" method="get" class="sidebar-form">
