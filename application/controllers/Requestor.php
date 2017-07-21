@@ -186,6 +186,19 @@ class Requestor extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	public function display_cancelled_request()
+	{
+		$user_id = $this->session->userdata('id');
+
+		$data = array(
+				'title'    => 'List of Cancelled Request',
+				'content'  => 'room_cancelled_request_view',
+				'requests' => $this->rooms->get_cancelled_request($user_id)
+			);
+
+		$this->load->view('include/template', $data);
+	}
+
 	protected function _redirect_unauthorized()
 	{
 		if (count($this->session->userdata()) < 2)
