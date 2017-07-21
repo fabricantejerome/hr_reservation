@@ -126,8 +126,10 @@ class Room_model extends CI_Model {
 					->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
 					->join('disapproved_res_tbl AS e', 'a.id = e.room_res_id', 'LEFT')
+					->join('cancelled_res_tbl AS f', 'a.id = f.room_res_id', 'LEFT')
 					->where('b.room_res_id IS NULL')
 					->where('e.room_res_id IS NULL')
+					->where('f.room_res_id IS NULL')
 					->get();
 		}
 		else
@@ -142,8 +144,10 @@ class Room_model extends CI_Model {
 					->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
 					->join('disapproved_res_tbl AS e', 'a.id = e.room_res_id', 'LEFT')
+					->join('cancelled_res_tbl AS f', 'a.id = f.room_res_id', 'LEFT')
 					->where('b.room_res_id IS NULL')
 					->where('e.room_res_id IS NULL')
+					->where('f.room_res_id IS NULL')
 					->where($clause)
 					->get();
 		}
@@ -181,6 +185,8 @@ class Room_model extends CI_Model {
 					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
 					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
+					->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
+					->where('f.room_res_id IS NULL')
 					->get();
 
 		}
@@ -196,6 +202,8 @@ class Room_model extends CI_Model {
 					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
 					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
+					->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
+					->where('f.room_res_id IS NULL')
 					->where($clause)
 					->get();
 		}
