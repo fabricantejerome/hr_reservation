@@ -43,7 +43,7 @@
 						Error : Login Required!
 					</div> -->
 				<?php //endif; ?>
-				<?php //var_dump($this->session->userdata()); ?>
+				<?php echo $this->session->flashdata('message');  ?>
 				<?php echo isset($message) ? $message : ''  ?>
 				<h4 class="text-center">HR Training Room Reservation</h4>
 				<p class="login-box-msg">Sign in to start your session</p>
