@@ -2,8 +2,10 @@
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-10">
+			<?php echo $this->session->flashdata('success_message'); ?>
+		</div>
+		<div class="col-md-10">
 			<div class="box box-danger">
-					
 				<div class="box-body">
 					<!-- Room table -->
 					<table id="pending-request" class="table table-condensed table-striped table-bordered" >
@@ -17,8 +19,10 @@
 								<th>Time End</th>
 								<th>Date Filed</th>
 								<th>Reserved by</th>
-								<th></th>
-								<th></th>
+								<?php if ($this->session->userdata('user_type') == 'admin'): ?>
+									<th></th>
+									<th></th>
+								<?php endif; ?>
 							</tr>
 						</thead>
 						<tbody>
@@ -33,16 +37,18 @@
 									<td><?php echo $row->time_end ?></td>
 									<td><?php echo date('m/d/Y H:i:s', strtotime($row->date_filed)) ?></td>
 									<td><?php echo $row->fullname ?></td>
-									<td>
-										<a href="<?php echo base_url('index.php/admin/approved_request/') . $row->id ?>">
-											<button class="btn btn-flat btn-success">Approve <i class="fa fa-check" aria-hidden="true"></i></button>
-										</a>
-									</td>
-									<td>
-										<a href="<?php echo base_url('index.php/admin/display_disapproved_form/') . $row->id ?>" >	
-											<button class="btn btn-flat btn-danger">Disapprove <i class="fa fa-times" aria-hidden="true"></i></button>
-										</a>
-									</td>
+									<?php if ($this->session->userdata('user_type') == 'admin'): ?>
+										<td>
+											<a href="<?php echo base_url('index.php/admin/approved_request/') . $row->id ?>">
+												<button class="btn btn-flat btn-success">Approve <i class="fa fa-check" aria-hidden="true"></i></button>
+											</a>
+										</td>
+										<td>
+											<a href="<?php echo base_url('index.php/admin/display_disapproved_form/') . $row->id ?>" >	
+												<button class="btn btn-flat btn-danger">Disapprove <i class="fa fa-times" aria-hidden="true"></i></button>
+											</a>
+										</td>
+									<?php endif; ?>
 								</tr>
 								<?php $counter++; ?>
 							<?php endforeach; ?>
