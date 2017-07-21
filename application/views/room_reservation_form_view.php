@@ -9,6 +9,8 @@
 			<div class="box box-danger">					
 				<div class="box-body">
 					<!-- Form -->
+					<?php echo $this->session->flashdata('success_message'); ?>
+					<?php echo $this->session->flashdata('error_message'); ?>
 					<form action="<?php echo base_url('index.php/requestor/reservation_submit'); ?>" method="post">
 						<div class="form-group">
 							<label for="room_id">Room No.</label>
