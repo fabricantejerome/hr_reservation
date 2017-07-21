@@ -263,4 +263,12 @@ class Room_model extends CI_Model {
 
 		return $query->result();
 	}
+
+	public function store_cancel_request($params)
+	{
+		$this->db->insert('cancelled_res_tbl', $params);
+
+		return $this;
+	}
+
 }
