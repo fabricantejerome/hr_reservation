@@ -117,9 +117,9 @@ class Admin extends CI_Controller {
 	public function display_approved_request()
 	{
 		$data = array(
-				'title'   => 'List of Approved Request',
-				'content' => 'room_approved_request_view',
-				'requests'   => $this->rooms->get_approved_request(0)
+				'title'    => 'List of Approved Request',
+				'content'  => 'room_approved_request_view',
+				'requests' => $this->rooms->get_approved_request()
 			);
 		
 		$this->load->view('include/template', $data);
@@ -163,9 +163,9 @@ class Admin extends CI_Controller {
 	public function display_disapproved_request()
 	{
 		$data = array(
-				'title'   => 'List of Denied Request',
-				'content' => 'room_disapproved_request_view',
-				'requests' => $this->rooms->get_disapproved_request(0)
+				'title'    => 'List of Denied Request',
+				'content'  => 'room_disapproved_request_view',
+				'requests' => $this->rooms->get_disapproved_request()
 			);
 
 		$this->load->view('include/template', $data);
