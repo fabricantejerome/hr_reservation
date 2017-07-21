@@ -21,6 +21,7 @@
 								<th>Reserved by</th>
 								<th>Date Approved</th>
 								<th>Approved by</th>
+								<th></th>
 							</tr>
 						</thead>
 						<tbody>
@@ -36,6 +37,11 @@
 									<td><?php echo $row->fullname ?></td>
 									<td><?php echo date('m/d/Y H:i:s', strtotime($row->approved_datetime)) ?></td>
 									<td><?php echo $row->approver ?></td>
+									<td>
+										<a href="<?php echo base_url('index.php/admin/cancel_request/') . $row->room_res_id ?>">
+											<button class="btn btn-flat btn-warning">Cancel <i class="fa fa-times" aria-hidden="true"></i></button>
+										</a>
+									</td>
 								</tr>
 								<?php $counter++; ?>
 							<?php endforeach; ?>
