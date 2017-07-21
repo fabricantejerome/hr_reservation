@@ -184,7 +184,7 @@ class Admin extends CI_Controller {
 
 	protected function _redirect_unauthorized()
 	{
-		if (count($this->session->userdata()) < 2)
+		if (count($this->session->userdata()) < 2 && $this->session->userdata('user_type') == 'admin')
 		{
 			$this->session->set_flashdata('message', '<span class="col-sm-12 alert alert-warning">You must Login first!</span>');
 			
