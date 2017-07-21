@@ -59,6 +59,23 @@ class Room_model extends CI_Model {
 		//var_dump($this->db->last_query());
 	}
 
+	public function get_possible_conflict($params)
+	{
+		$fields = array(
+				'date_reserved',
+				'time_start',
+				'time_end'
+			);
+
+		$query = $this->db->select($fields)
+				->from('approved_res_tbl AS a')
+				->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+				->where($params)
+				->get();
+
+		return $query->result();
+	}
+
 	public function get_taken_slot($params)
 	{
 		$fields = array(
