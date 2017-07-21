@@ -147,6 +147,19 @@ class Requestor extends CI_Controller {
 
 	}
 
+	public function display_pending_request()
+	{
+		$user_id = $this->session->userdata('id');
+
+		$data = array(
+				'title'   => 'List of Pending Request',
+				'content' => 'room_pending_request_view',
+				'rooms'   => $this->rooms->get_pending_request($user_id)
+			);
+
+		$this->load->view('include/template', $data);
+	}
+
 	protected function _redirect_unauthorized()
 	{
 		if (count($this->session->userdata()) < 2)
