@@ -57,6 +57,15 @@ class Admin extends CI_Controller {
 
 	public function room_store()
 	{
+		$id = $this->input->post('id');
+
+		if ($id) {
+			$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Room has been updated!</span>');
+		}
+		else {
+			$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Room has been added!</span>');
+		}
+
 		$this->rooms->store();
 
 		redirect('index.php/admin/rooms');
@@ -67,6 +76,8 @@ class Admin extends CI_Controller {
 		$id = $this->uri->segment(3) ? $this->uri->segment(3) : 0;
 
 		$this->rooms->delete($id);
+
+		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Room has been deleted!</span>');
 
 		redirect('index.php/admin/rooms');
 	}
@@ -96,6 +107,8 @@ class Admin extends CI_Controller {
 			);
 
 		$this->rooms->store_approved_request($config);
+
+		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been approved!</span>');
 
 		redirect(base_url('index.php/admin/display_pending_request'));
 
@@ -141,6 +154,8 @@ class Admin extends CI_Controller {
 			);
 
 		$this->rooms->store_disapproved_request($config);
+
+		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Request has been disapproved!</span>');
 
 		redirect(base_url('index.php/admin/display_pending_request'));
 	}

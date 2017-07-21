@@ -69,6 +69,12 @@ class Requestor extends CI_Controller {
 		if ($this->_is_available($params, $time_start, $time_end))
 		{
 			$this->rooms->store_reservation($config);
+
+			$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been filed!</span>');
+		}
+		else 
+		{
+			$this->session->set_flashdata('error_message', '<span class="col-sm-12 alert alert-error">There was a conflict on your reservation!</span>');
 		}
 
 		redirect(base_url('index.php/requestor/reservation_form'));
