@@ -30,6 +30,17 @@ class Requestor extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	public function rooms() 
+	{
+		$data = array(
+			'title'   => 'List of Rooms',
+			'content' => 'rooms_view',
+			'rooms'   => $this->rooms->browse()
+		);
+
+		$this->load->view('include/template', $data);
+	}
+
 	public function reservation_form()
 	{
 		$data = array(
