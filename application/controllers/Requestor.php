@@ -173,6 +173,19 @@ class Requestor extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	public function display_disapproved_request()
+	{
+		$user_id = $this->session->userdata('id');
+
+		$data = array(
+				'title'    => 'List of Denied Request',
+				'content'  => 'room_disapproved_request_view',
+				'requests' => $this->rooms->get_disapproved_request($user_id)
+			);
+
+		$this->load->view('include/template', $data);
+	}
+
 	protected function _redirect_unauthorized()
 	{
 		if (count($this->session->userdata()) < 2)
@@ -182,6 +195,5 @@ class Requestor extends CI_Controller {
 			redirect(base_url('index.php/login/index'));
 		}
 	}
-
 
 }
