@@ -24,22 +24,18 @@
 			<ul class="sidebar-menu">
 				<li class="header">MAIN NAVIGATION</li>
 				
-				<?php 
-				//BUYOFF
-				if(in_array($this->session->userdata('user_type'),array('administrator','manufacturing 1','manufacturing 2') )){
-				?>
-					<li class="<?php echo ($this->uri->uri_string() == 'buyoff/list_') ? 'active' : ''; ?>"><a href="<?php echo base_url('buyoff/list_'); ?>"><i class="fa fa-truck"></i><span>Buyoff Units</span></a></li>
-				<?php 
-				}
-				?>	
-				
-				<li class=""><a href="<?php echo base_url('index.php/admin/rooms'); ?>"><i class="fa fa-table"></i><span>Rooms</span></a></li>
+				<?php $menu =  explode("/", $this->uri->uri_string()); ?>
+				<?php $menu =  end($menu) ?>
 
-				<li class=""><a href="<?php echo base_url('index.php/requestor/reservation_form'); ?>"><i class="fa fa-wpforms"></i><span>File Room Reservation</span></a></li>
+				<li class="<?php echo $menu == 'rooms' ? 'active' : ''; ?>"><a href="<?php echo base_url('index.php/admin/rooms'); ?>"><i class="fa fa-table"></i><span>Rooms</span></a></li>
 
-				<li class=""><a href="<?php echo base_url('index.php/admin/get_pending_request'); ?>"><i class="fa fa-wpforms"></i><span>Pending Request</span></a></li>
+				<li class="<?php echo $menu == 'reservation_form' ? 'active' : ''; ?>"><a href="<?php echo base_url('index.php/requestor/reservation_form'); ?>"><i class="fa fa-wpforms"></i><span>File Reservation</span></a></li>
 
-				
+				<li class="<?php echo $menu == 'display_pending_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_pending_request') : base_url('index.php/requestor/display_pending_request'); ?>"><i class="fa fa-wpforms"></i><span>Pending Request</span></a></li>
+
+				<li class="<?php echo $menu == 'display_approved_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_approved_request') : base_url('index.php/requestor/display_approved_request'); ?>"><i class="fa fa-wpforms"></i><span>Approved Request</span></a></li>
+
+				<li class="<?php echo $menu == 'display_disapproved_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_disapproved_request') : base_url('index.php/requestor/display_disapproved_request'); ?>"><i class="fa fa-wpforms"></i><span>Denied Request</span></a></li>
 
 			</ul><!-- /.sidebar-menu -->
 	</section>
