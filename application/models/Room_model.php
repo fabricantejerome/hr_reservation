@@ -56,6 +56,7 @@ class Room_model extends CI_Model {
 	{
 		$this->db->insert('room_res_tbl', $params);
 
+		return $this->db->insert_id();
 		//var_dump($this->db->last_query());
 	}
 
