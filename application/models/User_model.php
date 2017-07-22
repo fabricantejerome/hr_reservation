@@ -75,4 +75,9 @@ class User_model extends CI_Model {
 		return $data->result();
 	}
 
+	public function fetch_roles()
+	{
+		return $this->db->get('role_tbl')->result();
+	}
+
 }
