@@ -19,6 +19,10 @@ class Admin extends CI_Controller {
 
 		// Load Model
 		$this->load->model('room_model', 'rooms');
+
+		$this->load->model('ipc_model', 'ipc');
+
+		$this->load->model('user_model', 'user');
 	}
 
 	public function dashboard()
