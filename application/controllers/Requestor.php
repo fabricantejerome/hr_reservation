@@ -227,4 +227,27 @@ class Requestor extends CI_Controller {
 		}
 	}
 
+	public function send_mail($params)
+	{
+		$this->load->library('emailerphp');
+
+		$mail = new EmailerPHP;
+
+		$mail->Subject = $params['subject'];
+		$mail->addAddress('jerome-fabricante@isuzuphil.com');
+		$mail->addCC('fabricantejerome@gmail.com');
+
+		$data['item']   = $params['item'];
+		$data['header'] = $params['header'];
+
+		$mail->Body = $this->load->view('email/notification', $data, true);
+
+		if(!$mail->send()) {
+		    echo 'Message could not be sent.';
+		    echo 'Mailer Error: ' . $mail->ErrorInfo;
+		} else {
+		    echo 'Message has been sent';
+		}
+	}
+
 }
