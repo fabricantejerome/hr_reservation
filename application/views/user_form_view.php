@@ -1,6 +1,7 @@
 <?php 
 	//var_dump($room);
 ?>
+<link href="<?php echo base_url('resources/plugins/select2/css/select2.min.css') ?>" rel="stylesheet" >
 <section class="content users">
 	<div class="row">
 		<div class="col-md-3">
@@ -43,7 +44,7 @@
 
 						<div class="form-group">
 							<label for="role_id">User type</label>
-							<select name="role_id" class="form-control">
+							<select name="role_id" class="form-control select2" data-live-search="true">
 								<option value="0"></option>
 								<?php foreach ($roles as $row): ?>
 									<option value="<?php echo $row->id; ?>" ><?php echo $row->user_type; ?></option>
@@ -60,8 +61,12 @@
 		</div>	
 	</div>
 </section>
+<script src="<?php echo base_url('resources/plugins/select2/js/select2.min.js');?>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+
+		$("select").select2({ width: 'resolve' });
+
 		$('#emp_no').on('keyup', function() {
 			var $self             = $(this);
 			var $length           = $self.val().length;
