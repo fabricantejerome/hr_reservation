@@ -43,4 +43,15 @@ class User_model extends CI_Model {
 		return false;
 	}
 
+	public function store(array $params = array())
+	{
+		if (count($params) > 0)
+		{
+			$this->db->insert('users_tbl', $params);
+			return $this->db->insert_id();
+		}
+
+		return 0;
+	}
+
 }
