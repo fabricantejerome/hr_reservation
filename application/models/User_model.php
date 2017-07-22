@@ -80,4 +80,13 @@ class User_model extends CI_Model {
 		return $this->db->get('role_tbl')->result();
 	}
 
+	public function assign_role(array $params = array())
+	{
+		if ($params['user_id'] > 0)
+		{
+			$this->db->insert('users_role_tbl', $params);
+		}
+
+		return 0;
+	}
 }
