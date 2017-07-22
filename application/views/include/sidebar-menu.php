@@ -39,6 +39,9 @@
 
 				<li class="<?php echo $menu == 'display_cancelled_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_cancelled_request') : base_url('index.php/requestor/display_cancelled_request'); ?>"><i class="fa fa-wpforms"></i><span>Cancelled Request</span></a></li>
 
+				<?php if($this->session->userdata('user_type') == 'admin'): ?>
+					<li class="<?php echo $menu == 'users' ? 'active' : ''; ?>"><a href="<?php echo base_url('index.php/admin/users') ?>"><i class="fa fa-wpforms"></i><span>Users</span></a></li>
+				<?php endif; ?>
 			</ul><!-- /.sidebar-menu -->
 	</section>
 <!-- /.sidebar -->
