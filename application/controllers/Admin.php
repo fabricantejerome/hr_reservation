@@ -260,6 +260,41 @@ class Admin extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	public function store_user()
+	{
+		$username         = $this->input->post('username');
+		$password         = $this->input->post('password');
+		$fullname         = $this->input->post('fullname');
+		$email            = $this->input->post('email');
+		$emp_id           = $this->input->post('emp_id');
+		$emp_no           = $this->input->post('emp_no');
+		$supervisor_email = $this->input->post('supervisor_email');
+		$role_id          = $this->input->post('role_id');
+
+		$config = array(
+				'username'         => $username,
+				'password'         => $password,
+				'fullname'         => $fullname,
+				'email'            => $email,
+				'emp_id'           => $emp_id,
+				'emp_no'           => $emp_no,
+				'supervisor_email' => $supervisor_email
+			);
+
+		$user_id = $this->user->store($config);
+
+		$config = array(
+				'user_id' => $user_id,
+				'role_id' => $role_id
+			);
+
+		$this->user->assign_role($config);
+
+		$this->session->set_flashdata('message', '<div class="alert alert-success">Account has been created!</div>');
+
+		redirect($this->agent->referrer());
+	}
+
 	public function users()
 	{
 
