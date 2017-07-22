@@ -79,7 +79,14 @@ class Requestor extends CI_Controller {
 
 		if ($this->_is_available($params, $time_start, $time_end))
 		{
-			$this->rooms->store_reservation($config);
+			$id = $this->rooms->store_reservation($config);
+
+			$config = array(
+					'subject' => 'Filed Reservation',
+					'item'    => $this->rooms->read_pending_request($id)
+				);
+
+			$this->send_mail($config);
 
 			$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been filed!</span>');
 		}
