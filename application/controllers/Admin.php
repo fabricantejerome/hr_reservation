@@ -221,4 +221,17 @@ class Admin extends CI_Controller {
 
 		$this->load->view('include/template', $data);
 	}
+
+	public function users()
+	{
+
+		$data = array(
+				'content' => 'users_view',
+				'title'   => 'List of Users',
+				'users'   => $this->user->fetch()
+			);
+
+		$this->load->view('include/template', $data);
+	}
+
 }
