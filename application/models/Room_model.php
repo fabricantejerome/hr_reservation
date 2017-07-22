@@ -337,6 +337,41 @@ class Room_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function read_disapproved_request($id = 0)
+	{
+		$fields = array(
+				'a.id',
+				'a.room_res_id',
+				'a.denied_datetime',
+				'a.reason',
+				'b.date_reserved',
+				'b.purpose',
+				'b.time_start',
+				'b.time_end',
+				'c.fullname',
+				'd.room_no',
+				'e.fullname AS approver'
+			);
+
+		if ($id > 0)
+		{
+			$clause = array(
+					'a.room_res_id' => $id
+				);
+
+			$query = $this->db->select($fields)
+					->from('disapproved_res_tbl AS a')
+					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
+					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
+					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
+					->where($clause)
+					->get();
+		}
+
+		return $query->row_array();
+	}
+
 	public function store_cancel_request($params)
 	{
 		$this->db->insert('cancelled_res_tbl', $params);
