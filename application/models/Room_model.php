@@ -247,6 +247,43 @@ class Room_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function read_approved_request($id = 0)
+	{
+		
+		$fields = array(
+				'a.id',
+				'a.room_res_id',
+				'a.approved_datetime',
+				'b.date_reserved',
+				'b.purpose',
+				'b.time_start',
+				'b.time_end',
+				'c.fullname',
+				'd.room_no',
+				'e.fullname AS approver'
+			);
+
+		if ($id > 0)
+		{
+			$clause = array(
+					'a.room_res_id' => $id
+				);
+
+			$query = $this->db->select($fields)
+					->from('approved_res_tbl AS a')
+					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
+					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
+					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
+					->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
+					->where('f.room_res_id IS NULL')
+					->where($clause)
+					->get();
+
+			return $query->row_array();
+		}
+	}
+
 	public function store_disapproved_request($params)
 	{
 		$query = $this->db->insert('disapproved_res_tbl', $params);
