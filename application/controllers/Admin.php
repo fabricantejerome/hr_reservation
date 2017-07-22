@@ -249,6 +249,17 @@ class Admin extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	public function user_form()
+	{
+		$data = array(
+			'title'   => 'Create Account',
+			'content' => 'user_form_view',
+			'roles'   => $this->user->fetch_roles()
+		);
+
+		$this->load->view('include/template', $data);
+	}
+
 	public function users()
 	{
 
