@@ -115,8 +115,8 @@ class Requestor extends CI_Controller {
 			$datetime_start = DateTime::createFromFormat('Y-m-d H:i:s', $row->date_reserved . ' ' . $row->time_start);
 			$datetime_end   = DateTime::createFromFormat('Y-m-d H:i:s', $row->date_reserved . ' ' . $row->time_end);
 
-			if (($new_datetime_start > $datetime_start && $new_datetime_start < $datetime_end) 
-				|| ($new_datetime_end > $datetime_start && $new_datetime_end < $datetime_end))
+			if (($new_datetime_start >= $datetime_start && $new_datetime_start <= $datetime_end) 
+				|| ($new_datetime_end >= $datetime_start && $new_datetime_end <= $datetime_end))
 			{
 				return false;
 			}
