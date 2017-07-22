@@ -23,7 +23,5 @@ class EmailerPHP extends PHPMailer {
 		$this->From          = 'notification@isuzuphil.com';
 		$this->FromName      = 'HR Training Room Reservation';
 		$this->isHTML(true); 									// Set 
-
-	
 	}
 }
