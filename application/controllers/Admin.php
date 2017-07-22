@@ -123,6 +123,13 @@ class Admin extends CI_Controller {
 
 		$this->rooms->store_approved_request($config);
 
+		$config = array(
+					'subject' => 'Approved Reservation',
+					'item'    => $this->rooms->read_approved_request($room_res_id)
+				);
+
+		$this->send_mail($config);
+
 		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been approved!</span>');
 
 		redirect(base_url('index.php/admin/display_pending_request'));
@@ -170,6 +177,14 @@ class Admin extends CI_Controller {
 
 		$this->rooms->store_disapproved_request($config);
 
+		$config = array(
+					'subject' => 'Denied Reservation',
+					'item'    => $this->rooms->read_disapproved_request($room_res_id),
+					'header'  => 'Denied by'
+				);
+
+		$this->send_mail($config);
+
 		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Request has been disapproved!</span>');
 
 		redirect(base_url('index.php/admin/display_pending_request'));
@@ -209,6 +224,14 @@ class Admin extends CI_Controller {
 			);
 
 		$this->rooms->store_cancel_request($config);
+
+		$config = array(
+					'subject' => 'Cancelled Reservation',
+					'item'    => $this->rooms->read_cancelled_request($room_res_id),
+					'header'  => 'Cancelled by'
+				);
+
+		$this->send_mail($config);
 
 		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been cancelled!</span>');
 
