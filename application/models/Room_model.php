@@ -166,6 +166,8 @@ class Room_model extends CI_Model {
 				'a.time_end',
 				'a.date_filed',
 				'c.fullname',
+				'c.email',
+				'c.supervisor_email',
 				'd.room_no'
 			);
 
@@ -209,6 +211,8 @@ class Room_model extends CI_Model {
 				'b.time_start',
 				'b.time_end',
 				'c.fullname',
+				'c.email',
+				'c.supervisor_email',
 				'd.room_no',
 				'e.fullname AS approver'
 			);
@@ -259,6 +263,8 @@ class Room_model extends CI_Model {
 				'b.time_start',
 				'b.time_end',
 				'c.fullname',
+				'c.email',
+				'c.supervisor_email',
 				'd.room_no',
 				'e.fullname AS approver'
 			);
@@ -304,6 +310,8 @@ class Room_model extends CI_Model {
 				'b.time_start',
 				'b.time_end',
 				'c.fullname',
+				'c.email',
+				'c.supervisor_email',
 				'd.room_no',
 				'e.fullname AS approver'
 			);
@@ -349,6 +357,8 @@ class Room_model extends CI_Model {
 				'b.time_start',
 				'b.time_end',
 				'c.fullname',
+				'c.email',
+				'c.supervisor_email',
 				'd.room_no',
 				'e.fullname AS approver'
 			);
@@ -436,6 +446,8 @@ class Room_model extends CI_Model {
 				'b.time_start',
 				'b.time_end',
 				'c.fullname',
+				'c.email',
+				'c.supervisor_email',
 				'd.room_no',
 				'e.fullname AS approver'
 			);
