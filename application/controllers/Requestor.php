@@ -238,7 +238,7 @@ class Requestor extends CI_Controller {
 		$mail->addCC('fabricantejerome@gmail.com');
 
 		$data['item']   = $params['item'];
-		$data['header'] = $params['header'];
+		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
 
 		$mail->Body = $this->load->view('email/notification', $data, true);
 
