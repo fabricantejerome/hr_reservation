@@ -11,7 +11,7 @@
 					<!-- Form -->
 					<?php echo $this->session->flashdata('success_message'); ?>
 					<?php echo $this->session->flashdata('error_message'); ?>
-					<form action="<?php echo base_url('index.php/requestor/reservation_submit'); ?>" method="post">
+					<form action="<?php echo base_url('index.php/requestor/reservation_submit'); ?>" method="post" id="form">
 						<div class="form-group">
 							<label for="room_id">Room No.</label>
 							<select name="room_id" id="room_id" class="form-control select2" data-live-search="true" required>
