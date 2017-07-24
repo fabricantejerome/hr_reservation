@@ -123,9 +123,13 @@ class Admin extends CI_Controller {
 
 		$this->rooms->store_approved_request($config);
 
+		$item = $this->rooms->read_approved_request($room_res_id);
+
 		$config = array(
-					'subject' => 'Approved Reservation',
-					'item'    => $this->rooms->read_approved_request($room_res_id)
+					'subject'          => 'Approved Reservation',
+					'item'             => $item,
+					'email'            => $item['email'],
+					'supervisor_email' => $item['supervisor_email']
 				);
 
 		$this->send_mail($config);
@@ -177,10 +181,14 @@ class Admin extends CI_Controller {
 
 		$this->rooms->store_disapproved_request($config);
 
+		$item = $this->rooms->read_disapproved_request($room_res_id);
+
 		$config = array(
-					'subject' => 'Denied Reservation',
-					'item'    => $this->rooms->read_disapproved_request($room_res_id),
-					'header'  => 'Denied by'
+					'subject'          => 'Denied Reservation',
+					'item'             => $item,
+					'header'           => 'Denied by',
+					'email'            => $item['email'],
+					'supervisor_email' => $item['supervisor_email']
 				);
 
 		$this->send_mail($config);
@@ -225,10 +233,14 @@ class Admin extends CI_Controller {
 
 		$this->rooms->store_cancel_request($config);
 
+		$item = $this->rooms->read_cancelled_request($room_res_id);
+
 		$config = array(
-					'subject' => 'Cancelled Reservation',
-					'item'    => $this->rooms->read_cancelled_request($room_res_id),
-					'header'  => 'Cancelled by'
+					'subject'          => 'Cancelled Reservation',
+					'item'             => $item,
+					'header'           => 'Cancelled by',
+					'email'            => $item['email'],
+					'supervisor_email' => $item['supervisor_email']
 				);
 
 		$this->send_mail($config);
