@@ -11,9 +11,9 @@
 				<p>	<?php echo $this->session->userdata('fullname'); ?></p>
 			</div>
 		</div>
-		<form action="../history/search" method="get" class="sidebar-form">
+		<form action="#" method="get" class="sidebar-form">
 			<div class="input-group">
-				<input type="text" name="q" class="form-control" placeholder="Search cs number here...">
+				<input type="text" name="q" class="form-control" placeholder="Search...">
 				<span class="input-group-btn">
 					<button type="submit" id="search-btn" class="btn btn-flat"><i class="fa fa-search"></i>
 					</button>
