@@ -309,6 +309,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	// Calculate date difference
+	protected function _date_diff($s, $e)
+	{
+		$start = strtotime($s);
+		$end   = strtotime($e);
+
+		$days = ceil(($end - $start) / 86400);
+
+		return $days;
+	}
+
 	public function user_form()
 	{
 		$data = array(
