@@ -284,6 +284,31 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	// Send a reminder
+	public function send_reminder()
+	{
+		$items        = $this->rooms->fetch_approved_request();
+		$current_date = date('Y-m-d');
+
+		foreach ($items as $item) {
+			$date_reserved = $item['date_reserved'];
+
+			$days = $this->_date_diff($current_date, $date_reserved);
+
+			if ($days >= 0 && $days <= 1) 
+			{
+				$config = array(
+							'subject'          => 'Reminder',
+							'item'             => $item,
+							'email'            => $item['email'],
+							'supervisor_email' => $item['supervisor_email']
+						);
+
+				$this->send_mail($config);
+			}
+		}
+	}
+
 	public function user_form()
 	{
 		$data = array(
