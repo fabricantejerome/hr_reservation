@@ -136,5 +136,10 @@
 			});
 
 		});
+
+		$time_start.on('keyup', function() {
+			$time_end.val($(this).val());
+		});
+
 	});
 </script>
