@@ -141,5 +141,23 @@
 			$time_end.val($(this).val());
 		});
 
+		$form.on('submit', function(e) {
+
+			var start_time = convertToSec($time_start.val());
+			var end_time = convertToSec($time_end.val())
+
+			if (start_time >= end_time) {
+				e.preventDefault();
+				alert('End Time must be greater than start time.');
+			}
+		
+		});
+
+		function convertToSec(t)
+		{
+			var time = t.split(':');
+
+			return (time[0] * 60 * 60) + (time[1] * 60);
+		}
 	});
 </script>
