@@ -61,8 +61,8 @@ class Requestor extends CI_Controller {
 		$current_date  = date('Y/m/d H:i:s');
 		$date_reserved = date('Y/m/d', strtotime($this->input->post('date_reserved')));
 		$room_id       = $this->input->post('room_id');
-		$time_start    = $this->input->post('time_start');
-		$time_end      = $this->input->post('time_end');
+		$time_start    = date('H:i:s', strtotime($this->input->post('time_start')));
+		$time_end      = date('H:i:s', strtotime($this->input->post('time_end')));
 
 		$params = array(
 				'room_id'       => $room_id,
@@ -85,13 +85,21 @@ class Requestor extends CI_Controller {
 			$id = $this->rooms->store_reservation($config);
 
 			$config = array(
-					'subject' => 'Filed Reservation',
+					'subject' => $this->input->post('id') ? 'Update Reservation Details' : 'Filed Reservation',
 					'item'    => $this->rooms->read_pending_request($id)
 				);
 
 			$this->send_mail($config);
 
-			$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been filed!</span>');
+			if ($this->input->post('id') > 0)
+			{
+				$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been updated!</span>');
+			}
+			else
+			{
+				$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been filed!</span>');
+			}
+			
 		}
 		else 
 		{
