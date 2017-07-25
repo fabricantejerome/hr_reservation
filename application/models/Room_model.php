@@ -7,9 +7,16 @@ class Room_model extends CI_Model {
 		parent::__construct();
 	}
 
-	public function browse()
+	public function browse($visible = 1)
 	{
-		$query = $this->db->get('room_tbl');
+		if ($visible)
+		{
+			$query = $this->db->get('room_tbl');
+		}
+		else
+		{
+			$query = $this->db->get_where('room_tbl', array('available' => 1));
+		}
 
 		return $query->result();
 	}
@@ -27,7 +34,8 @@ class Room_model extends CI_Model {
 				'room_no'     => $this->input->post('room_no'),
 				'room_name'   => $this->input->post('room_name'),
 				'capacity'    => $this->input->post('capacity'),
-				'description' => $this->input->post('description')
+				'description' => $this->input->post('description'),
+				'available'   => $this->input->post('available') ? 1 : 0
 			);
 
 		$id = $this->input->post('id');
