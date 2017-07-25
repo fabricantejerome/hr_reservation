@@ -139,32 +139,6 @@ class Requestor extends CI_Controller {
 		echo $this->rooms->get_taken_slot($config) ? json_encode($this->rooms->get_taken_slot($config)) : '';
 	}
 
-
-	protected function _validate_reservation_input()
-	{
-		/*$this->load->library('form_validation');
-
-		$config = array(
-		        array(
-		                'field' => 'date_reserved',
-		                'label' => 'Date',
-		                'rules' => 'required|trim',
-		                'errors' => array(
-		                	'required' => 'You must provide a %s.',
-		                ),
-		        ),
-		        array(
-		                'field' => 'password',
-		                'label' => 'Password',
-		                'rules' => 'required|trim',
-		                'errors' => array(
-		                        'required' => 'You must provide a %s.',
-		                ),
-		        ),
-			);*/
-
-	}
-
 	public function display_pending_request()
 	{
 		$user_id = $this->session->userdata('id');
