@@ -62,10 +62,22 @@ class Room_model extends CI_Model {
 
 	public function store_reservation($params)
 	{
-		$this->db->insert('room_res_tbl', $params);
+		$id = $this->input->post('id');
 
-		return $this->db->insert_id();
-		//var_dump($this->db->last_query());
+		if ($id > 0)
+		{
+			$this->db->update('room_res_tbl', $params, array('id' => $id));
+
+			return $id;
+		}
+		else 
+		{
+			$this->db->insert('room_res_tbl', $params);
+
+			return $this->db->insert_id();
+		}
+		
+		//var_dump($this->db->last_query()); die;
 	}
 
 	public function get_possible_conflict($params)
@@ -173,6 +185,7 @@ class Room_model extends CI_Model {
 				'a.time_start',
 				'a.time_end',
 				'a.date_filed',
+				'a.room_id',
 				'c.fullname',
 				'c.email',
 				'c.supervisor_email',
