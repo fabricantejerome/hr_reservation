@@ -82,17 +82,37 @@
 <script src="<?php echo base_url('resources/plugins/input-mask/jquery.inputmask.date.extensions.js'); ?>"></script>
 <script src="<?php echo base_url('resources/plugins/datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
 <script src="<?php echo base_url('resources/plugins/select2/js/select2.min.js');?>"></script>
+<script src="<?php echo base_url('resources/plugins/timepicker/jquery.timepicker.min.js');?>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
+		var $time_start = $('#time_start');
+		var $time_end   = $('#time_end');
+		var $form       = $('#form');
+		var today       = new Date();
+
+		console.log(today);
 
 		$("select").select2({ width: 'resolve' });
 
-		$("#time_start").inputmask("h:s",{ "placeholder": "hh/mm" });
+		$("#date_reserved").datepicker({ 
+			startDate: today
+		}).on('change', function()
+		{
+			var $self    = $(this);
+			var $room_id = $('#room_id');
+			//alert($self.val() + $room_id.val());
+		});
 
-		$("#time_end").inputmask("h:s",{ "placeholder": "hh/mm" });
+		$('#time_start').timepicker({
+			/*timeFormat: 'H:i',
+			'disableTimeRanges': [
+		        ['1:00:00', '2:00:00'],
+		        ['3:00:00', '4:00:01']
+		    ]*/
+		});
 
-		$('.datepicker').datepicker({
-			dateFormat: 'mm/dd/yy'
+		$('#time_end').timepicker({
+			//timeFormat: 'H:i'
 		});
 
 		$('#room_id').on('change', function() {
@@ -122,8 +142,8 @@
 							markup += '<tr>\n'; 
 							markup += '<td>' + item.purpose + '</td>\n';
 							markup += '<td>' + item.date_reserved + '</td>\n';
-							markup += '<td>' + item.time_start + '</td>\n';
-							markup += '<td>' + item.time_end + '</td>\n';
+							markup += '<td>' + convertTo12HourFormat(item.time_start) + '</td>\n';
+							markup += '<td>' + convertTo12HourFormat(item.time_end) + '</td>\n';
 							markup += '<td>' + item.fullname + '</td>\n';
 							markup += '<td>' + item.approver + '</td>\n';
 							markup += '<tr>';
@@ -139,7 +159,7 @@
 
 		});
 
-		$time_start.on('keyup', function() {
+		$time_start.on('change', function() {
 			$time_end.val($(this).val());
 		});
 
