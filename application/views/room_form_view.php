@@ -31,6 +31,11 @@
 						</div>
 
 						<div class="form-group">
+							<label for="available">Available</label>
+							<input type="checkbox" name="available" id="available" <?php echo isset($room['available']) ? $room['available'] ? 'checked' : '' : ''; ?> >
+						</div>
+
+						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-flat btn-danger">
 						</div>
 					</form><!-- End Form -->
