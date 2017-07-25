@@ -91,7 +91,7 @@ class Admin extends CI_Controller {
 		$data = array(
 				'title'   => 'File Reservation',
 				'content' => 'room_reservation_form_view',
-				'rooms'   => $this->rooms->browse()
+				'rooms'   => $this->rooms->browse(0)
 			);
 
 		$this->load->view('/include/template', $data);
@@ -272,7 +272,6 @@ class Admin extends CI_Controller {
 		$mail->addCC('fabricantejerome@gmail.com');
 
 		$data['item']   = $params['item'];
-		$data['header'] = $params['header'];
 		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
 
 		$mail->Body = $this->load->view('email/notification', $data, true);
