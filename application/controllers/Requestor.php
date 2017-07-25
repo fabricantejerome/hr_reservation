@@ -43,10 +43,13 @@ class Requestor extends CI_Controller {
 
 	public function reservation_form()
 	{
+		$id = $this->uri->segment(3) ? $this->uri->segment(3) : '';
+
 		$data = array(
-				'title'   => 'File Reservation',
+				'title'   => $id ? 'Update Details' : 'File Reservation',
 				'content' => 'room_reservation_form_view',
-				'rooms'   => $this->rooms->browse()
+				'rooms'   => $this->rooms->browse(0),
+				'item'    => $id ? $this->rooms->read_pending_request($id) : ''
 			);
 
 		$this->load->view('/include/template', $data);
