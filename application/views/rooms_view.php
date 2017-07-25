@@ -20,6 +20,7 @@
 								<th>Room No.</th>
 								<th>Room</th>
 								<th>Capacity</th>
+								<th>Available</th>
 								<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 									<th></th>
 									<th></th>
@@ -34,6 +35,7 @@
 									<td><?php echo $row->room_no; ?></td>
 									<td><?php echo $row->room_name; ?></td>
 									<td><?php echo $row->capacity; ?></td>
+									<td><?php echo $row->available ? 'Yes' : 'No' ?></td>
 									<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 										<td>
 											<a href="<?php echo base_url('index.php/admin/room_form/' . $row->id) ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
