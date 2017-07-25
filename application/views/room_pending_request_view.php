@@ -58,6 +58,13 @@
 											<button class="btn btn-flat btn-warning">Cancel <i class="fa fa-times" aria-hidden="true"></i></button>
 										</a>
 									</td>
+									<?php if($this->session->userdata('user_type') == 'requestor'): ?>
+										<td>
+											<a href="<?php echo base_url('index.php/requestor/reservation_form/') . $row->id ?>">
+												<button class="btn btn-flat btn-warning">Update</button>
+											</a>
+										</td>
+									<?php endif; ?>
 								</tr>
 								<?php $counter++; ?>
 							<?php endforeach; ?>
