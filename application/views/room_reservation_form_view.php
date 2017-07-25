@@ -17,7 +17,7 @@
 							<select name="room_id" id="room_id" class="form-control select2" data-live-search="true" required>
 								<option></option>
 								<?php foreach($rooms as $row): ?>
-									<option value="<?php echo $row->id; ?>"><?php echo $row->room_no; ?></option>
+									<option value="<?php echo $row->id; ?>" <?php echo isset($item['room_id']) ? $row->id == $item['room_id'] ? 'selected' : '' : ''; ?> ><?php echo $row->room_no; ?></option>
 								<?php endforeach; ?>
 							</select>
 						</div>
@@ -25,7 +25,7 @@
 						<div claxss="form-group">
 							<label for="date_reserved">Reservation Date</label>
 							<div class="input-group date">
-							    <input type="text" class="form-control datepicker" name="date_reserved" value="<?php echo date('m/d/Y'); ?>" required>
+							    <input type="text" class="form-control datepicker" name="date_reserved" id="date_reserved" value="<?php echo isset($item['date_reserved']) ? date('m/d/Y', strtotime($item['date_reserved'])) :  date('m/d/Y'); ?>" required>
 							    <div class="input-group-addon">
 							        <span class="glyphicon glyphicon-th"></span>
 							    </div>
@@ -34,17 +34,19 @@
 
 						<div class="form-group">
 							<label for="time_start">Time Start</label>
-							<input type="text" name="time_start" id="time_start" class="form-control" required>
+							<input type="text" name="time_start" id="time_start" class="form-control time ui-timepicker-input" value="<?php echo isset($item['time_start']) ? $item['time_start'] : ''; ?>" required>
 						</div>
 
 						<div class="form-group">
 							<label for="time_end">Time End</label>
-							<input type="text" name="time_end" id="time_end" class="form-control" required>
+							<input type="text" name="time_end" id="time_end" class="form-control time ui-timepicker-input" value="<?php echo isset($item['time_end']) ? $item['time_end'] : ''; ?>" required>
 						</div>
 
 						<div class="form-group">
 							<label for="purpose">Purpose</label>
-							<textarea class="form-control" id="purpose" name="purpose" rows="3" required><?php echo isset($room['purpose']) ? $room['purpose'] : ''; ?></textarea>
+							<textarea class="form-control" id="purpose" name="purpose" rows="3" required><?php echo isset($item['purpose']) ? $item['purpose'] : ''; ?></textarea>
+
+							<input type="text" name="id" id="id" class="hidden" value="<?php echo isset($item['id']) ? $item['id'] : 0; ?>" required>
 						</div>
 
 						<div class="form-group">
