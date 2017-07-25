@@ -28,10 +28,10 @@
 									<td><?php echo $row->room_no ?></td>
 									<td><?php echo $row->purpose ?></td>
 									<td><?php echo date('m/d/Y', strtotime($row->date_reserved)); ?></td>
-									<td><?php echo $row->time_start ?></td>
-									<td><?php echo $row->time_end ?></td>
+									<td><?php echo date('h:i A', strtotime($row->time_start)) ?></td>
+									<td><?php echo date('h:i A', strtotime($row->time_end)) ?></td>
 									<td><?php echo $row->fullname ?></td>
-									<td><?php echo date('m/d/Y H:i:s', strtotime($row->cancelled_datetime)) ?></td>
+									<td><?php echo date('m/d/Y h:i A', strtotime($row->cancelled_datetime)) ?></td>
 									<td><?php echo $row->approver ?></td>
 								</tr>
 								<?php $counter++; ?>
