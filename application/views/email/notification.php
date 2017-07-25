@@ -215,10 +215,10 @@
 							<td><?php echo $item['date_reserved'] ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['time_start'])): ?>
-							<td><?php echo $item['time_start'] ?></td>
+							<td><?php echo date('m/d/Y', strtotime($item['time_start'])) ?></td>
 						<?php endif; ?>
-						<?php if(isset($item['time_start'])): ?>
-							<td><?php echo $item['time_end'] ?></td>
+						<?php if(isset($item['time_end'])): ?>
+							<td><?php echo date('m/d/Y', strtotime($item['time_end'])) ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['fullname'])): ?>
 							<td><?php echo $item['fullname'] ?></td>
