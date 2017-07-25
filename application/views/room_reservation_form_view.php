@@ -159,5 +159,27 @@
 
 			return (time[0] * 60 * 60) + (time[1] * 60);
 		}
+
+		function convertTo12HourFormat(t) {
+			var time = t.split(':');
+
+			var h = time[0] % 12;
+
+			var format = '';
+			if (time[0] == 12)
+			{
+				format = time[0] + ':' +  time[1] + ' ' + 'PM';
+			}
+			else if(time[0] > 12)
+			{
+				format = h + ':' +  time[1] + ' ' + 'PM';
+			}
+			else {
+				format = h + ':' +  time[1] + ' ' + 'AM';
+			}
+
+			return format;
+		}
+
 	});
 </script>
