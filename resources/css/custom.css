@@ -178,3 +178,97 @@ div.dropdown-menu.open{
 	z-index: 1031 !important;
 }
 
+/**
+ * Define new styles
+ */
+
+body.login-page {
+	background: #b8d3fe;
+}
+
+.login-box-body {
+	box-shadow: 0px 1px 4px #333;
+}
+
+.btn {
+	border: 0;
+	transition: 500ms;
+}
+
+.btn.btn-flat {
+	color: #333;
+	background: #fff;
+	border: 1px solid #b8d3fe;
+}
+
+.btn.btn-flat:hover {
+	background: #b8d3fe;
+	color: #fff;
+}
+
+.skin-red .main-header .navbar,
+.skin-red .main-header .logo,
+.skin-red .main-header .navbar .sidebar-toggle:hover,
+.skin-red .main-header .logo:hover {
+	background: #b8d3fe;
+	transition: 500ms;
+}
+
+.skin-red .wrapper, .skin-red .main-sidebar, .skin-red .left-side {
+	background: #fff;
+}
+
+.skin-red .sidebar-menu > li:hover > a, .skin-red .sidebar-menu > li.active,
+.skin-red .sidebar-menu > li:hover > a, .skin-red .sidebar-menu > li.active > a {
+	border-left-color: #74679c;
+}
+
+.skin-red .sidebar-menu > li:hover > a, .skin-red .sidebar-menu > li.active > a {
+	color: #000;
+	background: #fff;
+
+}
+
+.skin-red .sidebar-menu > li.header {
+	background: #fff;
+}
+
+td > a,
+td > a:hover {
+	color: #74679c;
+}
+
+.pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover
+{
+	background: #b8d3fe;
+	border-color: #b8d3fe;
+	color: #333;
+}
+
+a,
+a:hover {
+	color: #74679c;
+	transition: 500ms;
+}
+
+.skin-red .main-header li.user-header {
+	background: #b8d3fe;
+}
+
+.box.box-info {
+	border-top-color: #b8d3fe;
+}
+
+.skin-red .sidebar-form {
+	border-radius: 0;
+}
+
+.skin-red .sidebar-form input[type="text"], .skin-red .sidebar-form .btn {
+	background: #fff;
+}
+
+.skin-red .user-panel > .info, .skin-red .user-panel > .info> a {
+	color: #333;
+}
+
+
