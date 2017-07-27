@@ -5,7 +5,7 @@
 <section class="content users">
 	<div class="row">
 		<div class="col-md-3">
-			<div class="box box-danger">					
+			<div class="box box-info">					
 				<div class="box-body">
 					<?php echo $this->session->flashdata('message'); ?>
 					<!-- Form -->

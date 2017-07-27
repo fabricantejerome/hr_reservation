@@ -1,7 +1,7 @@
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-3">
-			<div class="box box-danger">					
+			<div class="box box-info">					
 				<div class="box-body">
 					<!-- Form -->
 					<form action="<?php echo base_url('index.php/admin/disapproved_request'); ?>" method="post">

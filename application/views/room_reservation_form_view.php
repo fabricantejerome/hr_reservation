@@ -7,7 +7,7 @@
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-3">
-			<div class="box box-danger">					
+			<div class="box box-info">					
 				<div class="box-body">
 					<!-- Form -->
 					<?php echo $this->session->flashdata('success_message'); ?>
@@ -59,7 +59,7 @@
 		</div>
 
 		<div class="col-md-9" >
-			<div id="taken_slot" class="hidden box box-danger">
+			<div id="taken_slot" class="hidden box box-info">
 				<!-- Room table -->
 				<table id="room_tbl" class="table table-condensed table-striped table-bordered" >
 					<thead>

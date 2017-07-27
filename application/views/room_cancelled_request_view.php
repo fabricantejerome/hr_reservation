@@ -3,7 +3,7 @@
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-10">
-			<div class="box box-danger">
+			<div class="box box-info">
 				<div class="box-body">
 					<!-- Room table -->
 					<table id="cancelled-request" class="table table-condensed table-striped table-bordered" >

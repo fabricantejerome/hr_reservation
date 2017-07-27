@@ -4,17 +4,17 @@
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-3">
-			<div class="box box-danger">					
+			<div class="box box-info">					
 				<div class="box-body">
 					<!-- Form -->
 					<form action="<?php echo base_url('index.php/admin/room_store'); ?>" method="post">
-						<div class="form-group">
+						<div class="form-group hidden">
 							<label for="room_no">Room No.</label>
-							<input type="number" class="form-control" id="room_no" name="room_no" value="<?php echo isset($room['room_no']) ? $room['room_no'] : ''; ?>" required>
+							<input type="number" class="form-control" id="room_no" name="room_no" value="<?php echo isset($room['room_no']) ? $room['room_no'] : ''; ?>">
 						</div>
 
 						<div class="form-group">
-							<label for="room_name">Room</label>
+							<label for="room_name">Room Name</label>
 							<input type="text" class="form-control" id="room_name" name="room_name" value="<?php echo isset($room['room_name']) ? $room['room_name'] : ''; ?>" required>
 						</div>
 
@@ -28,6 +28,11 @@
 							<textarea class="form-control" id="description" name="description" rows="3"><?php echo isset($room['description']) ? $room['description'] : ''; ?></textarea>
 
 							<input type="text" class="form-control hidden" name="id" value="<?php echo isset($room['id']) ? $room['id'] : 0; ?>">
+						</div>
+
+						<div class="form-group">
+							<label for="floor">Floor</label>
+							<input type="text" class="form-control" id="floor" name="floor" value="<?php echo isset($room['floor']) ? $room['floor'] : ''; ?>" required>
 						</div>
 
 						<div class="form-group">

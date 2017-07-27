@@ -1,7 +1,7 @@
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-6">
-			<div class="box box-danger">
+			<div class="box box-info">
 				<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 					<div class="box-header with-border">
 						<?php echo $this->session->flashdata('success_message'); ?>

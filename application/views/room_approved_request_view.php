@@ -6,7 +6,7 @@
 			<?php echo $this->session->flashdata('success_message'); ?>
 		</div>
 		<div class="col-md-10">
-			<div class="box box-danger">
+			<div class="box box-info">
 				<div class="box-body">
 					<!-- Room table -->
 					<table id="approved-request" class="table table-condensed table-striped table-bordered" >
