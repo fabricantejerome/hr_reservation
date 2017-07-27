@@ -31,11 +31,11 @@ class Room_model extends CI_Model {
 	public function store()
 	{
 		$data = array(
-				'room_no'     => $this->input->post('room_no'),
 				'room_name'   => $this->input->post('room_name'),
 				'capacity'    => $this->input->post('capacity'),
 				'description' => $this->input->post('description'),
-				'available'   => $this->input->post('available') ? 1 : 0
+				'available'   => $this->input->post('available') ? 1 : 0,
+				'floor'       => $this->input->post('floor')
 			);
 
 		$id = $this->input->post('id');
@@ -109,6 +109,7 @@ class Room_model extends CI_Model {
 				'b.time_end',
 				'c.fullname',
 				'd.room_no',
+				'd.room_name',
 				'e.fullname AS approver'
 			);
 
@@ -136,7 +137,8 @@ class Room_model extends CI_Model {
 				'a.time_end',
 				'a.date_filed',
 				'c.fullname',
-				'd.room_no'
+				'd.room_no',
+				'd.room_name'
 			);
 
 		if ($id == 0)
@@ -189,7 +191,8 @@ class Room_model extends CI_Model {
 				'c.fullname',
 				'c.email',
 				'c.supervisor_email',
-				'd.room_no'
+				'd.room_no',
+				'd.room_name'
 			);
 
 		if ($id > 0) {
@@ -235,6 +238,7 @@ class Room_model extends CI_Model {
 				'c.email',
 				'c.supervisor_email',
 				'd.room_no',
+				'd.room_name',
 				'e.fullname AS approver'
 			);
 
@@ -286,6 +290,7 @@ class Room_model extends CI_Model {
 				'c.email',
 				'c.supervisor_email',
 				'd.room_no',
+				'd.room_name',
 				'e.fullname AS approver'
 			);
 
@@ -318,6 +323,7 @@ class Room_model extends CI_Model {
 				'c.email',
 				'c.supervisor_email',
 				'd.room_no',
+				'd.room_name',
 				'e.fullname AS approver'
 			);
 
@@ -365,6 +371,7 @@ class Room_model extends CI_Model {
 				'c.email',
 				'c.supervisor_email',
 				'd.room_no',
+				'd.room_name',
 				'e.fullname AS approver'
 			);
 
@@ -412,6 +419,7 @@ class Room_model extends CI_Model {
 				'c.email',
 				'c.supervisor_email',
 				'd.room_no',
+				'd.room_name',
 				'e.fullname AS approver'
 			);
 
@@ -454,6 +462,7 @@ class Room_model extends CI_Model {
 				'b.time_end',
 				'c.fullname',
 				'd.room_no',
+				'd.room_name',
 				'e.fullname AS approver'
 			);
 
@@ -501,6 +510,7 @@ class Room_model extends CI_Model {
 				'c.email',
 				'c.supervisor_email',
 				'd.room_no',
+				'd.room_name',
 				'e.fullname AS approver'
 			);
 
