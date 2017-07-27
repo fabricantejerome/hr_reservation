@@ -205,8 +205,8 @@
 				</thead>
 				<tbody>
 					<tr>
-						<?php if(isset($item['room_no'])): ?>
-							<td><?php echo $item['room_no'] ?></td>
+						<?php if(isset($item['room_name'])): ?>
+							<td><?php echo $item['room_name'] ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['purpose'])): ?>
 							<td><?php echo $item['purpose'] ?></td>
