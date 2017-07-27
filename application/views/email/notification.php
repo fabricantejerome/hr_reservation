@@ -186,7 +186,7 @@
 			<table cellspacing="0">
 				<thead>
 					<tr>
-						<th>Room No.</th>
+						<th>Room</th>
 						<th>Purpose</th>
 						<th>Date</th>
 						<th>Time Start</th>
