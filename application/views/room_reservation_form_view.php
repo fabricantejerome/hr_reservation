@@ -14,11 +14,11 @@
 					<?php echo $this->session->flashdata('error_message'); ?>
 					<form action="<?php echo base_url('index.php/requestor/reservation_submit'); ?>" method="post" id="form">
 						<div class="form-group">
-							<label for="room_id">Room No.</label>
+							<label for="room_id">Room Name</label>
 							<select name="room_id" id="room_id" class="form-control select2" data-live-search="true" required>
 								<option></option>
 								<?php foreach($rooms as $row): ?>
-									<option value="<?php echo $row->id; ?>" <?php echo isset($item['room_id']) ? $row->id == $item['room_id'] ? 'selected' : '' : ''; ?> ><?php echo $row->room_no; ?></option>
+									<option value="<?php echo $row->id; ?>" <?php echo isset($item['room_id']) ? $row->id == $item['room_id'] ? 'selected' : '' : ''; ?> ><?php echo $row->room_name; ?></option>
 								<?php endforeach; ?>
 							</select>
 						</div>

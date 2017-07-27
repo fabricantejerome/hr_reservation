@@ -13,7 +13,7 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Room No.</th>
+								<th>Room</th>
 								<th>Purpose</th>
 								<th>Date Reserved</th>
 								<th>Time Start</th>
@@ -29,7 +29,7 @@
 							<?php foreach($requests as $row): ?>
 								<tr>
 									<td><?php echo $counter ?></td>
-									<td><?php echo $row->room_no ?></td>
+									<td><?php echo $row->room_name ?></td>
 									<td><?php echo $row->purpose ?></td>
 									<td><?php echo date('m/d/Y', strtotime($row->date_reserved)); ?></td>
 									<td><?php echo date('h:i A', strtotime($row->time_start)) ?></td>
