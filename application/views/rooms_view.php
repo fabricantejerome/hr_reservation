@@ -17,9 +17,10 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Room No.</th>
-								<th>Room</th>
+								<th>Room Name</th>
 								<th>Capacity</th>
+								<th>Combined Capacity</th>
+								<th>Floor</th>
 								<th>Available</th>
 								<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 									<th></th>
@@ -32,10 +33,11 @@
 							<?php foreach($rooms as $row): ?>
 								<tr>
 									<td><?php echo $counter; ?></td>
-									<td><?php echo $row->room_no; ?></td>
 									<td><?php echo $row->room_name; ?></td>
 									<td><?php echo $row->capacity; ?></td>
-									<td><?php echo $row->available ? 'Yes' : 'No' ?></td>
+									<td><?php echo $row->description; ?></td>
+									<td><?php echo $row->floor; ?></td>
+									<td><?php echo $row->available ? 'Yes' : 'No'; ?></td>
 									<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 										<td>
 											<a href="<?php echo base_url('index.php/admin/room_form/' . $row->id) ?>"><i class="fa fa-pencil" aria-hidden="true"></i></a>
