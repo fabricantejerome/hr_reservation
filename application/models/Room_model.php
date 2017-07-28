@@ -91,10 +91,35 @@ class Room_model extends CI_Model {
 		$query = $this->db->select($fields)
 				->from('approved_res_tbl AS a')
 				->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+				->join('disapproved_res_tbl AS c', 'b.id = c.room_res_id', 'LEFT')
+				->join('cancelled_res_tbl AS d', 'b.id = d.room_res_id', 'LEFT')
+				->where('c.room_res_id IS NULL')
+				->where('d.room_res_id IS NULL')
 				->where($params)
 				->get();
 
 		return $query->result();
+	}
+
+	public function fetch_block_time($params)
+	{
+		$fields = array(
+				'b.time_start',
+				'b.time_end'
+			);
+
+		$query = $this->db->select($fields)
+				->from('approved_res_tbl AS a')
+				->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+				->join('room_tbl AS e', 'b.room_id = e.id', 'INNER')
+				->join('disapproved_res_tbl AS c', 'b.id = c.room_res_id', 'LEFT')
+				->join('cancelled_res_tbl AS d', 'b.id = d.room_res_id', 'LEFT')
+				->where('c.room_res_id IS NULL')
+				->where('d.room_res_id IS NULL')
+				->where($params)
+				->get();
+
+		return $query->result_array();
 	}
 
 	public function get_taken_slot($params)
@@ -119,6 +144,8 @@ class Room_model extends CI_Model {
 				->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 				->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
 				->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
+				->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
+				->where('f.room_res_id IS NULL')
 				->where($params)
 				->get();
 
