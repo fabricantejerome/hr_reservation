@@ -23,6 +23,11 @@
 							</select>
 						</div>
 
+						<div class="form-group">
+							<label for="capacity">Capacity</label>
+							<input type="text" name="capacity" id="capacity" class="form-control" disabled>
+						</div>
+
 						<div claxss="form-group">
 							<label for="date_reserved">Reservation Date</label>
 							<div class="input-group date">
