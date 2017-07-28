@@ -212,7 +212,7 @@
 							<td><?php echo $item['purpose'] ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['date_reserved'])): ?>
-							<td><?php echo $item['date_reserved'] ?></td>
+							<td><?php echo date('m/d/Y', strtotime($item['date_reserved'])); ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['time_start'])): ?>
 							<td><?php echo date('h:i A', strtotime($item['time_start'])) ?></td>
@@ -224,7 +224,7 @@
 							<td><?php echo $item['fullname'] ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['date_filed'])): ?>
-							<td><?php echo $item['date_filed'] ?></td>
+							<td><?php echo date('m/d/Y h:i A', strtotime($item['date_filed'])) ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['reason'])): ?>
 							<td><?php echo $item['reason'] ?></td>
