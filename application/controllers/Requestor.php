@@ -118,8 +118,8 @@ class Requestor extends CI_Controller {
 		$params['date_reserved'] = date('Y-m-d', strtotime($params['date_reserved']));
 
 		// Convert to standard format
-		$new_datetime_start = DateTime::createFromFormat('Y-m-d H:i:s', $params['date_reserved'] . $ts . ':00');
-		$new_datetime_end   = DateTime::createFromFormat('Y-m-d H:i:s', $params['date_reserved'] . ' ' . $te . ':00');
+		$new_datetime_start = DateTime::createFromFormat('Y-m-d H:i:s', $params['date_reserved'] . ' ' . $ts);
+		$new_datetime_end   = DateTime::createFromFormat('Y-m-d H:i:s', $params['date_reserved'] . ' ' . $te);
 
 		foreach ($items as $row) 
 		{
