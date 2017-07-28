@@ -104,26 +104,64 @@
 			startDate: today
 		}).on('change', function()
 		{
-			var $self    = $(this);
+			var $self    = $(this).val();
 			var $room_id = $('#room_id');
-			//alert($self.val() + $room_id.val());
+			var $date = $self.split('/');
+
+			/*
+			 * Data for blocking time
+			 * Unfortunately time picker does not support it
+			 */
+			$date = $date[2] + '-' + $date[0] + '-' + $date[1];
+
+			/*$.ajax({
+				type: 'GET',
+				url: '<?php //echo base_url('index.php/requestor/ajax_block_time/') ?>' + $room_id.val() + '/' + $date,
+				success: function(data){
+					var data = JSON.parse(data);
+					var time_start = JSON.stringify(data[0]);
+
+					time_start = time_start.substring(1, time_start.length-1);
+					
+					console.log(data[0][0].join());
+
+					$('#time_start').timepicker( {
+						disableTimeRanges: [
+							[data[0][0].join()]
+						]			 	
+					});
+
+					
+
+					$('#time_end').timepicker({
+						'disableTimeRanges': JSON.stringify(data[1])
+					});
+				}
+			})*/
 		});
 
 		$('#time_start').timepicker({
-			/*timeFormat: 'H:i',
-			'disableTimeRanges': [
-		        ['1:00:00', '2:00:00'],
-		        ['3:00:00', '4:00:01']
-		    ]*/
+			minTime: '07:00'
 		});
 
 		$('#time_end').timepicker({
-			//timeFormat: 'H:i'
+			minTime: '07:00'
 		});
 
 		$('#room_id').on('change', function() {
 
 			var $self = $(this);
+
+			$.ajax({
+				type: 'GET',
+				url: '<?php echo base_url('index.php/requestor/ajax_room_details/') ?>' + $self.val(),
+				success: function(data)
+				{
+					//console.log(data);
+					var data = $.parseJSON(data);
+					$('#capacity').val(data.capacity);
+				}
+			})
 
 			$.ajax({
 				type: 'GET',
@@ -154,7 +192,6 @@
 							markup += '<td>' + item.approver + '</td>\n';
 							markup += '<tr>';
 						}
-
 
 						$('#content-area').html(markup);
 						$("#taken_slot").removeClass('hidden');
