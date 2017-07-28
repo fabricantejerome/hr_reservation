@@ -150,6 +150,51 @@ class Requestor extends CI_Controller {
 		echo $this->rooms->get_taken_slot($config) ? json_encode($this->rooms->get_taken_slot($config)) : '';
 	}
 
+	public function ajax_room_details()
+	{
+		$id = $this->uri->segment(3);
+
+		echo $this->rooms->read($id) ? json_encode($this->rooms->read($id)) : '';
+	}
+
+	public function ajax_block_time()
+	{
+		$id   = $this->uri->segment(3);
+		$date = date('Y-m-d', strtotime($this->uri->segment(4)));
+
+		$config = array(
+				'room_id'       => $id, 
+				'date_reserved' => $date
+			);
+
+		$data = $this->rooms->fetch_block_time($config);
+
+		$time_start = array_column($data, 'time_start');
+		$time_end   = array_column($data, 'time_end');
+
+		$col_start = array();
+
+		foreach($time_start as $time)
+		{
+			$col_start[] = array(
+					$time, substr_replace($time, '1', 7)
+				);
+		}
+
+		$col_end = array();
+
+		foreach ($time_end as $time) {
+			$col_end[] = array(
+					$time, substr_replace($time, '1', 7)
+				);
+		}
+
+		$config = array($col_start, $col_end);
+
+		echo json_encode($config);
+	}
+
+
 	public function display_pending_request()
 	{
 		$user_id = $this->session->userdata('id');
