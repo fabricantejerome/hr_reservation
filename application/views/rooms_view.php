@@ -17,7 +17,7 @@
 						<thead>
 							<tr>
 								<th>#</th>
-								<th>Room Name</th>
+								<th>Room</th>
 								<th>Capacity</th>
 								<!-- <th style="border-right: 0; border-right-color: white">Combined </th>
 								<th style="border-left: 0; border-left-color: white">Capacity</th> -->
