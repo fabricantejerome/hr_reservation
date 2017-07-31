@@ -18,7 +18,6 @@ class User_model extends CI_Model {
 		$fields = array(
 				'a.id',
 				'a.username',
-				'a.password',
 				'a.fullname',
 				'a.email',
 				'a.emp_id',
