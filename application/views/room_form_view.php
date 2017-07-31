@@ -1,6 +1,7 @@
 <?php 
 	//var_dump($room);
 ?>
+<link href="<?php echo base_url('resources/plugins/select2/css/select2.min.css') ?>" rel="stylesheet" >
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-3">
@@ -32,7 +33,13 @@
 
 						<div class="form-group">
 							<label for="floor">Floor</label>
-							<input type="text" class="form-control" id="floor" name="floor" value="<?php echo isset($room['floor']) ? $room['floor'] : ''; ?>" required>
+							<select name="floor" id="floor" class="form-control select2" data-live-search="true" required>
+								<option></option>
+								<?php $floors = array('1st', '2nd', '3rd'); ?>
+								<?php foreach($floors as $floor): ?>
+									<option value="<?php echo $floor; ?>" <?php echo isset($room['floor']) ? trim($floor) == trim($room['floor']) ? 'selected' : '' : ''; ?> ><?php echo $floor; ?></option>
+								<?php endforeach; ?>
+							</select>
 						</div>
 
 						<div class="form-group">
@@ -49,3 +56,9 @@
 		</div>	
 	</div>
 </section>
+<script src="<?php echo base_url('resources/plugins/select2/js/select2.min.js');?>"></script>
+<script type="text/javascript">
+	$(document).ready(function() {
+		$("select").select2({ width: 'resolve' });
+	});
+</script>
