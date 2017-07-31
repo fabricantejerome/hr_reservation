@@ -23,14 +23,18 @@ class Login extends CI_Controller {
 
 		if ($this->_validate_input() && is_array($user_data))
 		{
+			$user_data['fullname'] = ucwords(strtolower($user_data['fullname']));
+			$fullname              = explode(',', $user_data['fullname']);
+			$user_data['fullname'] = ($fullname[0]);
+
 			$this->session->set_userdata($user_data);
 
 			if($user_data['user_type'] == 'admin')
 			{
-				redirect(base_url('index.php/admin/dashboard'));
+				redirect(base_url('index.php/admin/rooms'));
 			}
 			
-			redirect(base_url('index.php/requestor/dashboard'));
+			redirect(base_url('index.php/requestor/rooms'));
 		}
 
 		$data['message'] = '<span class="col-sm-12 alert alert-warning">You have no rights to access this system.</span>';
