@@ -17,6 +17,9 @@ class Admin extends CI_Controller {
 
 		$this->load->helper($helpers);
 
+		// Load library
+		$this->load->library('session');
+
 		// Load Model
 		$this->load->model('room_model', 'rooms');
 

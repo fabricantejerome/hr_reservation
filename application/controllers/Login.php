@@ -14,11 +14,12 @@ class Login extends CI_Controller {
 
 	public function index()
 	{
-		$this->load->view('login_view');
+		//$this->load->view('login_view');
 	}
 
 	public function authenticate()
 	{
+		$this->load->library('session');
 		$user_data = $this->_user_exist();
 
 		if ($this->_validate_input() && is_array($user_data))

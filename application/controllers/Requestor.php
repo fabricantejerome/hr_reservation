@@ -17,6 +17,9 @@ class Requestor extends CI_Controller {
 
 		$this->load->helper($helpers);
 
+		// Load library
+		$this->load->library('session');
+
 		$this->load->model('room_model', 'rooms');
 	}
 
