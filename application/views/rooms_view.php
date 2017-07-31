@@ -64,6 +64,11 @@
 					</table><!-- End of table -->
 				</div>
 			</div>
+		</div>
+
+		<!-- Table description -->
+		<div class="col-md-6">
+			<img src="<?php echo base_url('resources/images/room_description.png');?>" class="img-responsive">
 		</div>	
 	</div>
 </section>
