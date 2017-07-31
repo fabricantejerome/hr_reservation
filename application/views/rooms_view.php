@@ -19,8 +19,8 @@
 								<th>#</th>
 								<th>Room Name</th>
 								<th>Capacity</th>
-								<th style="border-right: 0; border-right-color: white">Combined </th>
-								<th style="border-left: 0; border-left-color: white">Capacity</th>
+								<!-- <th style="border-right: 0; border-right-color: white">Combined </th>
+								<th style="border-left: 0; border-left-color: white">Capacity</th> -->
 								<th>Floor</th>
 								<th>Available</th>
 								<?php if ($this->session->userdata('user_type') == 'admin'): ?>
@@ -39,13 +39,13 @@
 
 									<?php $description = explode('/', $row->description); ?>
 
-									<?php if(in_array(trim($row->room_name), array('Crosswind Room', 'Trooper Room', 'Alterra Room', 'mu-X Room A', 'mu-X Room B', 'Sportivo Room'))): ?>
-										<td class="text-center" colspan="2"><?php echo isset($description[0]) ? $description[0] : ''; ?></td>
-										<td class="hidden"></td>
-									<?php else: ?>
-										<td class="text-center"><?php echo isset($description[0]) ? $description[0] : ''; ?></td>
-										<td class="text-center"><?php echo isset($description[1]) ? $description[1] : ''; ?></td>
-									<?php endif; ?>
+									<?php //if(in_array(trim($row->room_name), array('Crosswind Room', 'Trooper Room', 'Alterra Room', 'mu-X Room A', 'mu-X Room B', 'Sportivo Room'))): ?>
+										<!-- <td class="text-center" colspan="2"><?php //echo isset($description[0]) ? $description[0] : ''; ?></td>
+										<td class="hidden"></td> -->
+									<?php //else: ?>
+										<!-- <td class="text-center"><?php //echo isset($description[0]) ? $description[0] : ''; ?></td>
+										<td class="text-center"><?php //echo isset($description[1]) ? $description[1] : ''; ?></td>
+									<?php //endif; ?> -->
 									
 									<td><?php echo $row->floor; ?></td>
 									<td><?php echo $row->available ? 'Yes' : 'No'; ?></td>
