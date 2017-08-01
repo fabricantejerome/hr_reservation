@@ -102,11 +102,32 @@ class Admin extends CI_Controller {
 
 	public function display_pending_request()
 	{
+		$rooms = $this->rooms->get_pending_request();
+
+		$config = array();
+
+		foreach($rooms as $row)
+		{
+			$info = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
+
+			$config[] = array(
+					'id'            => $row['id'],
+					'purpose'       => $row['purpose'],
+					'date_reserved' => $row['date_reserved'],
+					'user_id'       => $row['user_id'],
+					'time_start'    => $row['time_start'],
+					'time_end'      => $row['time_end'],
+					'date_filed'    => $row['date_filed'],
+					'room_no'       => $row['room_no'],
+					'room_name'     => $row['room_name'],
+					'fullname'      => $info['fullname']
+				);
+		}
 
 		$data = array(
 				'title'   => 'List of Pending Request',
 				'content' => 'room_pending_request_view',
-				'rooms'   => $this->rooms->get_pending_request()
+				'rooms'   => $config
 			);
 
 		$this->load->view('include/template', $data);
