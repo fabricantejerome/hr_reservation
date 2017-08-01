@@ -387,8 +387,24 @@ class Requestor extends CI_Controller {
 		$mail = new EmailerPHP;
 
 		$mail->Subject = $params['subject'];
-		$mail->addAddress('jerome-fabricante@isuzuphil.com');
-		$mail->addCC('fabricantejerome@gmail.com');
+		/*$mail->addAddress('jerome-fabricante@isuzuphil.com');
+		$mail->addCC('fabricantejerome@gmail.com');*/
+
+		if ($this->session->userdata('user_type') == 'admin')
+		{
+			$mail->addAddress($params['email']);
+			$mail->addCC($params['supervisor_email']);
+			$mail->addCC('joyce-ramirez@isuzuphil.com');
+			$mail->addCC('may-galolo@isuzuphil.com');
+
+		}
+		else 
+		{
+			$mail->addAddress('joyce-ramirez@isuzuphil.com');
+			$mail->addCC('may-galolo@isuzuphil.com');
+			$mail->addCC($this->session->userdata('email'));
+			$mail->addCC($this->session->userdata('supervisor_email'));
+		}
 
 		$data['item']   = $params['item'];
 		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';

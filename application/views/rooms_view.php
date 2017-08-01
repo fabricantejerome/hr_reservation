@@ -1,3 +1,4 @@
+<?php //print_r($this->session->userdata()); ?>
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-6">
@@ -37,7 +38,7 @@
 									<td><?php echo $row->room_name; ?></td>
 									<td><?php echo $row->capacity; ?></td>
 
-									<?php $description = explode('/', $row->description); ?>
+									<?php //$description = explode('/', $row->description); ?>
 
 									<?php //if(in_array(trim($row->room_name), array('Crosswind Room', 'Trooper Room', 'Alterra Room', 'mu-X Room A', 'mu-X Room B', 'Sportivo Room'))): ?>
 										<!-- <td class="text-center" colspan="2"><?php //echo isset($description[0]) ? $description[0] : ''; ?></td>
