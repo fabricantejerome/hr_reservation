@@ -124,22 +124,20 @@ class Room_model extends CI_Model {
 				'a.id',
 				'a.room_res_id',
 				'a.approved_datetime',
+				'a.user_id AS approver_id',
 				'b.date_reserved',
 				'b.purpose',
 				'b.time_start',
 				'b.time_end',
-				'c.fullname',
+				'b.user_id',
 				'd.room_no',
-				'd.room_name',
-				'e.fullname AS approver'
+				'd.room_name'
 			);
 
 		$query = $this->db->select($fields)
 				->from('approved_res_tbl AS a')
 				->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-				->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 				->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-				->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 				->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
 				->where('f.room_res_id IS NULL')
 				->where($params)
@@ -154,10 +152,10 @@ class Room_model extends CI_Model {
 				'a.id',
 				'a.purpose',
 				'a.date_reserved',
+				'a.user_id',
 				'a.time_start',
 				'a.time_end',
 				'a.date_filed',
-				'c.fullname',
 				'd.room_no',
 				'd.room_name'
 			);
@@ -167,7 +165,6 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('room_res_tbl AS a')
 					->join('approved_res_tbl AS b', 'a.id = b.room_res_id', 'LEFT')
-					->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
 					->join('disapproved_res_tbl AS e', 'a.id = e.room_res_id', 'LEFT')
 					->join('cancelled_res_tbl AS f', 'a.id = f.room_res_id', 'LEFT')
@@ -185,7 +182,6 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('room_res_tbl AS a')
 					->join('approved_res_tbl AS b', 'a.id = b.room_res_id', 'LEFT')
-					->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
 					->join('disapproved_res_tbl AS e', 'a.id = e.room_res_id', 'LEFT')
 					->join('cancelled_res_tbl AS f', 'a.id = f.room_res_id', 'LEFT')
@@ -196,7 +192,7 @@ class Room_model extends CI_Model {
 					->get();
 		}
 		
-		return $query->result();
+		return $query->result_array();
 	}
 
 	public function read_pending_request($id = 0)
@@ -209,9 +205,6 @@ class Room_model extends CI_Model {
 				'a.time_end',
 				'a.date_filed',
 				'a.room_id',
-				'c.fullname',
-				'c.email',
-				'c.supervisor_email',
 				'd.room_no',
 				'd.room_name'
 			);
@@ -224,7 +217,6 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('room_res_tbl AS a')
 					->join('approved_res_tbl AS b', 'a.id = b.room_res_id', 'LEFT')
-					->join('users_tbl AS c', 'a.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'a.room_id = d.id',  'INNER')
 					->join('disapproved_res_tbl AS e', 'a.id = e.room_res_id', 'LEFT')
 					->join('cancelled_res_tbl AS f', 'a.id = f.room_res_id', 'LEFT')
@@ -250,16 +242,14 @@ class Room_model extends CI_Model {
 				'a.id',
 				'a.room_res_id',
 				'a.approved_datetime',
+				'a.user_id AS approver_id',
 				'b.date_reserved',
 				'b.purpose',
 				'b.time_start',
 				'b.time_end',
-				'c.fullname',
-				'c.email',
-				'c.supervisor_email',
+				'b.user_id',
 				'd.room_no',
 				'd.room_name',
-				'e.fullname AS approver'
 			);
 
 		if ($id == 0)
@@ -267,9 +257,7 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('approved_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
 					->where('f.room_res_id IS NULL')
 					->get();
@@ -284,16 +272,14 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('approved_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
 					->where('f.room_res_id IS NULL')
 					->where($clause)
 					->get();
 		}
 
-		return $query->result();
+		return $query->result_array();
 	}
 
 	public function fetch_approved_request()
@@ -302,24 +288,20 @@ class Room_model extends CI_Model {
 				'a.id',
 				'a.room_res_id',
 				'a.approved_datetime',
+				'a.user_id AS approver_id',
 				'b.date_reserved',
 				'b.purpose',
 				'b.time_start',
 				'b.time_end',
-				'c.fullname',
-				'c.email',
-				'c.supervisor_email',
+				'b.user_id',
 				'd.room_no',
 				'd.room_name',
-				'e.fullname AS approver'
 			);
 
 		$query = $this->db->select($fields)
 				->from('approved_res_tbl AS a')
 				->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-				->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 				->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-				->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 				->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
 				->where('f.room_res_id IS NULL')
 				->where('b.date_reserved >=', date('Y-m-d'))
@@ -335,16 +317,14 @@ class Room_model extends CI_Model {
 				'a.id',
 				'a.room_res_id',
 				'a.approved_datetime',
+				'a.user_id AS approver_id',
 				'b.date_reserved',
 				'b.purpose',
 				'b.time_start',
 				'b.time_end',
-				'c.fullname',
-				'c.email',
-				'c.supervisor_email',
+				'b.user_id',
 				'd.room_no',
 				'd.room_name',
-				'e.fullname AS approver'
 			);
 
 		if ($id > 0)
@@ -356,9 +336,7 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('approved_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
 					->where('f.room_res_id IS NULL')
 					->where($clause)
@@ -382,16 +360,14 @@ class Room_model extends CI_Model {
 				'a.room_res_id',
 				'a.denied_datetime',
 				'a.reason',
+				'a.user_id AS approver_id',
 				'b.date_reserved',
 				'b.purpose',
 				'b.time_start',
 				'b.time_end',
-				'c.fullname',
-				'c.email',
-				'c.supervisor_email',
+				'b.user_id',
 				'd.room_no',
-				'd.room_name',
-				'e.fullname AS approver'
+				'd.room_name'
 			);
 
 		if ($id == 0)
@@ -399,9 +375,7 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('disapproved_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->get();
 		}
 		else
@@ -413,14 +387,12 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('disapproved_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->where($clause)
 					->get();
 		}
 
-		return $query->result();
+		return $query->result_array();
 	}
 
 	public function read_disapproved_request($id = 0)
@@ -430,16 +402,14 @@ class Room_model extends CI_Model {
 				'a.room_res_id',
 				'a.denied_datetime',
 				'a.reason',
+				'a.user_id AS approver_id',
 				'b.date_reserved',
 				'b.purpose',
 				'b.time_start',
 				'b.time_end',
-				'c.fullname',
-				'c.email',
-				'c.supervisor_email',
+				'b.user_id',
 				'd.room_no',
-				'd.room_name',
-				'e.fullname AS approver'
+				'd.room_name'
 			);
 
 		if ($id > 0)
@@ -451,9 +421,7 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('disapproved_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->where($clause)
 					->get();
 		}
@@ -475,14 +443,14 @@ class Room_model extends CI_Model {
 				'a.room_res_id',
 				'a.cancelled_datetime',
 				'a.reason',
+				'a.user_id AS approver_id',
 				'b.date_reserved',
 				'b.purpose',
 				'b.time_start',
 				'b.time_end',
-				'c.fullname',
+				'b.user_id',
 				'd.room_no',
-				'd.room_name',
-				'e.fullname AS approver'
+				'd.room_name'
 			);
 
 		if ($id == 0)
@@ -490,9 +458,7 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('cancelled_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->get();
 		}
 		else
@@ -504,14 +470,12 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('cancelled_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->where($clause)
 					->get();
 		}
 
-		return $query->result();
+		return $query->result_array();
 	}
 
 	public function read_cancelled_request($id = 0)
@@ -521,16 +485,14 @@ class Room_model extends CI_Model {
 				'a.room_res_id',
 				'a.cancelled_datetime',
 				'a.reason',
+				'a.user_id AS approver_id',
 				'b.date_reserved',
 				'b.purpose',
 				'b.time_start',
 				'b.time_end',
-				'c.fullname',
-				'c.email',
-				'c.supervisor_email',
+				'b.user_id',
 				'd.room_no',
 				'd.room_name',
-				'e.fullname AS approver'
 			);
 
 		if ($id > 0)
@@ -542,9 +504,7 @@ class Room_model extends CI_Model {
 			$query = $this->db->select($fields)
 					->from('cancelled_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
-					->join('users_tbl AS c', 'b.user_id = c.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
-					->join('users_tbl AS e', 'a.user_id = e.id', 'INNER')
 					->where($clause)
 					->get();
 
