@@ -49,7 +49,6 @@ class Room_model extends CI_Model {
 		}
 
 		return $this;
-		//var_dump($this->db->last_query());
 	}
 
 	public function delete($id)
@@ -57,7 +56,6 @@ class Room_model extends CI_Model {
 		$this->db->delete('room_tbl', array('id' => $id));
 
 		return $this;
-		//var_dump($this->db->last_query());
 	}
 
 	public function store_reservation($params)
@@ -76,8 +74,6 @@ class Room_model extends CI_Model {
 
 			return $this->db->insert_id();
 		}
-		
-		//var_dump($this->db->last_query()); die;
 	}
 
 	public function get_possible_conflict($params)
@@ -150,8 +146,6 @@ class Room_model extends CI_Model {
 				->get();
 
 		return $query->result();
-
-		//var_dump($this->db->last_query()); die;
 	}
 
 	public function get_pending_request($id = 0)
@@ -247,7 +241,6 @@ class Room_model extends CI_Model {
 	public function store_approved_request($params)
 	{
 		$this->db->insert('approved_res_tbl', $params);
-		//var_dump($this->db->last_query()); die;
 	}
 
 	public function get_approved_request($id = 0)
@@ -380,7 +373,6 @@ class Room_model extends CI_Model {
 		$query = $this->db->insert('disapproved_res_tbl', $params);
 
 		return $this;
-		//var_dump($this->db->last_query());;
 	}
 
 	public function get_disapproved_request($id = 0)
