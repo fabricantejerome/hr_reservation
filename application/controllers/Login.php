@@ -9,17 +9,62 @@ class Login extends CI_Controller {
 
 		$helpers = array('form');
 
+		$this->load->model('Ipc_model', 'ipc');
+
 		$this->load->helper($helpers);
 	}
 
 	public function index()
 	{
-		//$this->load->view('login_view');
+		$prev_session = $this->_handle_session();
+
+		$this->load->library('session');
+
+		$config = array(
+				'id'          => isset($prev_session['employee_id']) ? $prev_session['employee_id'] : '',
+				'employee_no' => isset($prev_session['employee_no']) ? $prev_session['employee_no'] : ''
+			);
+
+		$user        = $this->ipc->fetch_personal_info($config);
+		$dept_head   = $this->ipc->fetch_department_head($config['employee_no']);
+		$user_access = $this->ipc->fetch_user_access($user['id']);
+
+		$config = array(
+				'id'               => $user['id'],
+				'employee_no'      => $user['employee_no'],
+				'fullname'         => $prev_session['full_name'],
+				'section'          => $prev_session['section'],
+				'department'       => $prev_session['department'],
+				'email'            => $user['requestor_email'],
+				'supervisor_email' => $dept_head['supervisor_email'],
+				'user_type'        => $user_access['user_type_id'] == 2 ? 'admin' : 'requestor'
+
+			);
+
+		$this->session->set_userdata($config);
+
+		if($user_data['user_type'] == 'admin')
+		{
+			redirect(base_url('index.php/admin/rooms'));
+		}
+			
+		redirect(base_url('index.php/requestor/rooms'));
+
+	}
+
+	protected function _handle_session()
+	{
+		$this->load->library('native_session');
+
+		$session = $this->native_session->get_session();
+
+		$this->native_session->destroy();
+
+		return isset($session) ? $session : '';
 	}
 
 	public function authenticate()
 	{
-		$this->load->library('session');
 		$user_data = $this->_user_exist();
 
 		if ($this->_validate_input() && is_array($user_data))
