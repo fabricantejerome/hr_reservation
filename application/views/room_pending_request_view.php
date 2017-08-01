@@ -34,33 +34,33 @@
 							<?php foreach($rooms as $row): ?>
 								<tr>
 									<td><?php echo $counter ?></td>
-									<td><?php echo $row->room_name ?></td>
-									<td><?php echo $row->purpose ?></td>
-									<td><?php echo date('m/d/Y', strtotime($row->date_reserved)) ?></td>
-									<td><?php echo date('h:i A', strtotime($row->time_start)) ?></td>
-									<td><?php echo date('h:i A', strtotime($row->time_end)) ?></td>
-									<td><?php echo date('m/d/Y h:i A', strtotime($row->date_filed)) ?></td>
-									<td><?php echo $row->fullname ?></td>
+									<td><?php echo $row['room_name'] ?></td>
+									<td><?php echo $row['purpose'] ?></td>
+									<td><?php echo date('m/d/Y', strtotime($row['date_reserved'])) ?></td>
+									<td><?php echo date('h:i A', strtotime($row['time_start'])) ?></td>
+									<td><?php echo date('h:i A', strtotime($row['time_end'])) ?></td>
+									<td><?php echo date('m/d/Y h:i A', strtotime($row['date_filed'])) ?></td>
+									<td><?php echo $row['fullname'] ?></td>
 									<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 										<td>
-											<a href="<?php echo base_url('index.php/admin/approved_request/') . $row->id ?>">
+											<a href="<?php echo base_url('index.php/admin/approved_request/') . $row['id'] ?>">
 												<button class="btn btn-flat btn-success">Approve <i class="fa fa-check" aria-hidden="true"></i></button>
 											</a>
 										</td>
 										<td>
-											<a href="<?php echo base_url('index.php/admin/display_disapproved_form/') . $row->id ?>" >	
+											<a href="<?php echo base_url('index.php/admin/display_disapproved_form/') . $row['id'] ?>" >	
 												<button class="btn btn-flat btn-danger">Disapprove <i class="fa fa-times" aria-hidden="true"></i></button>
 											</a>
 										</td>
 									<?php endif; ?>
 									<td>
-										<a href="<?php echo base_url('index.php/admin/cancel_request/') . $row->id ?>">
+										<a href="<?php echo base_url('index.php/admin/cancel_request/') . $row['id'] ?>">
 											<button class="btn btn-flat btn-warning">Cancel <i class="fa fa-times" aria-hidden="true"></i></button>
 										</a>
 									</td>
 									<?php if($this->session->userdata('user_type') == 'requestor'): ?>
 										<td>
-											<a href="<?php echo base_url('index.php/requestor/reservation_form/') . $row->id ?>">
+											<a href="<?php echo base_url('index.php/requestor/reservation_form/') . $row['id'] ?>">
 												<button class="btn btn-flat btn-warning">Update</button>
 											</a>
 										</td>
