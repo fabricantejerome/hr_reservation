@@ -21,6 +21,7 @@ class Requestor extends CI_Controller {
 		$this->load->library('session');
 
 		$this->load->model('room_model', 'rooms');
+		$this->load->model('ipc_model', 'ipc');
 	}
 
 	public function dashboard()
@@ -147,10 +148,35 @@ class Requestor extends CI_Controller {
 
 		$config = array(
 				'room_id'          => $id,
-				'date_reserved >=' => $current_date,
+				'date_reserved >=' => $current_date
 			);
 
-		echo $this->rooms->get_taken_slot($config) ? json_encode($this->rooms->get_taken_slot($config)) : '';
+		$items = $this->rooms->get_taken_slot($config);
+
+		$config = array();
+
+		foreach ($items as $row) {
+
+			$user	  = $this->ipc->fetch_personal_info(array('id' => $row->user_id));
+			$approver = $this->ipc->fetch_personal_info(array('id' => $row->approver_id));
+
+			$config[] = array(
+					'id'                => $row->id,
+					'room_res_id'       => $row->room_res_id,
+					'approved_datetime' => $row->approved_datetime,
+					'approver_id'       => $row->approver_id,
+					'date_reserved'     => $row->date_reserved,
+					'purpose'           => $row->purpose,
+					'time_start'        => $row->time_start,
+					'time_end'          => $row->time_end,
+					'user_id'           => $row->user_id,
+					'room_name'         => $row->room_name,
+					'fullname'          => $user['fullname'],
+					'approver'          => $approver['fullname']
+				);
+		}
+
+		echo $config ? json_encode($config) : '';
 	}
 
 	public function ajax_room_details()
@@ -201,11 +227,32 @@ class Requestor extends CI_Controller {
 	public function display_pending_request()
 	{
 		$user_id = $this->session->userdata('id');
+		$rooms   = $this->rooms->get_pending_request($user_id);
+
+		$config = array();
+
+		foreach($rooms as $row)
+		{
+			$info = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
+
+			$config[] = array(
+					'id'            => $row['id'],
+					'purpose'       => $row['purpose'],
+					'date_reserved' => $row['date_reserved'],
+					'user_id'       => $row['user_id'],
+					'time_start'    => $row['time_start'],
+					'time_end'      => $row['time_end'],
+					'date_filed'    => $row['date_filed'],
+					'room_no'       => $row['room_no'],
+					'room_name'     => $row['room_name'],
+					'fullname'      => $info['fullname']
+				);
+		}
 
 		$data = array(
 				'title'   => 'List of Pending Request',
 				'content' => 'room_pending_request_view',
-				'rooms'   => $this->rooms->get_pending_request($user_id)
+				'rooms'   => $config
 			);
 
 		$this->load->view('include/template', $data);
@@ -215,10 +262,33 @@ class Requestor extends CI_Controller {
 	{
 		$user_id = $this->session->userdata('id');
 
+		$requests = $this->rooms->get_approved_request($user_id);
+
+		$config = array();
+
+		foreach($requests as $row)
+		{
+			$approver  = $this->ipc->fetch_personal_info(array('id' => $row['approver_id']));
+			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
+
+			$config[] = array(
+					'id'                => $row['id'],
+					'room_res_id'       => $row['room_res_id'],
+					'approved_datetime' => $row['approved_datetime'],
+					'approver'          => $approver['fullname'],
+					'date_reserved'     => $row['date_reserved'],
+					'purpose'           => $row['purpose'],
+					'time_start'        => $row['time_start'],
+					'time_end'          => $row['time_end'],
+					'fullname'          => $requestor['fullname'],
+					'room_name'         => $row['room_name']
+				);
+		}
+
 		$data = array(
 				'title'    => 'List of Approved Request',
 				'content'  => 'room_approved_request_view',
-				'requests' => $this->rooms->get_approved_request($user_id)
+				'requests' => $config
 			);
 		
 		$this->load->view('include/template', $data);
@@ -228,10 +298,34 @@ class Requestor extends CI_Controller {
 	{
 		$user_id = $this->session->userdata('id');
 
+		$requests = $this->rooms->get_disapproved_request($user_id);
+
+		$config = array();
+
+		foreach($requests as $row)
+		{
+			$approver  = $this->ipc->fetch_personal_info(array('id' => $row['approver_id']));
+			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
+
+			$config[] = array(
+					'id'              => $row['id'],
+					'room_res_id'     => $row['room_res_id'],
+					'denied_datetime' => $row['denied_datetime'],
+					'approver'        => $approver['fullname'],
+					'date_reserved'   => $row['date_reserved'],
+					'purpose'         => $row['purpose'],
+					'time_start'      => $row['time_start'],
+					'time_end'        => $row['time_end'],
+					'fullname'        => $requestor['fullname'],
+					'room_name'       => $row['room_name'],
+					'reason'          => $row['reason']
+				);
+		}
+
 		$data = array(
 				'title'    => 'List of Denied Request',
 				'content'  => 'room_disapproved_request_view',
-				'requests' => $this->rooms->get_disapproved_request($user_id)
+				'requests' => $config
 			);
 
 		$this->load->view('include/template', $data);
@@ -241,10 +335,34 @@ class Requestor extends CI_Controller {
 	{
 		$user_id = $this->session->userdata('id');
 
+		$requests = $this->rooms->get_cancelled_request($user_id);
+
+		$config = array();
+
+		foreach($requests as $row)
+		{
+			$approver  = $this->ipc->fetch_personal_info(array('id' => $row['approver_id']));
+			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
+
+			$config[] = array(
+					'id'                 => $row['id'],
+					'room_res_id'        => $row['room_res_id'],
+					'cancelled_datetime' => $row['cancelled_datetime'],
+					'approver'           => $approver['fullname'],
+					'date_reserved'      => $row['date_reserved'],
+					'purpose'            => $row['purpose'],
+					'time_start'         => $row['time_start'],
+					'time_end'           => $row['time_end'],
+					'fullname'           => $requestor['fullname'],
+					'room_name'          => $row['room_name'],
+					'reason'             => $row['reason']
+				);
+		}
+
 		$data = array(
 				'title'    => 'List of Cancelled Request',
 				'content'  => 'room_cancelled_request_view',
-				'requests' => $this->rooms->get_cancelled_request($user_id)
+				'requests' => $config
 			);
 
 		$this->load->view('include/template', $data);
@@ -252,6 +370,8 @@ class Requestor extends CI_Controller {
 
 	protected function _redirect_unauthorized()
 	{
+		$this->load->library('session');
+		
 		if (count($this->session->userdata()) < 2 && $this->session->userdata('user_type') == 'requestor')
 		{
 			$this->session->set_flashdata('message', '<span class="col-sm-12 alert alert-warning">You must Login first!</span>');
