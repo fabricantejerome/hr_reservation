@@ -103,4 +103,15 @@ class Ipc_model extends CI_Model {
 		return $query->row_array();
 	}
 
+	public function fetch_user_access($emp_id)
+	{
+		$query = $this->db->select('*')
+				->from('user_access_tab')
+				->where('employee_id', $emp_id)
+				->where('system_id = 29')
+				->get();
+
+		return $query->row_array();
+	}
+
 }
