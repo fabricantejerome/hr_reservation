@@ -101,9 +101,12 @@ class Login extends CI_Controller {
 
 	public function logout()
 	{
+		$this->load->library('session');
+
 		$this->session->sess_destroy();
 
-		redirect('index.php/login/index');
+		//redirect('index.php/login/index');
+		redirect('http://172.16.1.34/ipc_central/index.php');
 	}
 
 	protected function _validate_input()
