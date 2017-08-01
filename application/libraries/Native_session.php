@@ -10,7 +10,7 @@ class Native_session {
 
 	public function get_session()
 	{
-		return $_SESSION['user_data'];
+		return isset($_SESSION['user_data']) ? $_SESSION['user_data'] : '';
 	}
 
 	public function destroy()
