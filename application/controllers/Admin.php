@@ -172,10 +172,33 @@ class Admin extends CI_Controller {
 
 	public function display_approved_request()
 	{
+		$requests = $this->rooms->get_approved_request();
+
+		$config = array();
+
+		foreach($requests as $row)
+		{
+			$approver  = $this->ipc->fetch_personal_info(array('id' => $row['approver_id']));
+			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
+
+			$config[] = array(
+					'id'                => $row['id'],
+					'room_res_id'       => $row['room_res_id'],
+					'approved_datetime' => $row['approved_datetime'],
+					'approver'          => $approver['fullname'],
+					'date_reserved'     => $row['date_reserved'],
+					'purpose'           => $row['purpose'],
+					'time_start'        => $row['time_start'],
+					'time_end'          => $row['time_end'],
+					'fullname'          => $requestor['fullname'],
+					'room_name'         => $row['room_name']
+				);
+		}
+
 		$data = array(
 				'title'    => 'List of Approved Request',
 				'content'  => 'room_approved_request_view',
-				'requests' => $this->rooms->get_approved_request()
+				'requests' => $config
 			);
 		
 		$this->load->view('include/template', $data);
@@ -211,14 +234,20 @@ class Admin extends CI_Controller {
 
 		$this->rooms->store_disapproved_request($config);
 
-		$item = $this->rooms->read_disapproved_request($room_res_id);
+		$item      = $this->rooms->read_disapproved_request($room_res_id);
+		$user      = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
+		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
+		$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
+
+		$item['fullname'] = $user['fullname'];
+		$item['approver'] = $approver['fullname'];
 
 		$config = array(
 					'subject'          => 'Denied Reservation',
 					'item'             => $item,
 					'header'           => 'Denied by',
-					'email'            => $item['email'],
-					'supervisor_email' => $item['supervisor_email']
+					'email'            => $user['requestor_email'],
+					'supervisor_email' => $dept_head['supervisor_email']
 				);
 
 		$this->send_mail($config);
@@ -230,10 +259,34 @@ class Admin extends CI_Controller {
 
 	public function display_disapproved_request()
 	{
+		$requests = $this->rooms->get_disapproved_request();
+
+		$config = array();
+
+		foreach($requests as $row)
+		{
+			$approver  = $this->ipc->fetch_personal_info(array('id' => $row['approver_id']));
+			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
+
+			$config[] = array(
+					'id'              => $row['id'],
+					'room_res_id'     => $row['room_res_id'],
+					'denied_datetime' => $row['denied_datetime'],
+					'approver'        => $approver['fullname'],
+					'date_reserved'   => $row['date_reserved'],
+					'purpose'         => $row['purpose'],
+					'time_start'      => $row['time_start'],
+					'time_end'        => $row['time_end'],
+					'fullname'        => $requestor['fullname'],
+					'room_name'       => $row['room_name'],
+					'reason'          => $row['reason']
+				);
+		}
+
 		$data = array(
 				'title'    => 'List of Denied Request',
 				'content'  => 'room_disapproved_request_view',
-				'requests' => $this->rooms->get_disapproved_request()
+				'requests' => $config
 			);
 
 		$this->load->view('include/template', $data);
@@ -241,6 +294,8 @@ class Admin extends CI_Controller {
 
 	protected function _redirect_unauthorized()
 	{
+		$this->load->library('session');
+		
 		if (count($this->session->userdata()) < 2 && $this->session->userdata('user_type') == 'admin')
 		{
 			$this->session->set_flashdata('message', '<span class="col-sm-12 alert alert-warning">You must Login first!</span>');
@@ -263,14 +318,20 @@ class Admin extends CI_Controller {
 
 		$this->rooms->store_cancel_request($config);
 
-		$item = $this->rooms->read_cancelled_request($room_res_id);
+		$item      = $this->rooms->read_cancelled_request($room_res_id);
+		$user      = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
+		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
+		$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
+
+		$item['fullname'] = $user['fullname'];
+		$item['approver'] = $approver['fullname'];
 
 		$config = array(
 					'subject'          => 'Cancelled Reservation',
 					'item'             => $item,
 					'header'           => 'Cancelled by',
-					'email'            => $item['email'],
-					'supervisor_email' => $item['supervisor_email']
+					'email'            => $user['requestor_email'],
+					'supervisor_email' => $dept_head['supervisor_email']
 				);
 
 		$this->send_mail($config);
@@ -282,10 +343,34 @@ class Admin extends CI_Controller {
 
 	public function display_cancelled_request()
 	{
+		$requests = $this->rooms->get_cancelled_request();
+
+		$config = array();
+
+		foreach($requests as $row)
+		{
+			$approver  = $this->ipc->fetch_personal_info(array('id' => $row['approver_id']));
+			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
+
+			$config[] = array(
+					'id'                 => $row['id'],
+					'room_res_id'        => $row['room_res_id'],
+					'cancelled_datetime' => $row['cancelled_datetime'],
+					'approver'           => $approver['fullname'],
+					'date_reserved'      => $row['date_reserved'],
+					'purpose'            => $row['purpose'],
+					'time_start'         => $row['time_start'],
+					'time_end'           => $row['time_end'],
+					'fullname'           => $requestor['fullname'],
+					'room_name'          => $row['room_name'],
+					'reason'             => $row['reason']
+				);
+		}
+
 		$data = array(
 				'title'    => 'List of Cancelled Request',
 				'content'  => 'room_cancelled_request_view',
-				'requests' => $this->rooms->get_cancelled_request()
+				'requests' => $config
 			);
 
 		$this->load->view('include/template', $data);
@@ -317,21 +402,30 @@ class Admin extends CI_Controller {
 	// Send a reminder
 	public function send_reminder()
 	{
+		ini_set('memory_limit', '-1');
+		ini_set('max_execution_time', 7200);
+
 		$items        = $this->rooms->fetch_approved_request();
 		$current_date = date('Y-m-d');
 
 		foreach ($items as $item) {
+			
 			$date_reserved = $item['date_reserved'];
+			$days          = $this->_date_diff($current_date, $date_reserved);
+			$user          = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
+			$dept_head     = $this->ipc->fetch_department_head($user['employee_no']);
+			$approver      = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-			$days = $this->_date_diff($current_date, $date_reserved);
+			$item['fullname'] = $user['fullname'];
+			$item['approver'] = $approver['fullname'];
 
 			if ($days >= 0 && $days <= 1) 
 			{
 				$config = array(
 							'subject'          => 'Reminder',
 							'item'             => $item,
-							'email'            => $item['email'],
-							'supervisor_email' => $item['supervisor_email']
+							'email'            => $user['requestor_email'],
+							'supervisor_email' => $dept_head['supervisor_email']
 						);
 
 				$this->send_mail($config);
