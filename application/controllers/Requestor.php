@@ -7,6 +7,9 @@ class Requestor extends CI_Controller {
 	{
 		parent::__construct();
 
+		// Load library
+		$this->load->library('session');
+
 		$this->_redirect_unauthorized();
 
 		// Set the timezone
@@ -16,9 +19,6 @@ class Requestor extends CI_Controller {
 		$helpers = array('form');
 
 		$this->load->helper($helpers);
-
-		// Load library
-		$this->load->library('session');
 
 		$this->load->model('room_model', 'rooms');
 		$this->load->model('ipc_model', 'ipc');
@@ -88,9 +88,15 @@ class Requestor extends CI_Controller {
 		{
 			$id = $this->rooms->store_reservation($config);
 
+			$item = $this->rooms->read_pending_request($id);
+
+			$user = $this->ipc->fetch_personal_info(array('id' => $this->session->userdata('id')));
+
+			$item['fullname'] = $user['fullname'];
+
 			$config = array(
 					'subject' => $this->input->post('id') ? 'Update Reservation Details' : 'Filed Reservation',
-					'item'    => $this->rooms->read_pending_request($id)
+					'item'    => $item
 				);
 
 			$this->send_mail($config);
@@ -131,7 +137,9 @@ class Requestor extends CI_Controller {
 			$datetime_end   = DateTime::createFromFormat('Y-m-d H:i:s', $row->date_reserved . ' ' . $row->time_end);
 
 			if (($new_datetime_start >= $datetime_start && $new_datetime_start <= $datetime_end) 
-				|| ($new_datetime_end >= $datetime_start && $new_datetime_end <= $datetime_end))
+				|| ($new_datetime_end >= $datetime_start && $new_datetime_end <= $datetime_end)
+				|| ($datetime_start >= $new_datetime_start && $datetime_start <= $new_datetime_end)
+				|| ($datetime_end >= $new_datetime_start && $datetime_end <= $new_datetime_end))
 			{
 				return false;
 			}
@@ -370,13 +378,11 @@ class Requestor extends CI_Controller {
 
 	protected function _redirect_unauthorized()
 	{
-		$this->load->library('session');
-		
-		if (count($this->session->userdata()) < 2 && $this->session->userdata('user_type') == 'requestor')
+		if (count($this->session->userdata()) < 3)
 		{
 			$this->session->set_flashdata('message', '<span class="col-sm-12 alert alert-warning">You must Login first!</span>');
 			
-			redirect(base_url('index.php/login/index'));
+			redirect('http://172.16.1.34/ipc_central', 'refresh');
 		}
 	}
 
