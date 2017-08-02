@@ -7,7 +7,8 @@ class Admin extends CI_Controller {
 	{
 		parent::__construct();
 
-		$this->_redirect_unauthorized();
+		// Load library
+		$this->load->library('session');
 
 		// Set the timezone
 		date_default_timezone_set('Asia/Manila');
@@ -16,9 +17,6 @@ class Admin extends CI_Controller {
 		$helpers = array('form');
 
 		$this->load->helper($helpers);
-
-		// Load library
-		$this->load->library('session');
 
 		// Load Model
 		$this->load->model('room_model', 'rooms');
@@ -38,8 +36,10 @@ class Admin extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
-	public function rooms() 
+	public function rooms()
 	{
+		$this->_redirect_unauthorized();
+
 		$data = array(
 			'title'   => 'List of Rooms',
 			'content' => 'rooms_view',
@@ -51,6 +51,8 @@ class Admin extends CI_Controller {
 
 	public function room_form()
 	{
+		$this->_redirect_unauthorized();
+
 		$id = $this->uri->segment(3) ? $this->uri->segment(3) : 0;
 
 		$data = array(
@@ -64,6 +66,8 @@ class Admin extends CI_Controller {
 
 	public function room_store()
 	{
+		$this->_redirect_unauthorized();
+
 		$id = $this->input->post('id');
 
 		if ($id) {
@@ -80,6 +84,8 @@ class Admin extends CI_Controller {
 
 	public function room_delete()
 	{
+		$this->_redirect_unauthorized();
+
 		$id = $this->uri->segment(3) ? $this->uri->segment(3) : 0;
 
 		$this->rooms->delete($id);
@@ -91,6 +97,8 @@ class Admin extends CI_Controller {
 
 	public function reservation_form()
 	{
+		$this->_redirect_unauthorized();
+
 		$data = array(
 				'title'   => 'File Reservation',
 				'content' => 'room_reservation_form_view',
@@ -102,6 +110,8 @@ class Admin extends CI_Controller {
 
 	public function display_pending_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$rooms = $this->rooms->get_pending_request();
 
 		$config = array();
@@ -135,6 +145,8 @@ class Admin extends CI_Controller {
 
 	public function approved_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$room_res_id  = $this->uri->segment(3);
 		$current_date = date('Y/m/d H:i:s');
 		$user_id      = $this->session->userdata('id');
@@ -172,6 +184,8 @@ class Admin extends CI_Controller {
 
 	public function display_approved_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$requests = $this->rooms->get_approved_request();
 
 		$config = array();
@@ -206,6 +220,8 @@ class Admin extends CI_Controller {
 
 	public function display_disapproved_form()
 	{
+		$this->_redirect_unauthorized();
+
 		$room_res_id = $this->uri->segment(3);
 
 		$data = array(
@@ -219,6 +235,8 @@ class Admin extends CI_Controller {
 
 	public function disapproved_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$room_res_id  = $this->input->post('room_res_id');
 		$current_date = date('Y/m/d H:i:s');
 		$reason       = $this->input->post('reason');
@@ -259,6 +277,8 @@ class Admin extends CI_Controller {
 
 	public function display_disapproved_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$requests = $this->rooms->get_disapproved_request();
 
 		$config = array();
@@ -294,18 +314,18 @@ class Admin extends CI_Controller {
 
 	protected function _redirect_unauthorized()
 	{
-		$this->load->library('session');
-		
-		if (count($this->session->userdata()) < 2 && $this->session->userdata('user_type') == 'admin')
+		if (count($this->session->userdata()) < 3)
 		{
 			$this->session->set_flashdata('message', '<span class="col-sm-12 alert alert-warning">You must Login first!</span>');
 			
-			redirect(base_url('index.php/login/index'));
+			redirect('http://172.16.1.34/ipc_central', 'refresh');
 		}
 	}
 
 	public function cancel_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$room_res_id  = $this->uri->segment(3);
 		$current_date = date('Y/m/d H:i:s');
 		$user_id      = $this->session->userdata('id');
@@ -343,6 +363,8 @@ class Admin extends CI_Controller {
 
 	public function display_cancelled_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$requests = $this->rooms->get_cancelled_request();
 
 		$config = array();
