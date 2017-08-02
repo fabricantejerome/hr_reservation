@@ -101,7 +101,9 @@
 		$("select").select2({ width: 'resolve' });
 
 		$("#date_reserved").datepicker({ 
-			startDate: today
+			startDate: today,
+			autoclose: true,
+			orientation: 'bottom'
 		}).on('change', function()
 		{
 			var $self    = $(this).val();
