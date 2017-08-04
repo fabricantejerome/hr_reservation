@@ -85,6 +85,16 @@
 		</div>
 	</div>
 </section>
+
+<!-- Modal -->
+<div class="modal fade" id="myModal" tabindex="-1" role="dialog" aria-labelledby="myModalLabel" aria-hidden="true" >
+	<div class="modal-dialog">
+		<div class="modal-content">
+		
+		</div>
+	</div>
+</div>
+
 <script src="<?php echo base_url('resources/plugins/input-mask/jquery.inputmask.date.extensions.js'); ?>"></script>
 <script src="<?php echo base_url('resources/plugins/datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
 <script src="<?php echo base_url('resources/plugins/select2/js/select2.min.js');?>"></script>
@@ -212,6 +222,9 @@
 
 			var start_time = convertToSec($time_start.val());
 			var end_time = convertToSec($time_end.val())
+
+			/*$('.modal-content').html('');
+			$('#myModal').modal('show');*/
 
 			if (start_time >= end_time) {
 				e.preventDefault();
