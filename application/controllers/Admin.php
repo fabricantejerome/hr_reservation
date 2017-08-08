@@ -414,13 +414,23 @@ class Admin extends CI_Controller {
 			$mail->addCC($params['supervisor_email']);
 			$mail->addCC('joyce-ramirez@isuzuphil.com');
 			$mail->addCC('may-galolo@isuzuphil.com');
+			$mail->addCC('jerome-fabricante@isuzuphil.com');
+			$mail->addCC('daoni-carlos@isuzuphil.com');
+
+			if ($this->session->userdata('email') != 'joyce-ramirez@isuzuphil.com')
+			{
+				$mail->addCC($this->session->userdata('email'));
+				$mail->addCC($this->session->userdata('supervisor_email'));
+			}
 		}
 		else 
 		{
 			$mail->addAddress('joyce-ramirez@isuzuphil.com');
 			$mail->addCC('may-galolo@isuzuphil.com');
+			$mail->addCC('daoni-carlos@isuzuphil.com');
 			$mail->addCC($this->session->userdata('email'));
 			$mail->addCC($this->session->userdata('supervisor_email'));
+			$mail->addCC('jerome-fabricante@isuzuphil.com');
 		}
 		
 		/*if ($params['email'] != $this->session->userdata('email'))
