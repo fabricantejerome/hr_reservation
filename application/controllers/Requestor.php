@@ -95,7 +95,7 @@ class Requestor extends CI_Controller {
 			$item['fullname'] = $user['fullname'];
 
 			$config = array(
-					'subject' => $this->input->post('id') ? 'Update Reservation Details' : 'Filed Reservation',
+					'subject' => $this->input->post('id') ? 'Update Reservation Details' : 'Request Room Reservation',
 					'item'    => $item
 				);
 
