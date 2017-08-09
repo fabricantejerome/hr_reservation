@@ -15,11 +15,14 @@ class Ipc_model extends CI_Model {
 				'a.id',
 				'a.employee_no',
 				"CONCAT(b.first_name,' ', b.last_name) AS fullname",
+				'a.section_id',
 				'c.email AS requestor_email',
 				'd.ash',
 				'd.sh',
 				'd.adh',
-				'd.dh'
+				'd.dh',
+				'e.section_abbrev',
+				'e.section'
 			);
 
 		$data = '';
@@ -35,6 +38,7 @@ class Ipc_model extends CI_Model {
 					->join('personal_information_tab AS b', 'a.id = b.employee_id', 'LEFT')
 					->join('email_tab AS c', 'a.id = c.employee_id', 'LEFT')
 					->join('signatories_matrix_tab AS d', 'a.section_id = d.section_id', 'LEFT')
+					->join('section_tab AS e', 'a.section_id = e.id', 'LEFT')
 					->where($config)
 					->get();	
 
@@ -51,6 +55,7 @@ class Ipc_model extends CI_Model {
 					->join('personal_information_tab AS b', 'a.id = b.employee_id', 'LEFT')
 					->join('email_tab AS c', 'a.id = c.employee_id', 'LEFT')
 					->join('signatories_matrix_tab AS d', 'a.section_id = d.section_id', 'LEFT')
+					->join('section_tab AS e', 'a.section_id = e.id', 'LEFT')
 					->where($config)
 					->get();	
 
