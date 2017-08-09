@@ -19,6 +19,7 @@
 								<th>Time End</th>
 								<th>Date Filed</th>
 								<th>Reserved by</th>
+								<th>Section</th>
 								<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 									<th></th>
 									<th></th>
@@ -41,6 +42,7 @@
 									<td><?php echo date('h:i A', strtotime($row['time_end'])) ?></td>
 									<td><?php echo date('m/d/Y h:i A', strtotime($row['date_filed'])) ?></td>
 									<td><?php echo $row['fullname'] ?></td>
+									<td><?php echo $row['section'] ?></td>
 									<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 										<td>
 											<a href="<?php echo base_url('index.php/admin/approved_request/') . $row['id'] ?>">

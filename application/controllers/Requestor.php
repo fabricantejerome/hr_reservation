@@ -86,16 +86,18 @@ class Requestor extends CI_Controller {
 
 		if ($this->_is_available($params, $time_start, $time_end))
 		{
-			$id = $this->rooms->store_reservation($config);
+			$id      = $this->rooms->store_reservation($config);
+			$item    = $this->rooms->read_pending_request($id);
+			$subject = $this->input->post('id') ? 'Update Reservation Details' : 'Request Room Reservation';
+			$user    = $this->ipc->fetch_personal_info(array('id' => $this->session->userdata('id')));
 
-			$item = $this->rooms->read_pending_request($id);
-
-			$user = $this->ipc->fetch_personal_info(array('id' => $this->session->userdata('id')));
-
-			$item['fullname'] = $user['fullname'];
+			$item['fullname']       = $user['fullname'];
+			$item['section_abbrev'] = $user['section_abbrev'];
+			$item['section']        = $user['section'];
+			$item['subject']        = $subject;
 
 			$config = array(
-					'subject' => $this->input->post('id') ? 'Update Reservation Details' : 'Request Room Reservation',
+					'subject' => $subject,
 					'item'    => $item
 				);
 
@@ -253,7 +255,8 @@ class Requestor extends CI_Controller {
 					'date_filed'    => $row['date_filed'],
 					'room_no'       => $row['room_no'],
 					'room_name'     => $row['room_name'],
-					'fullname'      => $info['fullname']
+					'fullname'      => $info['fullname'],
+					'section'       => $info['section_abbrev']
 				);
 		}
 
@@ -289,6 +292,7 @@ class Requestor extends CI_Controller {
 					'time_start'        => $row['time_start'],
 					'time_end'          => $row['time_end'],
 					'fullname'          => $requestor['fullname'],
+					'section'           => $requestor['section_abbrev'],
 					'room_name'         => $row['room_name']
 				);
 		}
@@ -325,6 +329,7 @@ class Requestor extends CI_Controller {
 					'time_start'      => $row['time_start'],
 					'time_end'        => $row['time_end'],
 					'fullname'        => $requestor['fullname'],
+					'section'         => $requestor['section_abbrev'],
 					'room_name'       => $row['room_name'],
 					'reason'          => $row['reason']
 				);
@@ -362,6 +367,7 @@ class Requestor extends CI_Controller {
 					'time_start'         => $row['time_start'],
 					'time_end'           => $row['time_end'],
 					'fullname'           => $requestor['fullname'],
+					'section'            => $requestor['section_abbrev'],
 					'room_name'          => $row['room_name'],
 					'reason'             => $row['reason']
 				);

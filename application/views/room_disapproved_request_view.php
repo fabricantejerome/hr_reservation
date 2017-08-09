@@ -2,7 +2,7 @@
 
 <section class="content rooms">
 	<div class="row">
-		<div class="col-md-10">
+		<div class="col-md-12">
 			<div class="box box-info">
 					
 				<div class="box-body">
@@ -17,6 +17,7 @@
 								<th>Time Start</th>
 								<th>Time End</th>
 								<th>Reserved by</th>
+								<th>Section</th>
 								<th>Date Denied</th>
 								<th>Reason</th>
 								<th>Denied by</th>
@@ -33,6 +34,7 @@
 									<td><?php echo date('h:i A', strtotime($row['time_start'])) ?></td>
 									<td><?php echo date('h:i A', strtotime($row['time_end'])) ?></td>
 									<td><?php echo $row['fullname'] ?></td>
+									<td><?php echo $row['section'] ?></td>
 									<td><?php echo date('m/d/Y h:i A', strtotime($row['denied_datetime'])) ?></td>
 									<td><?php echo $row['reason'] ?></td>
 									<td><?php echo $row['approver'] ?></td>

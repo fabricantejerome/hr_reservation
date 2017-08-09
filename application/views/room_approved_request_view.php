@@ -5,7 +5,7 @@
 		<div class="col-md-10">
 			<?php echo $this->session->flashdata('success_message'); ?>
 		</div>
-		<div class="col-md-10">
+		<div class="col-md-12">
 			<div class="box box-info">
 				<div class="box-body">
 					<!-- Room table -->
@@ -19,6 +19,7 @@
 								<th>Time Start</th>
 								<th>Time End</th>
 								<th>Reserved by</th>
+								<th>Section</th>
 								<th>Date Approved</th>
 								<th>Approved by</th>
 								<th></th>
@@ -35,6 +36,7 @@
 									<td><?php echo date('h:i A', strtotime($row['time_start'])) ?></td>
 									<td><?php echo date('h:i A', strtotime($row['time_end'])) ?></td>
 									<td><?php echo $row['fullname'] ?></td>
+									<td><?php echo $row['section'] ?></td>
 									<td><?php echo date('m/d/Y h:i A', strtotime($row['approved_datetime'])) ?></td>
 									<td><?php echo $row['approver'] ?></td>
 									<td>

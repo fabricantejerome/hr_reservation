@@ -130,7 +130,8 @@ class Admin extends CI_Controller {
 					'date_filed'    => $row['date_filed'],
 					'room_no'       => $row['room_no'],
 					'room_name'     => $row['room_name'],
-					'fullname'      => $info['fullname']
+					'fullname'      => $info['fullname'],
+					'section'       => $info['section_abbrev']
 				);
 		}
 
@@ -150,6 +151,7 @@ class Admin extends CI_Controller {
 		$room_res_id  = $this->uri->segment(3);
 		$current_date = date('Y/m/d H:i:s');
 		$user_id      = $this->session->userdata('id');
+		$subject      = 'Approved Reservation';
 
 		$config = array(
 				'room_res_id'       => $room_res_id,
@@ -164,11 +166,14 @@ class Admin extends CI_Controller {
 		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
 		$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-		$item['fullname'] = $user['fullname'];
-		$item['approver'] = $approver['fullname'];
+		$item['fullname']       = $user['fullname'];
+		$item['section_abbrev'] = $user['section_abbrev'];
+		$item['section']        = $user['section'];
+		$item['subject']        = $subject;
+		$item['approver']       = $approver['fullname'];
 
 		$config = array(
-					'subject'          => 'Approved Reservation',
+					'subject'          => $subject,
 					'item'             => $item,
 					'email'            => $user['requestor_email'],
 					'supervisor_email' => $dept_head['supervisor_email']
@@ -205,6 +210,7 @@ class Admin extends CI_Controller {
 					'time_start'        => $row['time_start'],
 					'time_end'          => $row['time_end'],
 					'fullname'          => $requestor['fullname'],
+					'section'           => $requestor['section_abbrev'],
 					'room_name'         => $row['room_name']
 				);
 		}
@@ -241,6 +247,7 @@ class Admin extends CI_Controller {
 		$current_date = date('Y/m/d H:i:s');
 		$reason       = $this->input->post('reason');
 		$user_id      = $this->session->userdata('id');
+		$subject      = 'Denied Reservation';
 
 		$config = array(
 				'room_res_id'     => $room_res_id,
@@ -257,11 +264,14 @@ class Admin extends CI_Controller {
 		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
 		$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-		$item['fullname'] = $user['fullname'];
-		$item['approver'] = $approver['fullname'];
+		$item['fullname']       = $user['fullname'];
+		$item['section_abbrev'] = $user['section_abbrev'];
+		$item['section']        = $user['section'];
+		$item['subject']        = $subject;
+		$item['approver']       = $approver['fullname'];
 
 		$config = array(
-					'subject'          => 'Denied Reservation',
+					'subject'          => $subject,
 					'item'             => $item,
 					'header'           => 'Denied by',
 					'email'            => $user['requestor_email'],
@@ -298,6 +308,7 @@ class Admin extends CI_Controller {
 					'time_start'      => $row['time_start'],
 					'time_end'        => $row['time_end'],
 					'fullname'        => $requestor['fullname'],
+					'section'         => $requestor['section_abbrev'],
 					'room_name'       => $row['room_name'],
 					'reason'          => $row['reason']
 				);
@@ -329,6 +340,7 @@ class Admin extends CI_Controller {
 		$room_res_id  = $this->uri->segment(3);
 		$current_date = date('Y/m/d H:i:s');
 		$user_id      = $this->session->userdata('id');
+		$subject      = 'Cancelled Reservation';
 
 		$config = array(
 				'room_res_id'        => $room_res_id,
@@ -343,11 +355,14 @@ class Admin extends CI_Controller {
 		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
 		$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-		$item['fullname'] = $user['fullname'];
-		$item['approver'] = $approver['fullname'];
+		$item['fullname']       = $user['fullname'];
+		$item['section_abbrev'] = $user['section_abbrev'];
+		$item['section']        = $user['section'];
+		$item['subject']        = $subject;
+		$item['approver']       = $approver['fullname'];
 
 		$config = array(
-					'subject'          => 'Cancelled Reservation',
+					'subject'          => $subject,
 					'item'             => $item,
 					'header'           => 'Cancelled by',
 					'email'            => $user['requestor_email'],
@@ -384,6 +399,7 @@ class Admin extends CI_Controller {
 					'time_start'         => $row['time_start'],
 					'time_end'           => $row['time_end'],
 					'fullname'           => $requestor['fullname'],
+					'section'            => $requestor['section_abbrev'],
 					'room_name'          => $row['room_name'],
 					'reason'             => $row['reason']
 				);
@@ -444,10 +460,13 @@ class Admin extends CI_Controller {
 
 		$mail->Body = $this->load->view('email/notification', $data, true);
 
-		if(!$mail->send()) {
+		if(!$mail->send())
+		{
 		    echo 'Message could not be sent.';
 		    echo 'Mailer Error: ' . $mail->ErrorInfo;
-		} else {
+		}
+		else 
+		{
 		    echo 'Message has been sent';
 		}
 	}
@@ -469,8 +488,11 @@ class Admin extends CI_Controller {
 			$dept_head     = $this->ipc->fetch_department_head($user['employee_no']);
 			$approver      = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-			$item['fullname'] = $user['fullname'];
-			$item['approver'] = $approver['fullname'];
+			$item['fullname']       = $user['fullname'];
+			$item['section_abbrev'] = $user['section_abbrev'];
+			$item['section']        = $user['section'];
+			$item['subject']        = 'Reminder';
+			$item['approver']       = $approver['fullname'];
 
 			if ($days >= 0 && $days <= 1) 
 			{
