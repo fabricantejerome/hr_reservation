@@ -178,10 +178,13 @@
 <body>
 	<main class="container">
 		<h2>HR Training Room Reservation</h2>
+		<br />
+
+		<p><strong>Subject: </strong><?php echo isset($item['subject']) ? $item['subject'] : '' ?></p>
+		<p><strong>Sent: </strong> <?php echo date('l, F d, Y h:i A') ?></p>
+		<p><strong>Section: </strong> <?php echo isset($item['section']) ? $item['section'] : '' ?></p>
 
 		<div class="table-request">
-				
-			<div class="header"></div>
 			<!--   Room table -->
 			<table cellspacing="0">
 				<thead>
