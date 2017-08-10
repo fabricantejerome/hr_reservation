@@ -459,6 +459,7 @@ class Requestor extends CI_Controller {
 		}
 
 		$data['mail']   = $mail;
+		$data['mail']   = $mail ? $mail : '';
 		$data['item']   = $params['item'];
 		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
 
