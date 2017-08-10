@@ -187,16 +187,25 @@
 </head>
 <body>
 	<main class="container">
-		<h2>HR Training Room Reservation</h2>
-		<br />
+		<p>
+			<strong>From: </strong><?php echo $mail->From; ?> <br />
+			<strong>To: </strong><?php echo implode(', ', array_flatten($mail->getToAddresses(), array())); ?><br />
+			<?php if (count($mail->getCcAddresses())): ?>
+				<strong>CC: <?php echo implode(', ', array_flatten($mail->getCcAddresses(), array())); ?></strong>
+			<?php endif; ?>
+		</p>
 
-		<p><strong>Subject: </strong><?php echo isset($item['subject']) ? $item['subject'] : '' ?></p>
-		<p><strong>Sent: </strong> <?php echo date('l, F d, Y h:i A') ?></p>
-		<p><strong>Section: </strong> <?php echo isset($item['section']) ? $item['section'] : '' ?></p>
+		<p>/* This is a system-generated e-mail sent by HR Training Room Reservation System. Please do not reply. */</p>
+
+		<p>
+			<strong>Subject: </strong><?php echo isset($item['subject']) ? $item['subject'] : '' ?> <br />
+			<strong>Sent: </strong> <?php echo date('l, F d, Y h:i A') ?> <br />
+			<strong>Section: </strong> <?php echo isset($item['section']) ? $item['section'] : '' ?> <br />
+		</p>
 
 		<div class="table-request">
 			<!--   Room table -->
-			<table cellspacing="0">
+			<table>
 				<thead>
 					<tr>
 						<th>Room</th>
@@ -234,7 +243,7 @@
 							<td><?php echo date('h:i A', strtotime($item['time_end'])) ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['fullname'])): ?>
-							<td><?php echo $item['fullname'] ?></td>
+							<td><?php echo ucwords(strtolower($item['fullname'])) ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['date_filed'])): ?>
 							<td><?php echo date('m/d/Y h:i A', strtotime($item['date_filed'])) ?></td>
@@ -243,22 +252,25 @@
 							<td><?php echo $item['reason'] ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['approver'])): ?>
-							<td><?php echo $item['approver'] ?></td>
+							<td><?php echo ucwords(strtolower($item['approver'])) ?></td>
 						<?php endif; ?>
 					</tr>
 				</tbody>
 			</table><!-- End of table -->
 		</div>
 		
-		<p>This is an automatically generated message sent by HR Traning Room Reservation System.</p>
+		<?php if (isset($link)): ?>
+			<p>
+				<b>Approval link:</b>  < <a href="<?php echo $link; ?>">Click this to approve the request</a> > <br />
+			
+				* If the above link won't work, please copy and paste the link below on your browsers address bar * <br />
+				<?php echo $link ?>
+			</p>
+		<?php endif; ?>
 
 	</main>
 
-	<div class="container">
-		<footer>
-			<small>&copy; 2017 HR Training Room Reservation. All Rights Reserved.</small>
-		</footer>
-	</div>
+	<p>/* If you have any questions, please contact HRS Department. */</p>
 	
 </body>
 </html>
