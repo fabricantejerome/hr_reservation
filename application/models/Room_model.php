@@ -205,6 +205,7 @@ class Room_model extends CI_Model {
 				'a.time_end',
 				'a.date_filed',
 				'a.room_id',
+				'a.user_id',
 				'd.room_no',
 				'd.room_name'
 			);
