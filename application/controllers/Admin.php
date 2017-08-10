@@ -169,7 +169,7 @@ class Admin extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
-	public function _grant_privilege($uid)
+	protected function _grant_privilege($uid)
 	{
 		$this->load->library('session');
 
@@ -187,6 +187,14 @@ class Admin extends CI_Controller {
 			);
 
 		$this->session->set_userdata($config);
+	}
+
+	protected function _remove_priviledge()
+	{
+		if (!$this->session->userdata('department'))
+		{
+			$this->session->sess_destroy();
+		}
 	}
 
 	public function approved_request()
