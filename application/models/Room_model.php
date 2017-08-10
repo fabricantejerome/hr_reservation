@@ -131,7 +131,9 @@ class Room_model extends CI_Model {
 				'b.time_end',
 				'b.user_id',
 				'd.room_no',
-				'd.room_name'
+				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		$query = $this->db->select($fields)
@@ -157,7 +159,9 @@ class Room_model extends CI_Model {
 				'a.time_end',
 				'a.date_filed',
 				'd.room_no',
-				'd.room_name'
+				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		if ($id == 0)
@@ -207,7 +211,9 @@ class Room_model extends CI_Model {
 				'a.room_id',
 				'a.user_id',
 				'd.room_no',
-				'd.room_name'
+				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		if ($id > 0) {
@@ -251,6 +257,8 @@ class Room_model extends CI_Model {
 				'b.user_id',
 				'd.room_no',
 				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		if ($id == 0)
@@ -297,6 +305,8 @@ class Room_model extends CI_Model {
 				'b.user_id',
 				'd.room_no',
 				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		$query = $this->db->select($fields)
@@ -326,6 +336,8 @@ class Room_model extends CI_Model {
 				'b.user_id',
 				'd.room_no',
 				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		if ($id > 0)
@@ -368,7 +380,9 @@ class Room_model extends CI_Model {
 				'b.time_end',
 				'b.user_id',
 				'd.room_no',
-				'd.room_name'
+				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		if ($id == 0)
@@ -410,7 +424,9 @@ class Room_model extends CI_Model {
 				'b.time_end',
 				'b.user_id',
 				'd.room_no',
-				'd.room_name'
+				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		if ($id > 0)
@@ -451,7 +467,9 @@ class Room_model extends CI_Model {
 				'b.time_end',
 				'b.user_id',
 				'd.room_no',
-				'd.room_name'
+				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		if ($id == 0)
@@ -494,6 +512,8 @@ class Room_model extends CI_Model {
 				'b.user_id',
 				'd.room_no',
 				'd.room_name',
+				'd.capacity',
+				'd.floor'
 			);
 
 		if ($id > 0)
