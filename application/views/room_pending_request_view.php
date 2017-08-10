@@ -3,6 +3,7 @@
 	<div class="row">
 		<div class="col-md-10">
 			<?php echo $this->session->flashdata('success_message'); ?>
+			<?php echo $this->session->flashdata('error_message'); ?>
 		</div>
 		<div class="col-md-12">
 			<div class="box box-info">
