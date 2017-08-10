@@ -155,7 +155,7 @@ class Admin extends CI_Controller {
 
 			$this->_grant_privilege($user_id);
 
-			$this->_redirect_unauthorized();
+			//$this->_redirect_unauthorized();
 			$entity['fullname'] = $info['fullname'];
 			$entity['section']  = $info['section_abbrev'];
 		}
@@ -183,7 +183,8 @@ class Admin extends CI_Controller {
 				'section'          => $user['section'],
 				'email'            => $user['requestor_email'],
 				'supervisor_email' => $dept_head['supervisor_email'],
-				'user_type'        => 'admin'
+				'user_type'        => 'admin',
+				'grant'            => true
 			);
 
 		$this->session->set_userdata($config);
@@ -191,7 +192,7 @@ class Admin extends CI_Controller {
 
 	protected function _remove_priviledge()
 	{
-		if (!$this->session->userdata('department'))
+		if ($this->session->userdata('grant'))
 		{
 			$this->session->sess_destroy();
 		}
@@ -236,8 +237,9 @@ class Admin extends CI_Controller {
 
 		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been approved!</span>');
 
-		redirect(base_url('index.php/admin/display_pending_request'));
+		$this->_remove_priviledge();
 
+		redirect($this->agent->referrer());
 	}
 
 	public function display_approved_request()
@@ -470,6 +472,7 @@ class Admin extends CI_Controller {
 	public function send_mail($params)
 	{
 		$this->load->library('emailerphp');
+		$this->load->helper('array_flatten');
 
 		$mail = new EmailerPHP;
 
@@ -507,7 +510,7 @@ class Admin extends CI_Controller {
 			$mail->addCC($this->session->userdata('email'));
 			$mail->addCC($this->session->userdata('supervisor_email'));
 		}*/
-
+		$data['mail']   = $mail;
 		$data['item']   = $params['item'];
 		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
 

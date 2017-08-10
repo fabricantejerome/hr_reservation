@@ -430,6 +430,7 @@ class Requestor extends CI_Controller {
 	public function send_mail($params)
 	{
 		$this->load->library('emailerphp');
+		$this->load->helper('array_flatten');
 
 		$mail = new EmailerPHP;
 
@@ -457,6 +458,7 @@ class Requestor extends CI_Controller {
 			$mail->addCC('jerome-fabricante@isuzuphil.com');
 		}
 
+		$data['mail']   = $mail;
 		$data['item']   = $params['item'];
 		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
 
