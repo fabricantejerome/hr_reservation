@@ -21,9 +21,7 @@
 								<th>Section</th>
 								<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 									<th></th>
-									<th></th>
 								<?php endif; ?>
-								<th></th>
 								<?php if ($this->session->userdata('user_type') == 'requestor'): ?>
 									<th></th>
 								<?php endif; ?>
@@ -47,17 +45,7 @@
 												<button class="btn btn-flat btn-success">Approve <i class="fa fa-check" aria-hidden="true"></i></button>
 											</a>
 										</td>
-										<td>
-											<a href="<?php echo base_url('index.php/admin/display_disapproved_form/') . $row['id'] ?>" >	
-												<button class="btn btn-flat btn-danger">Disapprove <i class="fa fa-times" aria-hidden="true"></i></button>
-											</a>
-										</td>
 									<?php endif; ?>
-									<td>
-										<a href="<?php echo base_url('index.php/admin/cancel_request/') . $row['id'] ?>">
-											<button class="btn btn-flat btn-warning">Cancel <i class="fa fa-times" aria-hidden="true"></i></button>
-										</a>
-									</td>
 									<?php if($this->session->userdata('user_type') == 'requestor'): ?>
 										<td>
 											<a href="<?php echo base_url('index.php/requestor/reservation_form/') . $row['id'] ?>">
