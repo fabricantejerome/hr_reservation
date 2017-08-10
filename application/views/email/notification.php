@@ -189,9 +189,9 @@
 	<main class="container">
 		<p>
 			<strong>From: </strong><?php echo $mail->From; ?> <br />
-			<strong>To: </strong><?php echo implode(', ', array_flatten($mail->getToAddresses(), array())); ?><br />
+			<strong>To: </strong><?php echo rtrim(implode(', ', array_flatten($mail->getToAddresses(), array())), ', ') ; ?><br />
 			<?php if (count($mail->getCcAddresses())): ?>
-				<strong>CC: <?php echo implode(', ', array_flatten($mail->getCcAddresses(), array())); ?></strong>
+				<strong>CC: <?php echo rtrim(implode(', ', array_flatten($mail->getCcAddresses(), array())), ', ') ; ?></strong>
 			<?php endif; ?>
 		</p>
 
