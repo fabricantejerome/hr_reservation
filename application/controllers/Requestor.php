@@ -105,6 +105,8 @@ class Requestor extends CI_Controller {
 
 			$this->send_mail($config);
 
+			$this->_send_approval_link($config);
+
 			if ($this->input->post('id') > 0)
 			{
 				$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been updated!</span>');
@@ -121,6 +123,37 @@ class Requestor extends CI_Controller {
 		}
 
 		redirect(base_url('index.php/requestor/reservation_form'));
+	}
+
+	protected function _send_approval_link($params)
+	{
+		$this->load->library('emailerphp');
+
+		$mail = new EmailerPHP;
+
+		$admin = $this->ipc->fetch_admin_users();
+
+		foreach ($admin as $user)
+		{
+			$mail->Subject = $params['subject'];
+			$mail->addAddress('jerome-fabricante@isuzuphil.com');
+
+			$data['item']   = $params['item'];
+			$data['link']	= base_url('index.php/admin/read_approval_link/' . $params['item']['id'] . '/' . $user->employee_id);
+			$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
+
+			$mail->Body = $this->load->view('email/notification', $data, true);
+
+			if(!$mail->send())
+			{
+			    echo 'Message could not be sent.';
+			    echo 'Mailer Error: ' . $mail->ErrorInfo;
+			}
+			else
+			{
+			    echo 'Message has been sent';
+			}
+		}
 	}
 
 	// Return true if available
@@ -429,12 +462,14 @@ class Requestor extends CI_Controller {
 
 		$mail->Body = $this->load->view('email/notification', $data, true);
 
-		if(!$mail->send()) {
+		if(!$mail->send())
+		{
 		    echo 'Message could not be sent.';
 		    echo 'Mailer Error: ' . $mail->ErrorInfo;
-		} else {
+		}
+		else
+		{
 		    echo 'Message has been sent';
 		}
 	}
-
 }
