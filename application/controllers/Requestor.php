@@ -139,7 +139,7 @@ class Requestor extends CI_Controller {
 			$mail->addAddress('jerome-fabricante@isuzuphil.com');
 
 			$data['item']   = $params['item'];
-			$data['link']	= base_url('index.php/admin/read_approval_link/' . $params['item']['id'] . '/' . $user->employee_id);
+			$data['link']   = base_url('index.php/admin/read_approval_link/' . $params['item']['id'] . '/' . $user->employee_id);
 			$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
 			$data['mail']   = $mail ? $mail : '';
 
