@@ -149,17 +149,17 @@ class Admin extends CI_Controller {
 		$id      = $this->uri->segment(3);
 		$user_id = $this->uri->segment(4);
 		$entity  = $this->rooms->read_pending_request($id) ? $this->rooms->read_pending_request($id) : '';
+
 		if (is_array($entity))
 		{
 			$info    = $this->ipc->fetch_personal_info(array('id' => $entity['user_id']));
-
-			$this->_grant_privilege($user_id);
-
 			//$this->_redirect_unauthorized();
 			$entity['fullname'] = $info['fullname'];
 			$entity['section']  = $info['section_abbrev'];
 		}
 
+		$this->_grant_privilege($user_id);
+		
 		$data = array(
 				'title'   => is_array($entity) ? 'Room Reservation Request' : 'Request has been approved',
 				'content' => 'room_approval_link_view',
