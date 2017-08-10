@@ -35,10 +35,10 @@
 									<td><?php echo date('m/d/Y', strtotime($row['date_reserved'])); ?></td>
 									<td><?php echo date('h:i A', strtotime($row['time_start'])) ?></td>
 									<td><?php echo date('h:i A', strtotime($row['time_end'])) ?></td>
-									<td><?php echo $row['fullname'] ?></td>
+									<td><?php echo ucwords(strtolower($row['fullname'])) ?></td>
 									<td><?php echo $row['section'] ?></td>
 									<td><?php echo date('m/d/Y h:i A', strtotime($row['approved_datetime'])) ?></td>
-									<td><?php echo $row['approver'] ?></td>
+									<td><?php echo ucwords(strtolower($row['approver'])) ?></td>
 									<td>
 										<a href="<?php echo base_url('index.php/admin/cancel_request/') . $row['room_res_id'] ?>">
 											<button class="btn btn-flat btn-warning">Cancel <i class="fa fa-times" aria-hidden="true"></i></button>
