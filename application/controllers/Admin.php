@@ -204,40 +204,55 @@ class Admin extends CI_Controller {
 
 		$room_res_id  = $this->uri->segment(3);
 		$current_date = date('Y/m/d H:i:s');
-		$user_id      = $this->session->userdata('id');
-		$subject      = 'Approved Reservation';
-
-		$config = array(
-				'room_res_id'       => $room_res_id,
-				'approved_datetime' => $current_date,
-				'user_id'           => $user_id
+		
+		$pending = $this->rooms->read_pending_request($room_res_id);
+		
+		$params = array(
+				'room_id'       => $pending['room_id'],
+				'date_reserved' => $pending['date_reserved']
 			);
 
-		$this->rooms->store_approved_request($config);
+		if ($this->_is_available($params, $pending['time_start'], $pending['time_end']))
+		{
+			$user_id      = $this->session->userdata('id');
+			$subject      = 'Approved Reservation';
 
-		$item      = $this->rooms->read_approved_request($room_res_id);
-		$user      = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
-		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
-		$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
-
-		$item['fullname']       = $user['fullname'];
-		$item['section_abbrev'] = $user['section_abbrev'];
-		$item['section']        = $user['section'];
-		$item['subject']        = $subject;
-		$item['approver']       = $approver['fullname'];
-
-		$config = array(
-					'subject'          => $subject,
-					'item'             => $item,
-					'email'            => $user['requestor_email'],
-					'supervisor_email' => $dept_head['supervisor_email']
+			$config = array(
+					'room_res_id'       => $room_res_id,
+					'approved_datetime' => $current_date,
+					'user_id'           => $user_id
 				);
 
-		$this->send_mail($config);
+			$this->rooms->store_approved_request($config);
 
-		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been approved!</span>');
+			$item      = $this->rooms->read_approved_request($room_res_id);
+			$user      = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
+			$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
+			$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-		$this->_remove_priviledge();
+			$item['fullname']       = $user['fullname'];
+			$item['section_abbrev'] = $user['section_abbrev'];
+			$item['section']        = $user['section'];
+			$item['subject']        = $subject;
+			$item['approver']       = $approver['fullname'];
+
+			$config = array(
+						'subject'          => $subject,
+						'item'             => $item,
+						'email'            => $user['requestor_email'],
+						'supervisor_email' => $dept_head['supervisor_email']
+					);
+
+			$this->send_mail($config);
+
+			$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been approved!</span>');
+
+			$this->_remove_priviledge();
+		}
+		else
+		{
+			$this->session->set_flashdata('error_message', '<span class="col-sm-12 alert alert-error">The time slot for this room has been taken!</span>');
+		}
 
 		redirect($this->agent->referrer());
 	}
