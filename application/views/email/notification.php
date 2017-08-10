@@ -171,8 +171,18 @@
 		    box-shadow: none;
 		    overflow: visible;
 		  }
+		table {
+			border-collapse: collapse;
 		}
 
+		table, th, td {
+		   border: 1px solid black;
+		   padding: 5px;
+		}
+
+		p {
+			line-height: 1.5em;
+		}
 	</style>
 </head>
 <body>
