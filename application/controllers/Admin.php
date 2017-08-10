@@ -242,6 +242,35 @@ class Admin extends CI_Controller {
 		redirect($this->agent->referrer());
 	}
 
+	// Return true if available
+	protected function _is_available($params, $ts, $te)
+	{
+		$items = $this->rooms->get_possible_conflict($params);
+
+		// Convert to standard format
+		$params['date_reserved'] = date('Y-m-d', strtotime($params['date_reserved']));
+
+		// Convert to standard format
+		$new_datetime_start = DateTime::createFromFormat('Y-m-d H:i:s', $params['date_reserved'] . ' ' . $ts);
+		$new_datetime_end   = DateTime::createFromFormat('Y-m-d H:i:s', $params['date_reserved'] . ' ' . $te);
+
+		foreach ($items as $row) 
+		{
+			$datetime_start = DateTime::createFromFormat('Y-m-d H:i:s', $row->date_reserved . ' ' . $row->time_start);
+			$datetime_end   = DateTime::createFromFormat('Y-m-d H:i:s', $row->date_reserved . ' ' . $row->time_end);
+
+			if (($new_datetime_start >= $datetime_start && $new_datetime_start <= $datetime_end) 
+				|| ($new_datetime_end >= $datetime_start && $new_datetime_end <= $datetime_end)
+				|| ($datetime_start >= $new_datetime_start && $datetime_start <= $new_datetime_end)
+				|| ($datetime_end >= $new_datetime_start && $datetime_end <= $new_datetime_end))
+			{
+				return false;
+			}
+		}
+
+		return true;
+	}
+
 	public function display_approved_request()
 	{
 		$this->_redirect_unauthorized();
@@ -510,7 +539,7 @@ class Admin extends CI_Controller {
 			$mail->addCC($this->session->userdata('email'));
 			$mail->addCC($this->session->userdata('supervisor_email'));
 		}*/
-		$data['mail']   = $mail;
+		$data['mail']   = $mail ? $mail : '';
 		$data['item']   = $params['item'];
 		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
 
