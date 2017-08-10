@@ -141,6 +141,7 @@ class Requestor extends CI_Controller {
 			$data['item']   = $params['item'];
 			$data['link']	= base_url('index.php/admin/read_approval_link/' . $params['item']['id'] . '/' . $user->employee_id);
 			$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
+			$data['mail']   = $mail ? $mail : '';
 
 			$mail->Body = $this->load->view('email/notification', $data, true);
 
@@ -456,9 +457,6 @@ class Requestor extends CI_Controller {
 			$mail->addCC($this->session->userdata('email'));
 			$mail->addCC($this->session->userdata('supervisor_email'));
 			$mail->addCC('jerome-fabricante@isuzuphil.com');
-		}
-
-		$data['mail']   = $mail;
 		$data['mail']   = $mail ? $mail : '';
 		$data['item']   = $params['item'];
 		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';

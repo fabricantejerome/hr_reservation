@@ -178,6 +178,7 @@
 		table, th, td {
 		   border: 1px solid black;
 		   padding: 5px;
+		   text-align: center
 		}
 
 		p {
@@ -188,10 +189,12 @@
 <body>
 	<main class="container">
 		<p>
-			<strong>From: </strong><?php echo $mail->From; ?> <br />
-			<strong>To: </strong><?php echo rtrim(implode(', ', array_flatten($mail->getToAddresses(), array())), ', ') ; ?><br />
-			<?php if (count($mail->getCcAddresses())): ?>
-				<strong>CC: <?php echo rtrim(implode(', ', array_flatten($mail->getCcAddresses(), array())), ', ') ; ?></strong>
+			<?php if (isset($mail)): ?>
+				<strong>From: </strong><?php echo $mail->From; ?> <br />
+				<strong>To: </strong><?php echo rtrim(implode(', ', array_flatten($mail->getToAddresses(), array())), ', ') ; ?><br />
+			<?php endif; ?>
+			<?php if (isset($mail) && count($mail->getCcAddresses())): ?>
+				<strong>Cc: <?php echo rtrim(implode(', ', array_flatten($mail->getCcAddresses(), array())), ', ') ; ?></strong>
 			<?php endif; ?>
 		</p>
 
@@ -210,6 +213,8 @@
 					<tr>
 						<th>Room</th>
 						<th>Purpose</th>
+						<th>Capacity</th>
+						<th>Floor</th>
 						<th>Date</th>
 						<th>Time Start</th>
 						<th>Time End</th>
@@ -232,6 +237,12 @@
 						<?php endif; ?>
 						<?php if(isset($item['purpose'])): ?>
 							<td><?php echo $item['purpose'] ?></td>
+						<?php endif; ?>
+						<?php if(isset($item['capacity'])): ?>
+							<td><?php echo $item['capacity'] ?></td>
+						<?php endif; ?>
+						<?php if(isset($item['floor'])): ?>
+							<td><?php echo $item['floor'] ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['date_reserved'])): ?>
 							<td><?php echo date('m/d/Y', strtotime($item['date_reserved'])); ?></td>
