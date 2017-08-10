@@ -2,7 +2,7 @@
 defined('BASEPATH') OR exit('No direct script access allowed');
 
 /**
- * Array helper that converts multidimensional array to linear 
+ * Array helper that converts multidimentional array to linear 
  *
  */
 if ( ! function_exists('array_flatten'))
@@ -26,4 +26,3 @@ if ( ! function_exists('array_flatten'))
 		return $return;
 	}
 }
-
