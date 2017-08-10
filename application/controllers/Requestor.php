@@ -61,6 +61,8 @@ class Requestor extends CI_Controller {
 
 	public function reservation_submit()
 	{
+		ini_set('memory_limit', '-1');
+		ini_set('max_execution_time', 3600);
 
 		$current_date  = date('Y/m/d H:i:s');
 		$date_reserved = date('Y/m/d', strtotime($this->input->post('date_reserved')));
