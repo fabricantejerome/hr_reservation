@@ -119,4 +119,25 @@ class Ipc_model extends CI_Model {
 		return $query->row_array();
 	}
 
+	public function fetch_admin_users()
+	{
+		$fields = array(
+				'a.employee_id',
+				'b.email'
+			);
+
+		$clause = array(
+				'user_type_id' => 2,
+				'system_id'    => 29
+			);
+
+		$query = $this->db->select($fields)
+				->from('user_access_tab AS a')
+				->join('email_tab AS b', 'a.employee_id = b.employee_id', 'INNER')
+				->where($clause)
+				->get();
+
+		return $query->result();
+	}
+
 }
