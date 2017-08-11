@@ -95,18 +95,5 @@
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("select").select2({ width: 'resolve' });
-
-		$('#btn-submit').on('click', function(e) {
-			var $selectedTags   = $("#myTags").tagit("assignedTags");
-			var $selectedInputs = $('#selected-tags');	
-
-			$selectedTags = $selectedTags.join(', ');
-
-			console.log($selectedTags);
-
-			$selectedInputs.val($selectedTags);
-
-			$(this).submit();
-		});
 	});
 </script>
