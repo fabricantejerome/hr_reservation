@@ -50,7 +50,5 @@
 			<?php $this->load->view('include/footer.php'); ?>
 			<?php $this->load->view('include/control-sidebar.php'); ?>
 		</div>
-	
-	
 	</body>
 </html>
