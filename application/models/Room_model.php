@@ -28,6 +28,13 @@ class Room_model extends CI_Model {
 		return $query->row_array();
 	}
 
+	public function ajax_browse()
+	{
+		$query = $this->db->get('room_tbl');
+
+		return $query->result_array();
+	}
+
 	public function store()
 	{
 		$data = array(
@@ -76,7 +83,8 @@ class Room_model extends CI_Model {
 		}
 	}
 
-	public function get_possible_conflict($params)
+	// Pass only room_id and date reserved as an elment of array
+	public function get_possible_conflict(array $params)
 	{
 		$fields = array(
 				'date_reserved',
