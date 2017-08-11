@@ -42,7 +42,8 @@ class Room_model extends CI_Model {
 				'capacity'    => $this->input->post('capacity'),
 				'description' => $this->input->post('description'),
 				'available'   => $this->input->post('available') ? 1 : 0,
-				'floor'       => $this->input->post('floor')
+				'floor'       => $this->input->post('floor'),
+				'tags'        => $this->input->post('tags') ? $this->input->post('tags') : '', 
 			);
 
 		$id = $this->input->post('id');
