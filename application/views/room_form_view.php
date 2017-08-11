@@ -11,26 +11,27 @@
 <script src="<?php echo base_url('resources/plugins/tags/js/tag-it.min.js'); ?>"></script>
 
 <script>
-
 	$(function() {
 		var available_tags;
 		var appUrl = "<?php echo base_url('index.php/admin/ajax_browse_rooms'); ?>";
 
 		$.ajax({
 			url: appUrl,
+
 			success: function(data) {
 				available_tags = JSON.parse(data);
 
 				$('#myTags').tagit({
 					availableTags: available_tags,
 					beforeTagAdded: function(evt, ui) {
-				        if ($.inArray(ui.tagLabel, available_tags) < 0)
-				        {
-				        	return false
-				        }
+
+						if ($.inArray(ui.tagLabel, available_tags) < 0)
+						{
+							return false
+						}
 					},
 				});
-			}
+			},
 		});
 	});
 </script>
