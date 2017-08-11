@@ -77,8 +77,7 @@
 
 						<div class="form-group">
 							<label for="tags">Combine Rooms</label>
-							<input type="text" name="selected-tags" id="selected-tags" class="hidden">
-							<ul id="myTags"></ul>
+							<input name="tags" id="myTags" class="form-control"></ul>
 						</div>
 
 						<div class="form-group">
