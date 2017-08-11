@@ -49,6 +49,11 @@ class Admin extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	public function ajax_browse_rooms()
+	{
+		echo json_encode(array_column($this->rooms->ajax_browse(), 'room_name'));
+	}
+
 	public function room_form()
 	{
 		$this->_redirect_unauthorized();
