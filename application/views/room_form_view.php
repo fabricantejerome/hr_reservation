@@ -82,8 +82,8 @@
 						</div>
 
 						<div class="form-group">
-							<label for="tags">Combine Rooms</label>
-							<input name="tags" id="myTags" class="form-control"></ul>
+							<label for="tags">Associated Room(s)</label>
+							<input name="tags" id="myTags" class="form-control" value="<?php echo isset($room['tags']) ? $room['tags'] : ''; ?>"></ul>
 						</div>
 
 						<div class="form-group">
