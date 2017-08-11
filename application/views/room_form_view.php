@@ -76,7 +76,13 @@
 						</div>
 
 						<div class="form-group">
-							<input type="submit" value="Submit" class="btn btn-flat btn-danger">
+							<label for="tags">Combine Rooms</label>
+							<input type="text" name="selected-tags" id="selected-tags" class="hidden">
+							<ul id="myTags"></ul>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" value="Submit" class="btn btn-flat btn-danger" id="btn-submit">
 						</div>
 					</form><!-- End Form -->
 				</div>
