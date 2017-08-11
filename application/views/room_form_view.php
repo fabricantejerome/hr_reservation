@@ -20,10 +20,15 @@
 			url: appUrl,
 			success: function(data) {
 				available_tags = JSON.parse(data);
-				console.log(available_tags);
 
 				$('#myTags').tagit({
 					availableTags: available_tags,
+					beforeTagAdded: function(evt, ui) {
+				        if ($.inArray(ui.tagLabel, available_tags) < 0)
+				        {
+				        	return false
+				        }
+					},
 				});
 			}
 		});
