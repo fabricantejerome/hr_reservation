@@ -2,6 +2,34 @@
 	//var_dump($room);
 ?>
 <link href="<?php echo base_url('resources/plugins/select2/css/select2.min.css') ?>" rel="stylesheet" >
+
+<!-- Tags resources -->
+<link href="<?php echo base_url('resources/plugins/tags/css/jquery.tagit.css') ?>" rel="stylesheet" >
+<link href="<?php echo base_url('resources/plugins/tags/css/tagit.ui-zendesk.css') ?>" rel="stylesheet" >
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo base_url('resources/plugins/tags/js/tag-it.min.js'); ?>"></script>
+
+<script>
+
+	$(function() {
+		var available_tags;
+		var appUrl = "<?php echo base_url('index.php/admin/ajax_browse_rooms'); ?>";
+
+		$.ajax({
+			url: appUrl,
+			success: function(data) {
+				available_tags = JSON.parse(data);
+				console.log(available_tags);
+
+				$('#myTags').tagit({
+					availableTags: available_tags,
+				});
+			}
+		});
+	});
+</script>
+
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-3">
