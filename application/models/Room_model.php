@@ -142,7 +142,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		$query = $this->db->select($fields)
@@ -170,7 +171,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id == 0)
@@ -222,7 +224,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id > 0) {
@@ -267,7 +270,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id == 0)
@@ -315,7 +319,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		$query = $this->db->select($fields)
@@ -346,7 +351,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id > 0)
@@ -391,7 +397,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id == 0)
@@ -435,7 +442,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id > 0)
@@ -478,7 +486,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id == 0)
@@ -522,7 +531,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id > 0)
