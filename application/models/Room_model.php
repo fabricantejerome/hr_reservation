@@ -21,6 +21,22 @@ class Room_model extends CI_Model {
 		return $query->result();
 	}
 
+	/** Tags are based on actual room name items 
+	 *  Note: It is case sensitive
+	 */
+	public function fetch_id_by_tags(array $params)
+	{	
+		if (count($params) > 0)
+		{
+			$query = $this->db->select('id')
+					->from('room_tbl')
+					->where_in('room_name', $params)
+					->get();
+
+			return $query->result_array();
+		}
+	}
+
 	public function read($id)
 	{
 		$query = $this->db->get_where('room_tbl', array('id' => $id));
