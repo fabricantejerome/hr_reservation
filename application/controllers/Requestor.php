@@ -207,11 +207,11 @@ class Requestor extends CI_Controller {
 		$current_date = date('Y/m/d');
 
 		$config = array(
-				'room_id'          => $id,
-				'date_reserved >=' => $current_date
+				'room_ids'      => $this->_get_associated_ids($id),
+				'date_reserved' => $current_date
 			);
 
-		$items = $this->rooms->get_taken_slot($config);
+		$items = $this->rooms->fetch_taken_slot($config);
 
 		$config = array();
 
