@@ -198,6 +198,38 @@ class Room_model extends CI_Model {
 		return $query->result();
 	}
 
+	public function fetch_taken_slot($params)
+	{
+		$fields = array(
+				'a.id',
+				'a.room_res_id',
+				'a.approved_datetime',
+				'a.user_id AS approver_id',
+				'b.date_reserved',
+				'b.purpose',
+				'b.time_start',
+				'b.time_end',
+				'b.user_id',
+				'd.room_no',
+				'd.room_name',
+				'd.capacity',
+				'd.floor',
+				'd.tags'
+			);
+
+		$query = $this->db->select($fields)
+				->from('approved_res_tbl AS a')
+				->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+				->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
+				->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
+				->where('f.room_res_id IS NULL')
+				->where_in('room_id', $params['room_ids'])
+				->where('date_reserved >=', $params['date_reserved'])
+				->get();
+
+		return $query->result();
+	}
+
 	public function get_pending_request($id = 0)
 	{
 		$fields = array(
