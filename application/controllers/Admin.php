@@ -213,7 +213,7 @@ class Admin extends CI_Controller {
 		$pending = $this->rooms->read_pending_request($room_res_id);
 		
 		$params = array(
-				'room_id'       => $pending['room_id'],
+				'room_ids'      => $this->_get_associated_ids($pending['room_id']),
 				'date_reserved' => $pending['date_reserved']
 			);
 
@@ -265,7 +265,7 @@ class Admin extends CI_Controller {
 	// Return true if available
 	protected function _is_available($params, $ts, $te)
 	{
-		$items = $this->rooms->get_possible_conflict($params);
+		$items = $this->rooms->fetch_possible_conflict($params);
 
 		// Convert to standard format
 		$params['date_reserved'] = date('Y-m-d', strtotime($params['date_reserved']));
