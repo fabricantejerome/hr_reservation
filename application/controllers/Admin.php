@@ -291,6 +291,20 @@ class Admin extends CI_Controller {
 		return true;
 	}
 
+	// Get the room id of associated rooms
+	protected function _get_associated_ids($rid)
+	{
+		$entity = $this->rooms->read($rid);
+
+		$tags = explode(',', $entity['tags']);
+
+		$room_ids = $this->rooms->fetch_id_by_tags($tags) ? array_column($this->rooms->fetch_id_by_tags($tags), 'id') : array();
+
+		array_unshift($room_ids, $entity['id']);
+
+		return $room_ids;
+	}
+
 	public function display_approved_request()
 	{
 		$this->_redirect_unauthorized();
