@@ -21,7 +21,7 @@ class Room_model extends CI_Model {
 		return $query->result();
 	}
 
-	/** Tags are based on actual room name items 
+	/** Tags are based on actual room names
 	 *  Note: It is case sensitive
 	 */
 	public function fetch_id_by_tags(array $params)
