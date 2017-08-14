@@ -191,10 +191,10 @@
 		<p>
 			<?php if (isset($mail)): ?>
 				<strong>From: </strong><?php echo $mail->From; ?> <br />
-				<strong>To: </strong><?php echo rtrim(implode(', ', array_flatten($mail->getToAddresses(), array())), ', ') ; ?><br />
+				<strong>To: </strong><?php echo rtrim(implode('; ', array_flatten($mail->getToAddresses(), array())), '; ') ; ?><br />
 			<?php endif; ?>
 			<?php if (isset($mail) && count($mail->getCcAddresses())): ?>
-				<strong>Cc: <?php echo rtrim(implode(', ', array_flatten($mail->getCcAddresses(), array())), ', ') ; ?></strong>
+				<strong>Cc: <?php echo rtrim(implode('; ', array_flatten($mail->getCcAddresses(), array())), '; ') ; ?></strong>
 			<?php endif; ?>
 		</p>
 
