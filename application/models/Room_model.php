@@ -21,11 +21,34 @@ class Room_model extends CI_Model {
 		return $query->result();
 	}
 
+	/** Tags are based on actual room name items 
+	 *  Note: It is case sensitive
+	 */
+	public function fetch_id_by_tags(array $params)
+	{	
+		if (count($params) > 0)
+		{
+			$query = $this->db->select('id')
+					->from('room_tbl')
+					->where_in('room_name', $params)
+					->get();
+
+			return $query->result_array();
+		}
+	}
+
 	public function read($id)
 	{
 		$query = $this->db->get_where('room_tbl', array('id' => $id));
 
 		return $query->row_array();
+	}
+
+	public function ajax_browse()
+	{
+		$query = $this->db->get('room_tbl');
+
+		return $query->result_array();
 	}
 
 	public function store()
@@ -35,7 +58,8 @@ class Room_model extends CI_Model {
 				'capacity'    => $this->input->post('capacity'),
 				'description' => $this->input->post('description'),
 				'available'   => $this->input->post('available') ? 1 : 0,
-				'floor'       => $this->input->post('floor')
+				'floor'       => $this->input->post('floor'),
+				'tags'        => $this->input->post('tags') ? $this->input->post('tags') : '', 
 			);
 
 		$id = $this->input->post('id');
@@ -76,7 +100,8 @@ class Room_model extends CI_Model {
 		}
 	}
 
-	public function get_possible_conflict($params)
+	// Pass only room_id and date reserved as an elment of array
+	public function get_possible_conflict(array $params)
 	{
 		$fields = array(
 				'date_reserved',
@@ -133,7 +158,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		$query = $this->db->select($fields)
@@ -161,7 +187,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id == 0)
@@ -213,7 +240,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id > 0) {
@@ -258,7 +286,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id == 0)
@@ -306,7 +335,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		$query = $this->db->select($fields)
@@ -337,7 +367,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id > 0)
@@ -382,7 +413,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id == 0)
@@ -426,7 +458,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id > 0)
@@ -469,7 +502,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id == 0)
@@ -513,7 +547,8 @@ class Room_model extends CI_Model {
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
-				'd.floor'
+				'd.floor',
+				'd.tags'
 			);
 
 		if ($id > 0)

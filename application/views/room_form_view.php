@@ -2,6 +2,40 @@
 	//var_dump($room);
 ?>
 <link href="<?php echo base_url('resources/plugins/select2/css/select2.min.css') ?>" rel="stylesheet" >
+
+<!-- Tags resources -->
+<link href="<?php echo base_url('resources/plugins/tags/css/jquery.tagit.css') ?>" rel="stylesheet" >
+<link href="<?php echo base_url('resources/plugins/tags/css/tagit.ui-zendesk.css') ?>" rel="stylesheet" >
+<script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo base_url('resources/plugins/tags/js/tag-it.min.js'); ?>"></script>
+
+<script>
+	$(function() {
+		var available_tags;
+		var appUrl = "<?php echo base_url('index.php/admin/ajax_browse_rooms'); ?>";
+
+		$.ajax({
+			url: appUrl,
+
+			success: function(data) {
+				available_tags = JSON.parse(data);
+
+				$('#myTags').tagit({
+					availableTags: available_tags,
+					beforeTagAdded: function(evt, ui) {
+
+						if ($.inArray(ui.tagLabel, available_tags) < 0)
+						{
+							return false
+						}
+					},
+				});
+			},
+		});
+	});
+</script>
+
 <section class="content rooms">
 	<div class="row">
 		<div class="col-md-3">
@@ -48,7 +82,12 @@
 						</div>
 
 						<div class="form-group">
-							<input type="submit" value="Submit" class="btn btn-flat btn-danger">
+							<label for="tags">Associated Room(s)</label>
+							<input name="tags" id="myTags" class="form-control" value="<?php echo isset($room['tags']) ? $room['tags'] : ''; ?>"></ul>
+						</div>
+
+						<div class="form-group">
+							<input type="submit" value="Submit" class="btn btn-flat btn-danger" id="btn-submit">
 						</div>
 					</form><!-- End Form -->
 				</div>
@@ -57,6 +96,7 @@
 	</div>
 </section>
 <script src="<?php echo base_url('resources/plugins/select2/js/select2.min.js');?>"></script>
+
 <script type="text/javascript">
 	$(document).ready(function() {
 		$("select").select2({ width: 'resolve' });
