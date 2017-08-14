@@ -71,7 +71,7 @@ class Requestor extends CI_Controller {
 		$time_end      = date('H:i:s', strtotime($this->input->post('time_end')));
 
 		$params = array(
-				'room_id'       => $room_id,
+				'room_ids'      => $this->_get_associated_ids($room_id),
 				'date_reserved' => $date_reserved
 			);
 
