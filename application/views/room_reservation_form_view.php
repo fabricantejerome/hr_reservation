@@ -69,11 +69,13 @@
 				<table id="room_tbl" class="table table-condensed table-striped table-bordered" >
 					<thead>
 						<tr>
+							<th>Room</th>
 							<th>Purpose</th>
+							<th>Capacity</th>
 							<th>Date Reserved</th>
-							<th>Time Start</th>
-							<th>Time End</th>
+							<th>Time</th>
 							<th>Reserved by</th>
+							<th>Section</th>
 							<th>Approved by</th>
 						</tr>
 					</thead>
@@ -195,13 +197,15 @@
 
 						for (item of data)
 						{
-							markup += '<tr>\n'; 
-							markup += '<td>' + item.purpose + '</td>\n';
-							markup += '<td>' + item.date_reserved + '</td>\n';
-							markup += '<td>' + convertTo12HourFormat(item.time_start) + '</td>\n';
-							markup += '<td>' + convertTo12HourFormat(item.time_end) + '</td>\n';
-							markup += '<td>' + item.fullname + '</td>\n';
-							markup += '<td>' + item.approver + '</td>\n';
+							markup += '<tr>'; 
+							markup += '<td>' + item.room_name + '</td>';
+							markup += '<td>' + item.purpose + '</td>';
+							markup += '<td>' + item.capacity + '</td>';
+							markup += '<td>' + item.date_reserved + '</td>';
+							markup += '<td>' + convertTo12HourFormat(item.time_start) + ' - ' + convertTo12HourFormat(item.time_end) + '</td>';
+							markup += '<td>' + item.fullname + '</td>';
+							markup += '<td>' + item.section + '</td>';
+							markup += '<td>' + item.approver + '</td>';
 							markup += '<tr>';
 						}
 
