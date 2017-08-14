@@ -56,7 +56,7 @@
 						</div>
 
 						<div class="form-group">
-							<input type="submit" value="Submit" class="btn btn-flat btn-danger">
+							<input type="submit" value="Submit" class="btn btn-flat btn-danger" id="btn-submit">
 						</div>
 					</form><!-- End Form -->
 				</div>
@@ -234,6 +234,8 @@
 				e.preventDefault();
 				alert('End Time must be greater than start time.');
 			}
+
+			$('#btn-submit').attr("disabled", true);
 		
 		});
 
