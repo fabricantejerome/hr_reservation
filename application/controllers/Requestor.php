@@ -227,11 +227,13 @@ class Requestor extends CI_Controller {
 					'approver_id'       => $row->approver_id,
 					'date_reserved'     => $row->date_reserved,
 					'purpose'           => $row->purpose,
+					'capacity'          => $row->capacity,
 					'time_start'        => $row->time_start,
 					'time_end'          => $row->time_end,
 					'user_id'           => $row->user_id,
 					'room_name'         => $row->room_name,
 					'fullname'          => $user['fullname'],
+					'section'           => $user['section_abbrev'],
 					'approver'          => $approver['fullname']
 				);
 		}
