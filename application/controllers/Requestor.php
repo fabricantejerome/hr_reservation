@@ -160,7 +160,7 @@ class Requestor extends CI_Controller {
 	// Return true if available
 	protected function _is_available($params, $ts, $te)
 	{
-		$items = $this->rooms->get_possible_conflict($params);
+		$items = $this->rooms->fetch_possible_conflict($params);
 
 		// Convert to standard format
 		$params['date_reserved'] = date('Y-m-d', strtotime($params['date_reserved']));
