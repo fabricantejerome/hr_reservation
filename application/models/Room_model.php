@@ -122,6 +122,30 @@ class Room_model extends CI_Model {
 		return $query->result();
 	}
 
+	// $params arrays of room_ids and date reserved
+	public function fetch_possible_conflict(array $params)
+	{
+		$fields = array(
+				'a.room_res_id',
+				'date_reserved',
+				'time_start',
+				'time_end'
+			);
+
+		$query = $this->db->select($fields)
+				->from('approved_res_tbl AS a')
+				->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
+				->join('disapproved_res_tbl AS c', 'b.id = c.room_res_id', 'LEFT')
+				->join('cancelled_res_tbl AS d', 'b.id = d.room_res_id', 'LEFT')
+				->where('c.room_res_id IS NULL')
+				->where('d.room_res_id IS NULL')
+				->where_in('room_id', $params['room_ids'])
+				->where('date_reserved', $params['date_reserved'])
+				->get();
+
+		return $query->result();
+	}
+
 	public function fetch_block_time($params)
 	{
 		$fields = array(
