@@ -28,20 +28,22 @@
 				<?php $menu =  explode("/", $this->uri->uri_string()); ?>
 				<?php $menu =  end($menu) ?>
 
-				<li class="<?php echo $menu == 'rooms' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/rooms') : base_url('index.php/requestor/rooms'); ?>"><i class="fa fa-table"></i><span>Rooms</span></a></li>
+				<li class="<?php echo $menu == 'rooms' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/rooms') : base_url('index.php/requestor/rooms'); ?>"><i class="fa fa-circle-o"></i><span>Rooms</span></a></li>
 
-				<li class="<?php echo $menu == 'reservation_form' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/reservation_form') : base_url('index.php/requestor/reservation_form') ; ?>"><i class="fa fa-wpforms"></i><span>File Reservation</span></a></li>
+				<li class="<?php echo $menu == 'reservation_form' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/reservation_form') : base_url('index.php/requestor/reservation_form') ; ?>"><i class="fa fa-circle-o"></i><span>File Reservation</span></a></li>
 
-				<li class="<?php echo $menu == 'display_pending_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_pending_request') : base_url('index.php/requestor/display_pending_request'); ?>"><i class="fa fa-wpforms"></i><span>Pending Request</span></a></li>
+				<li class="<?php echo $menu == 'display_pending_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_pending_request') : base_url('index.php/requestor/display_pending_request'); ?>"><i class="fa fa-circle-o"></i><span>Pending Request</span></a></li>
 
-				<li class="<?php echo $menu == 'display_approved_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_approved_request') : base_url('index.php/requestor/display_approved_request'); ?>"><i class="fa fa-wpforms"></i><span>Approved Request</span></a></li>
+				<li class="<?php echo $menu == 'display_approved_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_approved_request') : base_url('index.php/requestor/display_approved_request'); ?>"><i class="fa fa-circle-o"></i><span>Approved Request</span></a></li>
 
-				<li class="<?php echo $menu == 'display_disapproved_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_disapproved_request') : base_url('index.php/requestor/display_disapproved_request'); ?>"><i class="fa fa-wpforms"></i><span>Denied Request</span></a></li>
+				<li class="<?php echo $menu == 'display_disapproved_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_disapproved_request') : base_url('index.php/requestor/display_disapproved_request'); ?>"><i class="fa fa-circle-o"></i><span>Denied Request</span></a></li>
 
-				<li class="<?php echo $menu == 'display_cancelled_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_cancelled_request') : base_url('index.php/requestor/display_cancelled_request'); ?>"><i class="fa fa-wpforms"></i><span>Cancelled Request</span></a></li>
+				<li class="<?php echo $menu == 'display_cancelled_request' ? 'active' : ''; ?>"><a href="<?php echo $this->session->userdata('user_type') == 'admin' ? base_url('index.php/admin/display_cancelled_request') : base_url('index.php/requestor/display_cancelled_request'); ?>"><i class="fa fa-circle-o"></i><span>Cancelled Request</span></a></li>
+				
 				<?php if($this->session->userdata('user_type') == 'admin'): ?>
-				<li class="<?php echo $menu == 'calendar' ? 'active' : ''; ?>"><a href="<?php echo base_url('index.php/admin/calendar'); ?>"><i class="fa fa-wpforms"></i><span>Calendar</span></a></li>
+					<li class="<?php echo $menu == 'calendar' ? 'active' : ''; ?>"><a href="<?php echo base_url('index.php/admin/calendar'); ?>"><i class="fa fa-circle-o"></i><span>Calendar</span></a></li>
 				<?php endif; ?>
+
 				<?php if($this->session->userdata('user_type') == 'admin'): ?>
 					<li class="<?php echo $menu == 'users' ? 'active' : ''; ?> hidden"><a href="<?php echo base_url('index.php/admin/users') ?>"><i class="fa fa-wpforms"></i><span>Users</span></a></li>
 				<?php endif; ?>
