@@ -1,6 +1,11 @@
 <link href="<?php echo base_url('resources/templates/AdminLTE-2.3.5/plugins/fullcalendar/fullcalendar.min.css');?>" rel="stylesheet">
 <link href="<?php echo base_url('resources/templates/AdminLTE-2.3.5/plugins/fullcalendar/fullcalendar.print.css');?>" rel="stylesheet" media="print">
 <link href="<?php echo base_url('resources/plugins/select2/css/select2.min.css') ?>" rel="stylesheet" >
+<style>
+    .box-info {
+        min-height: 350px;
+    }
+</style>
 <!-- Main content -->
 <section class="content calendar">
     <div class="row">
