@@ -342,6 +342,30 @@ class Admin extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	public function ajax_approved_request()
+	{
+		$room_id = $this->uri->segment(3);
+
+		$requests = $this->rooms->fetch_by_room_id($room_id);
+
+		$config = array();
+
+		foreach($requests as $row)
+		{
+			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
+
+			$config[] = array(
+					'title'               => ucwords(strtolower($requestor['fullname'])) . ' / ' . $requestor['section_abbrev'],
+					'start'               => date('D M d Y H:i:s', strtotime($row['date_reserved'] . ' ' . $row['time_start'])),
+					'end'                 => date('D M d Y H:i:s', strtotime($row['date_reserved'] . ' ' . $row['time_end'])),
+					'backgroundColor'     => '#77dd77',
+					'borderColor'         => '#77dd77',
+				);
+		}
+
+		echo json_encode($config);
+	}
+
 	public function display_disapproved_form()
 	{
 		$this->_redirect_unauthorized();
