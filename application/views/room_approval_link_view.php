@@ -67,5 +67,8 @@
 
 		$('#pending-request').DataTable();
 
+		$('.btn-success').on('click', function(e) {
+			$('.btn-success').attr('disabled', 'disabled');
+		});
 	})
 </script>
