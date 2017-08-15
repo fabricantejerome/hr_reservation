@@ -7,7 +7,7 @@
 <link href="<?php echo base_url('resources/plugins/tags/css/jquery.tagit.css') ?>" rel="stylesheet" >
 <link href="<?php echo base_url('resources/plugins/tags/css/tagit.ui-zendesk.css') ?>" rel="stylesheet" >
 <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.10.2/jquery.min.js" type="text/javascript" charset="utf-8"></script>
-<script src="https://ajax.googleapis.com/ajax/libs/jqueryui/1.9.2/jquery-ui.min.js" type="text/javascript" charset="utf-8"></script>
+<script src="<?php echo base_url('resources/templates/AdminLTE-2.3.5/plugins/jQueryUI/jquery-ui.js');?>"></script>
 <script src="<?php echo base_url('resources/plugins/tags/js/tag-it.min.js'); ?>"></script>
 
 <script>
