@@ -198,11 +198,11 @@ body.login-page {
 .btn.btn-flat {
 	color: #333;
 	background: #fff;
-	border: 1px solid #b8d3fe;
+	border: 1px solid #65ccb8;
 }
 
 .btn.btn-flat:hover {
-	background: #b8d3fe;
+	background: #65ccb8;
 	color: #fff;
 }
 
@@ -210,7 +210,7 @@ body.login-page {
 .skin-red .main-header .logo,
 .skin-red .main-header .navbar .sidebar-toggle:hover,
 .skin-red .main-header .logo:hover {
-	background: #b8d3fe;
+	background: #65ccb8;
 	transition: 500ms;
 }
 
@@ -220,7 +220,7 @@ body.login-page {
 
 .skin-red .sidebar-menu > li:hover > a, .skin-red .sidebar-menu > li.active,
 .skin-red .sidebar-menu > li:hover > a, .skin-red .sidebar-menu > li.active > a {
-	border-left-color: #74679c;
+	border-left-color: #65ccb8;
 }
 
 .skin-red .sidebar-menu > li:hover > a, .skin-red .sidebar-menu > li.active > a {
@@ -235,13 +235,13 @@ body.login-page {
 
 td > a,
 td > a:hover {
-	color: #74679c;
+	color: #65ccb8;
 }
 
 .pagination > .active > a, .pagination > .active > a:focus, .pagination > .active > a:hover, .pagination > .active > span, .pagination > .active > span:focus, .pagination > .active > span:hover
 {
-	background: #b8d3fe;
-	border-color: #b8d3fe;
+	background: #65ccb8;
+	border-color: #65ccb8;
 	color: #333;
 }
 
@@ -256,7 +256,7 @@ a:hover {
 }
 
 .box.box-info {
-	border-top-color: #b8d3fe;
+	border-top-color: #65ccb8;
 }
 
 .skin-red .sidebar-form {
