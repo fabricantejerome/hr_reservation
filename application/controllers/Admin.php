@@ -367,7 +367,7 @@ class Admin extends CI_Controller {
 			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
 
 			$config[] = array(
-					'title'           => ucwords(strtolower($requestor['fullname'])) . ' / ' . $requestor['section_abbrev'],
+					'title'           => $row['room_name'] . ' / ' . ucwords(strtolower($requestor['fullname'])) . ' / ' . $requestor['section_abbrev'],
 					'start'           => date('D M d Y H:i:s', strtotime($row['date_reserved'] . ' ' . $row['time_start'])),
 					'end'             => date('D M d Y H:i:s', strtotime($row['date_reserved'] . ' ' . $row['time_end'])),
 					'backgroundColor' => '#77dd77',
