@@ -407,7 +407,7 @@ class Room_model extends CI_Model {
 		return $query->result_array();
 	}
 
-	public function fetch_by_room_id($rid)
+	public function fetch_by_room_id(array $params)
 	{
 		$fields = array(
 				'a.id',
@@ -432,7 +432,7 @@ class Room_model extends CI_Model {
 				->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
 				->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
 				->where('f.room_res_id IS NULL')
-				->where('b.room_id', $rid)
+				->where_in('b.room_id', $params['room_ids'])
 				->get();
 
 		return $query->result_array();
