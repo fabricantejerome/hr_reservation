@@ -304,6 +304,11 @@
 			if ($agree.val() == 0)
 			{
 				e.preventDefault();
+				$('#myModal').modal({
+				    backdrop: 'static',
+				    keyboard: false
+				});
+
 				$('#myModal').modal('show');
 			}
 
