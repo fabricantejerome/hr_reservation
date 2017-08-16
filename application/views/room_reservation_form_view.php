@@ -166,6 +166,7 @@
 <script src="<?php echo base_url('resources/plugins/datepicker/js/bootstrap-datepicker.min.js'); ?>"></script>
 <script src="<?php echo base_url('resources/plugins/select2/js/select2.min.js');?>"></script>
 <script src="<?php echo base_url('resources/plugins/timepicker/jquery.timepicker.min.js');?>"></script>
+<script src="<?php echo base_url('resources/plugins/daterangepicker/moment.js');?>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var $time_start = $('#time_start');
