@@ -300,6 +300,12 @@
 				alert('End Time must be greater than start time.');
 			}
 
+			if ($agree.val() == 0)
+			{
+				e.preventDefault();
+				$('#myModal').modal('show');
+			}
+
 			$('#btn-submit').attr("disabled", true);
 		
 		});
