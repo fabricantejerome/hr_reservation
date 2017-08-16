@@ -95,6 +95,69 @@
 				<h4 class="modal-title">Terms and Conditions</h4>
 			</div>
 
+			<div class="modal-body">
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
+
+				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
+
+				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
+
+				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
+
+				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
+
+				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
+
+				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
+
+				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
+
+				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
+
+				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
+
+				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
+
+				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
+
+				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
+
+				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
+
+				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
+
+				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
+
+				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
+
+				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
+
+				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
+
+				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
+
+				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
+
+				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
+
+				<div class="form-check">
+				    <label class="form-check-label">
+				      <input type="checkbox" class="form-check-input" id="cb-agree">
+				      I Agree
+				    </label>
+				  </div>
+			</div>
+
+			<div class="modal-footer">
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+				<button type="submit" class="btn btn-success" disabled id="modal-submit">Submit</button>
+			</div>
 		</div>
 	</div>
 </div>
