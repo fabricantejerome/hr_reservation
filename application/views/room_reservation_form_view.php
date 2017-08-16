@@ -1,6 +1,3 @@
-<?php 
-	//var_dump($this->session->userdata());
-?>
 <link href="<?php echo base_url('resources/plugins/select2/css/select2.min.css') ?>" rel="stylesheet" >
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('resources/plugins/datepicker/css/bootstrap-datepicker.min.css'); ?>">
 <link rel="stylesheet" type="text/css" href="<?php echo base_url('resources/plugins/timepicker/jquery.timepicker.css'); ?>">
