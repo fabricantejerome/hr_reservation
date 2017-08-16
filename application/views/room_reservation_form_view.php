@@ -155,7 +155,7 @@
 			</div>
 
 			<div class="modal-footer">
-				<button type="button" class="btn btn-default pull-left" data-dismiss="modal">Close</button>
+				<button type="button" class="btn btn-default pull-left" data-dismiss="modal" id="modal-close">Close</button>
 				<button type="submit" class="btn btn-success" disabled id="modal-submit">Submit</button>
 			</div>
 		</div>
