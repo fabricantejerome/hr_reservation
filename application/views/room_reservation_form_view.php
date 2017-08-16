@@ -321,6 +321,11 @@
 			}
 		});
 
+		$modal_submit.on('click', function(){
+			$agree.val(1);
+			$form.submit();
+		});
+
 		function convertToSec(t)
 		{
 			var time = t.split(':');
