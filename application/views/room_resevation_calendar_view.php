@@ -53,37 +53,65 @@
 
 <!-- Calendar Script -->
 <script>
-    $(function () {
-        $("select").select2({ width: 'resolve' });
+	$(function () {
+		$("select").select2({ width: 'resolve' });
 
-        $('#room_id').on('change', function() {
-            var $self = $(this);
+		// Show all the room reservations on calendar
+		$.ajax({
+			type: 'GET',
+			url: '<?php echo base_url('index.php/admin/ajax_approved_request/') ?>',
+			success: function(data)
+			{
+				var response = $.parseJSON(data);
 
-            $.ajax({
-                type: 'GET',
-                url: '<?php echo base_url('index.php/admin/ajax_approved_request/') ?>' + $self.val(),
-                success: function(data)
-                {
-                    var response = $.parseJSON(data);
+				$('#calendar').fullCalendar('removeEvents');
+				$('#calendar').fullCalendar('addEventSource', response);
+				$('#calendar').fullCalendar({
+					header: {
+						left: 'prev,next today',
+						center: 'title',
+						right: 'month,agendaWeek,agendaDay'
+					},
+					buttonText: {
+						today: 'today',
+						month: 'month',
+						week: 'week',
+						day: 'day'
+					},
+					events: response,
+				});
+			}
+		});
 
-                    $('#calendar').fullCalendar('removeEvents');
-                    $('#calendar').fullCalendar('addEventSource', response);
-                    $('#calendar').fullCalendar({
-                        header: {
-                            left: 'prev,next today',
-                            center: 'title',
-                            right: 'month,agendaWeek,agendaDay'
-                        },
-                        buttonText: {
-                            today: 'today',
-                            month: 'month',
-                            week: 'week',
-                            day: 'day'
-                        },
-                        events: response,
-                    }); 
-                }
-            });
-        });
-    });
+		// Show the reservations on selected rooms
+		$('#room_id').on('change', function() {
+			var $self = $(this);
+
+			$.ajax({
+				type: 'GET',
+				url: '<?php echo base_url('index.php/admin/ajax_approved_request/') ?>' + $self.val(),
+				success: function(data)
+				{
+					var response = $.parseJSON(data);
+
+					$('#calendar').fullCalendar('removeEvents');
+					$('#calendar').fullCalendar('addEventSource', response);
+					$('#calendar').fullCalendar({
+						header: {
+							left: 'prev,next today',
+							center: 'title',
+							right: 'month,agendaWeek,agendaDay'
+						},
+						buttonText: {
+							today: 'today',
+							month: 'month',
+							week: 'week',
+							day: 'day'
+						},
+						events: response,
+					});
+				}
+			});
+		});
+	});
 </script>
