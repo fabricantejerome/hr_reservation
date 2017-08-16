@@ -53,7 +53,8 @@ class Requestor extends CI_Controller {
 				'title'   => $id ? 'Update Details' : 'File Reservation',
 				'content' => 'room_reservation_form_view',
 				'rooms'   => $this->rooms->browse(0),
-				'item'    => $id ? $this->rooms->read_pending_request($id) : ''
+				'item'    => $id ? $this->rooms->read_pending_request($id) : '',
+				'agree'   => $this->rooms->exist_agreement()
 			);
 
 		$this->load->view('/include/template', $data);
