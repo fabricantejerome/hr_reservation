@@ -174,6 +174,7 @@
 		var $form         = $('#form');
 		var today         = new Date();
 		var $modal_submit = $('#modal-submit');
+		var $modal_close  = $('#modal-close');
 		var $agree        = $('#agree');
 
 		console.log(today);
