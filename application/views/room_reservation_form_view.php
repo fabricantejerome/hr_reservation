@@ -327,9 +327,15 @@
 			}
 		});
 
+		$modal_close.on('click', function() {
+			$('#btn-submit').attr("disabled", false);
+		})
+
 		$modal_submit.on('click', function(){
 			$agree.val(1);
 			$form.submit();
+			$(this).attr('disabled', true);
+			$modal_close.attr('disabled', true);
 		});
 
 		function convertToSec(t)
