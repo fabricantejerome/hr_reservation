@@ -25,7 +25,7 @@
 							<input type="text" name="capacity" id="capacity" class="form-control" disabled>
 						</div>
 
-						<div claxss="form-group">
+						<div class="form-group">
 							<label for="date_reserved">Reservation Date</label>
 							<div class="input-group date">
 							    <input type="text" class="form-control datepicker" name="date_reserved" id="date_reserved" value="<?php echo isset($item['date_reserved']) ? date('m/d/Y', strtotime($item['date_reserved'])) :  date('m/d/Y'); ?>" required>
