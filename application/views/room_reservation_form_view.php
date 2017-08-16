@@ -292,6 +292,8 @@
 
 		$form.on('submit', function(e) {
 
+			var start_time = convertToSec(moment($time_start.val(), ["h:mma"]).format("HH:mm"));
+			var end_time = convertToSec(moment($time_end.val(), ["h:mma"]).format("HH:mm"));
 
 			if (start_time >= end_time) {
 				e.preventDefault();
