@@ -169,10 +169,12 @@
 <script src="<?php echo base_url('resources/plugins/daterangepicker/moment.js');?>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
-		var $time_start = $('#time_start');
-		var $time_end   = $('#time_end');
-		var $form       = $('#form');
-		var today       = new Date();
+		var $time_start   = $('#time_start');
+		var $time_end     = $('#time_end');
+		var $form         = $('#form');
+		var today         = new Date();
+		var $modal_submit = $('#modal-submit');
+		var $agree        = $('#agree');
 
 		console.log(today);
 
