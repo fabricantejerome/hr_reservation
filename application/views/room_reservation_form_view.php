@@ -292,11 +292,6 @@
 
 		$form.on('submit', function(e) {
 
-			var start_time = convertToSec($time_start.val());
-			var end_time = convertToSec($time_end.val())
-
-			/*$('.modal-content').html('');
-			$('#myModal').modal('show');*/
 
 			if (start_time >= end_time) {
 				e.preventDefault();
