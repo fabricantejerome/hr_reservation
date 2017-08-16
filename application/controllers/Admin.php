@@ -107,7 +107,8 @@ class Admin extends CI_Controller {
 		$data = array(
 				'title'   => 'File Reservation',
 				'content' => 'room_reservation_form_view',
-				'rooms'   => $this->rooms->browse(0)
+				'rooms'   => $this->rooms->browse(0),
+				'agree'   => $this->rooms->exist_agreement()
 			);
 
 		$this->load->view('/include/template', $data);
