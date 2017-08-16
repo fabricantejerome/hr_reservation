@@ -655,6 +655,18 @@ class Room_model extends CI_Model {
 		}
 	}
 
+	public function store_agreement()
+	{
+		$user_id = $this->session->userdata('id');
+
+		if (!$this->exist_agreement())
+		{
+			$this->db->insert('agreement_tbl', array('user_id' => $user_id));
+		}
+
+		return $this;
+	}
+
 	public function exist_agreement()
 	{
 		$query = $this->db->get_where('agreement_tbl', array('user_id' => $this->session->userdata('id')));
