@@ -651,6 +651,17 @@ class Admin extends CI_Controller {
 		}
 	}
 
+	public function calendar()
+	{
+		$data = array(
+				'title'   => 'Calendar Report',
+				'content' => 'room_resevation_calendar_view',
+				'rooms'   => $this->rooms->browse(0)
+			);
+
+		$this->load->view('include/template', $data);
+	}
+
 	// Calculate date difference
 	protected function _date_diff($s, $e)
 	{
