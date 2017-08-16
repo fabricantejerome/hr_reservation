@@ -310,6 +310,17 @@
 		
 		});
 
+		$('#cb-agree').on('click', function() {
+			if ($(this).is(':checked'))
+			{
+				$modal_submit.removeAttr('disabled');
+			}
+			else
+			{
+				$modal_submit.attr('disabled', true);
+			}
+		});
+
 		function convertToSec(t)
 		{
 			var time = t.split(':');
