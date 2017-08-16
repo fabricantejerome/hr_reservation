@@ -654,4 +654,11 @@ class Room_model extends CI_Model {
 			return $query->row_array();
 		}
 	}
+
+	public function exist_agreement()
+	{
+		$query = $this->db->get_where('agreement_tbl', array('user_id' => $this->session->userdata('id')));
+
+		return $query->num_rows();
+	}
 }
