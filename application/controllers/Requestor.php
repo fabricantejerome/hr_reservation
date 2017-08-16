@@ -125,7 +125,7 @@ class Requestor extends CI_Controller {
 			$this->session->set_flashdata('error_message', '<span class="col-sm-12 alert alert-error">There was a conflict on your reservation!</span>');
 		}
 
-		redirect(base_url('index.php/requestor/reservation_form'));
+		redirect($this->agent->referrer());
 	}
 
 	protected function _send_approval_link($params)
