@@ -345,12 +345,20 @@ class Admin extends CI_Controller {
 	public function ajax_approved_request()
 	{
 		$room_id = $this->uri->segment(3);
+		$requests = array();
 
-		$ids = $this->_get_associated_ids($room_id);
+		if (is_null($room_id))
+		{
+			$requests = $this->rooms->get_approved_request();
+		}
+		else
+		{
+			$ids = $this->_get_associated_ids($room_id);
 
-		$params['room_ids'] = $ids;
+			$params['room_ids'] = $ids;
 
-		$requests = $this->rooms->fetch_by_room_id($params);
+			$requests = $this->rooms->fetch_by_room_id($params);
+		}
 
 		$config = array();
 
