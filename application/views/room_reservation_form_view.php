@@ -50,6 +50,8 @@
 							<textarea class="form-control" id="purpose" name="purpose" rows="3" required><?php echo isset($item['purpose']) ? $item['purpose'] : ''; ?></textarea>
 
 							<input type="text" name="id" id="id" class="hidden" value="<?php echo isset($item['id']) ? $item['id'] : 0; ?>" required>
+
+							<input type="text" name="agree" id="agree" class="hidden" value="<?php echo $agree ?>" >
 						</div>
 
 						<div class="form-group">
