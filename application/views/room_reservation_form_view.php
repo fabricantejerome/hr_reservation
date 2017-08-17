@@ -167,6 +167,7 @@
 <script src="<?php echo base_url('resources/plugins/select2/js/select2.min.js');?>"></script>
 <script src="<?php echo base_url('resources/plugins/timepicker/jquery.timepicker.min.js');?>"></script>
 <script src="<?php echo base_url('resources/plugins/daterangepicker/moment.js');?>"></script>
+<script src="<?php echo base_url('resources/js/lodash/lodash.js');?>"></script>
 <script type="text/javascript">
 	$(document).ready(function() {
 		var $time_start   = $('#time_start');
@@ -272,9 +273,9 @@
 							markup += '<td>' + item.capacity + '</td>';
 							markup += '<td>' + item.date_reserved + '</td>';
 							markup += '<td>' + convertTo12HourFormat(item.time_start) + ' - ' + convertTo12HourFormat(item.time_end) + '</td>';
-							markup += '<td>' + item.fullname + '</td>';
+							markup += '<td>' + _.chain(item.fullname).toLower().startCase() + '</td>';
 							markup += '<td>' + item.section + '</td>';
-							markup += '<td>' + item.approver + '</td>';
+							markup += '<td>' + _.chain(item.approver).toLower().startCase() + '</td>';
 							markup += '<tr>';
 						}
 
