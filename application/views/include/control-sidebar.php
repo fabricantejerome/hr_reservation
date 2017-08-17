@@ -15,7 +15,7 @@
 					Name
 				</label>
 				<p>
-					Christopher Desiderio
+					<?php echo $this->session->userdata('fullname'); ?>
 				</p>
 			</div><!-- /.form-group -->
 		</div><!-- /.tab-pane -->
