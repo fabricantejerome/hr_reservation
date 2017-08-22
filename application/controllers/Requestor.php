@@ -10,8 +10,6 @@ class Requestor extends CI_Controller {
 		// Load library
 		$this->load->library('session');
 
-		$this->_redirect_unauthorized();
-
 		// Set the timezone
 		date_default_timezone_set('Asia/Manila');
 
@@ -36,6 +34,8 @@ class Requestor extends CI_Controller {
 
 	public function rooms() 
 	{
+		$this->_redirect_unauthorized();
+
 		$data = array(
 			'title'   => 'List of Rooms',
 			'content' => 'rooms_view',
@@ -47,6 +47,8 @@ class Requestor extends CI_Controller {
 
 	public function reservation_form()
 	{
+		$this->_redirect_unauthorized();
+
 		$id = $this->uri->segment(3) ? $this->uri->segment(3) : '';
 
 		$data = array(
@@ -291,6 +293,8 @@ class Requestor extends CI_Controller {
 
 	public function display_pending_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$user_id = $this->session->userdata('id');
 		$rooms   = $this->rooms->get_pending_request($user_id);
 
@@ -326,6 +330,8 @@ class Requestor extends CI_Controller {
 
 	public function display_approved_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$user_id = $this->session->userdata('id');
 
 		$requests = $this->rooms->get_approved_request($user_id);
@@ -363,6 +369,8 @@ class Requestor extends CI_Controller {
 
 	public function display_disapproved_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$user_id = $this->session->userdata('id');
 
 		$requests = $this->rooms->get_disapproved_request($user_id);
@@ -401,6 +409,8 @@ class Requestor extends CI_Controller {
 
 	public function display_cancelled_request()
 	{
+		$this->_redirect_unauthorized();
+
 		$user_id = $this->session->userdata('id');
 
 		$requests = $this->rooms->get_cancelled_request($user_id);
