@@ -660,7 +660,36 @@ class Admin extends CI_Controller {
 						);
 
 				$this->send_mail($config);
+				$this->_send_cancel_link($config);
 			}
+		}
+	}
+
+	protected function _send_cancel_link($params)
+	{
+		$this->load->library('emailerphp');
+		$this->load->helper('array_flatten');
+
+		$mail = new EmailerPHP;
+
+		$mail->Subject = $params['subject'];
+		$mail->addAddress($params['email']);
+
+		$data['item']   = $params['item'];
+		$data['link']   = base_url('index.php/requestor/read_cancellation_link/' . $params['item']['room_res_id'] . '/' . $params['item']['user_id']);
+		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
+		$data['mail']   = $mail ? $mail : '';
+
+		$mail->Body = $this->load->view('email/notification', $data, true);
+
+		if(!$mail->send())
+		{
+		    echo 'Message could not be sent.';
+		    echo 'Mailer Error: ' . $mail->ErrorInfo;
+		}
+		else
+		{
+		    echo 'Message has been sent';
 		}
 	}
 
