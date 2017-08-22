@@ -84,6 +84,7 @@
 						day: 'day'
 					},
 					events: response,
+					displayEventEnd: true
 				});
 			}
 		});
