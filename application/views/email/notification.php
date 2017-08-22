@@ -103,9 +103,18 @@
 			</table><!-- End of table -->
 		</div>
 		
-		<?php if (isset($link)): ?>
+		<?php if (isset($link) && $item['subject'] == 'Request Room Reservation'): ?>
 			<p>
 				<b>Approval link:</b>  < <a href="<?php echo $link; ?>">Click this to approve the request</a> > <br />
+			
+				* If the above link won't work, please copy and paste the link below on your browsers address bar * <br />
+				<?php echo $link ?>
+			</p>
+		<?php endif; ?>
+
+		<?php if (isset($link) && $item['subject'] == 'Reminder'): ?>
+			<p>
+				<b>Cancellation link:</b>  < <a href="<?php echo $link; ?>">Click this to cancel the reservation</a> > <br />
 			
 				* If the above link won't work, please copy and paste the link below on your browsers address bar * <br />
 				<?php echo $link ?>
