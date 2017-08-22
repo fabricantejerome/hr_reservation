@@ -502,4 +502,32 @@ class Requestor extends CI_Controller {
 		    echo 'Message has been sent';
 		}
 	}
+
+	public function read_cancellation_link()
+	{
+		$approve_id = $this->uri->segment(3);
+		$uid        = $this->uri->segment(4);
+		$entity     = $this->rooms->read_approved_request($approve_id);
+
+		if (is_array($entity))
+		{
+			$info    = $this->ipc->fetch_personal_info(array('id'  => $entity['user_id']));
+			$approver = $this->ipc->fetch_personal_info(array('id' => $entity['approver_id']));
+			$entity['fullname'] = $info['fullname'];
+			$entity['section']  = $info['section_abbrev'];
+			$entity['approver'] = $approver['fullname'];
+		}
+
+		$this->_grant_privilege($uid);
+		$this->_redirect_unauthorized();
+
+		$data = array(
+				'title'   => is_array($entity) ? 'Cancel Reservation' : 'Reservation has been cancelled',
+				'content' => 'room_cancellation_link_view',
+				'row'     => $entity
+			);
+		
+		$this->load->view('include/template', $data);
+	}
+
 }
