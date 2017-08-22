@@ -114,7 +114,7 @@
 
 	</main>
 
-	<p>/* If you have any questions, please contact HRS Department. */</p>
+	<p>/* If you have any questions, please contact HRS. */</p>
 	
 </body>
 </html>
