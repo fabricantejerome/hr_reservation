@@ -335,7 +335,7 @@
 			$('#btn-submit').attr("disabled", false);
 		})
 
-		$modal_submit.on('click', function(){
+		$modal_submit.on('click', function() {
 			$agree.val(1);
 			$form.submit();
 			$(this).attr('disabled', true);
@@ -350,11 +350,10 @@
 		}
 
 		function convertTo12HourFormat(t) {
-			var time = t.split(':');
-
-			var h = time[0] % 12;
-
+			var time   = t.split(':');
+			var h      = time[0] % 12;
 			var format = '';
+
 			if (time[0] == 12)
 			{
 				format = time[0] + ':' +  time[1] + ' ' + 'PM';
