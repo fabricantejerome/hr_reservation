@@ -114,6 +114,54 @@ class Admin extends CI_Controller {
 		$this->load->view('/include/template', $data);
 	}
 
+	public function reservation_submit()
+	{
+		$current_date  = date('Y/m/d H:i:s');
+		$date_reserved = date('Y/m/d', strtotime($this->input->post('date_reserved')));
+		$room_id       = $this->input->post('room_id');
+		$time_start    = date('H:i:s', strtotime($this->input->post('time_start')));
+		$time_end      = date('H:i:s', strtotime($this->input->post('time_end')));
+
+		$params = array(
+				'room_ids'      => $this->_get_associated_ids($room_id),
+				'date_reserved' => $date_reserved
+			);
+
+		$config = array(
+				'room_id'       => $room_id,
+				'user_id'       => $this->session->userdata('id'),
+				'purpose'       => $this->input->post('purpose'),
+				'date_reserved' => $date_reserved,
+				'time_start'    => $time_start,
+				'time_end'      => $time_end,
+				'date_filed'    => $current_date
+
+			);
+
+		if ($this->_is_available($params, $time_start, $time_end))
+		{
+			$id      = $this->rooms->store_reservation($config);
+			$item    = $this->rooms->read_pending_request($id);
+			$user_id = $this->session->userdata('id');
+
+			$config = array(
+					'room_res_id'       => $item['id'],
+					'approved_datetime' => $current_date,
+					'user_id'           => $user_id
+				);
+
+			$this->rooms->store_approved_request($config);
+
+			$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been filed!</span>');
+		}
+		else 
+		{
+			$this->session->set_flashdata('error_message', '<span class="col-sm-12 alert alert-error">There was a conflict on your reservation!</span>');
+		}
+
+		redirect($this->agent->referrer());
+	}
+
 	public function display_pending_request()
 	{
 		$this->_redirect_unauthorized();
