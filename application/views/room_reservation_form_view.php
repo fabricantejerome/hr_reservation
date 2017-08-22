@@ -247,7 +247,6 @@
 				url: '<?php echo base_url('index.php/requestor/ajax_room_details/') ?>' + $self.val(),
 				success: function(data)
 				{
-					//console.log(data);
 					var data = $.parseJSON(data);
 					$('#capacity').val(data.capacity);
 				}
@@ -256,18 +255,16 @@
 			$.ajax({
 				type: 'GET',
 				url: '<?php echo base_url('index.php/requestor/show_room_reserved/') ;?>' + $self.val(),
-				success: function(data) 
+				success: function(data)
 				{
-					
+
 					if ($.isEmptyObject(data))
 					{
 						$("#taken_slot").addClass('hidden');
 					}
-					else 
+					else
 					{
 						var data = $.parseJSON(data);
-
-						console.log(data);
 
 						var markup = '';
 
@@ -288,7 +285,7 @@
 						$('#content-area').html(markup);
 						$("#taken_slot").removeClass('hidden');
 					}
-					
+
 				}
 			});
 
