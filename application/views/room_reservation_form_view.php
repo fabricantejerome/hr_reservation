@@ -15,7 +15,7 @@
 							<select name="room_id" id="room_id" class="form-control select2" data-live-search="true" required>
 								<option></option>
 								<?php foreach($rooms as $row): ?>
-									<option value="<?php echo $row->id; ?>" <?php echo isset($item['room_id']) ? $row->id == $item['room_id'] ? 'selected' : '' : ''; ?> ><?php echo $row->room_name . ' | Capacity  (' . $row->capacity . ') | Floor  ' . $row->floor ; ?></option>
+									<option value="<?php echo $row->id; ?>" <?php echo isset($item['room_id']) ? $row->id == $item['room_id'] ? 'selected' : '' : ''; ?> ><?php echo $row->room_name . ' | Capacity  (' . $row->capacity . ') | ' . $row->floor . ' floor' ; ?></option>
 								<?php endforeach; ?>
 							</select>
 						</div>
