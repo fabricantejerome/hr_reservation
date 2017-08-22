@@ -92,66 +92,72 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Terms and Conditions</h4>
+				<h4 class="modal-title">Guidelines for Using Training/Meeting Rooms in HR Building</h4>
 			</div>
 
 			<div class="modal-body">
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
+				<ol type="I">
+					<li class="list-header">Scheduling</li>
+					<ol>
+						<li>All reservations must be done online thru the Training Reservations System (Pls. refer to the IPC Centralized Portal, under HRS).</li>
+						<li>It is the responsibility of the requestor to make sure HRS PIC has approved or declined the reservation.</li>
+					</ol>
 
-				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
+					<li class="list-header">Conference Room Etiquette</li>
+					<ol>
+						<li>General Cleanliness</li>
 
-				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
+						<ol type="a">
+							<li class="list-title">No food or drinks are allowed inside the training/meeting rooms. Coffee/snacks must be served in the pantry.</li>
+							<p>The requestor will be responsible for ensuring the reserved room is cleaned of any trash used during the meeting. Glass boards should be erased and cleaned to be ready for the next user. Any remaining handouts, agendas, etc. be removed from the room.</p>
 
-				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
+							<li>The requestor is responsible for:</li>
+							<ul>
+								<li>Making sure the meeting is on the calendar for applicable conference room</li>
+								<li>Only using the allotted time scheduled for set meeting</li>
+								<li>Avoid exceeding the maximum seating capacity</li>
+								<li>If additional seat(s) are borrowed, making sure to return to their original location/placement</li>
+								<li>Ensuring training/conference room is returned to its original state</li>
+								<li>Aircon, projector and lights are turned off</li>
+								<li>Closing the door when meeting is in progress as noise and/or conversations could be interruptive to nearby rooms.</li>
+							</ul>
 
-				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
+							<li>Reporting</li>
+							<p>If an item is found to be broken or nonfunctioning; it will be the responsibility of the requestor to report to HRS.</p>
 
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
+							<li>Lost and Found</li>
+							<p>All items found or items lost within a conference/training room should be turned in or reported to HRS.</p>
+						</ol>
+					</ol>
 
-				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
+					<li class="list-header">Meeting Time</li>
+					<ol>
+						<li>When scheduling a meeting, please schedule enough time to avoid meeting overrun.</li>
+						<li>If your meeting extends beyond the allotted time and another meeting is scheduled to begin, the requesting section must adjourn the meeting or find another room to complete the meeting extension. Those reservations listed on the calendar will have priority over any impromptu meeting</li>
+						<li>HRS reserves the right to cancel other meetings scheduled when there are urgent meetings by Executives or top management.</li>
+					</ol>
 
-				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
-
-				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
-
-				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
-
-				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
-
-				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
-
-				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
-
-				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
-
-				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
-
-				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
-
-				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
-
-				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
-
-				<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit. Istam voluptatem, inquit, Epicurus ignorat? Quasi ego id curem, quid ille aiat aut neget. Quamquam ab iis philosophiam et omnes ingenuas disciplinas habemus; Quodcumque in mentem incideret, et quodcumque tamquam occurreret. Duo Reges: constructio interrete. Hi curatione adhibita levantur in dies, valet alter plus cotidie, alter videt. Dat enim intervalla et relaxat. Cur deinde Metrodori liberos commendas? Qua tu etiam inprudens utebare non numquam. Id et fieri posse et saepe esse factum et ad voluptates percipiendas maxime pertinere. </p>
-
-				<p>Tecum optime, deinde etiam cum mediocri amico. Non autem hoc: igitur ne illud quidem. Aliter homines, aliter philosophos loqui putas oportere? Septem autem illi non suo, sed populorum suffragio omnium nominati sunt. </p>
-
-				<p>At certe gravius. Ut in geometria, prima si dederis, danda sunt omnia. Superiores tres erant, quae esse possent, quarum est una sola defensa, eaque vehementer. In qua quid est boni praeter summam voluptatem, et eam sempiternam? Nihil opus est exemplis hoc facere longius. Nunc vides, quid faciat. An hoc usque quaque, aliter in vita? Cum id quoque, ut cupiebat, audivisset, evelli iussit eam, qua erat transfixus, hastam. Quo studio Aristophanem putamus aetatem in litteris duxisse? </p>
-
-				<p>Quare ad ea primum, si videtur; At hoc in eo M. Qui non moveatur et offensione turpitudinis et comprobatione honestatis? At quanta conantur! Mundum hunc omnem oppidum esse nostrum! Incendi igitur eos, qui audiunt, vides. Sumenda potius quam expetenda. Ut placet, inquit, etsi enim illud erat aptius, aequum cuique concedere. </p>
-
-				<p>Quo studio Aristophanem putamus aetatem in litteris duxisse? Nam quibus rebus efficiuntur voluptates, eae non sunt in potestate sapientis. Sed ad haec, nisi molestum est, habeo quae velim. </p>
+					<li class="list-header">Computer Training Rm. Usage</li>
+					<ol>
+						<li>Do not eat or drink near a computer or while utilizing.</li>
+						<li>Do not push the on and off switch on the computer</li>
+						<li>Do not remove any equipment from the training room.</li>
+						<li>Do not download or install software, games, or chat programs onto any computers.</li>
+						<li>Place your items (purses, jackets, bags, etc.) under the chairs to keep the aisles clear for walking.</li>
+						<li>Log off your computer, push in your chair and make sure the area is neat for the next trainees when leaving the room.</li>
+						<li>Report all computer malfunctions to HRS or MIS immediately.</li>
+						<li>Respect users who want to be in a quiet environment free of interruptions.</li>
+						<li>To request software installation for instruction or training, please inform HRS one(1) week before the training.</li>
+						<li>TMs and Trainers are responsible for taking reasonable safety precautions in using computer equipment. They will be held responsible for damage to such equipment arising out of their negligence.</li>
+					</ol>
+				</ol>
 
 				<div class="form-check">
-				    <label class="form-check-label">
-				      <input type="checkbox" class="form-check-input" id="cb-agree">
-				      I Agree
-				    </label>
-				  </div>
+					<label class="form-check-label">
+						<input type="checkbox" class="form-check-input" id="cb-agree">
+						I Agree
+					</label>
+				</div>
 			</div>
 
 			<div class="modal-footer">
