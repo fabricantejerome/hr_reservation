@@ -530,4 +530,32 @@ class Requestor extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
+	protected function _grant_privilege($uid)
+	{
+		$this->load->library('session');
+
+		$user = $this->ipc->fetch_personal_info(array('id' => $uid));
+		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
+
+		$config = array(
+				'id'               => $user['id'],
+				'employee_no'      => $user['employee_no'],
+				'fullname'         => $user['fullname'],
+				'section'          => $user['section'],
+				'email'            => $user['requestor_email'],
+				'supervisor_email' => $dept_head['supervisor_email'],
+				'user_type'        => 'requestor',
+				'grant'            => true
+			);
+
+		$this->session->set_userdata($config);
+	}
+
+	protected function _remove_priviledge()
+	{
+		if ($this->session->userdata('grant'))
+		{
+			$this->session->sess_destroy();
+		}
+	}
 }
