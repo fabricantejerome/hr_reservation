@@ -36,7 +36,7 @@
 		<p>
 			<strong>Subject: </strong><?php echo isset($item['subject']) ? $item['subject'] : '' ?> <br />
 			<strong>Sent: </strong> <?php echo date('l, F d, Y h:i A') ?> <br />
-			<strong>Section: </strong> <?php echo isset($item['section']) ? $item['section'] : '' ?> <br />
+			<strong>Requesting Section: </strong> <?php echo isset($item['section']) ? $item['section'] : '' ?> <br />
 		</p>
 
 		<div class="table-request">
