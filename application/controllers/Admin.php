@@ -207,7 +207,6 @@ class Admin extends CI_Controller {
 		if (is_array($entity))
 		{
 			$info    = $this->ipc->fetch_personal_info(array('id' => $entity['user_id']));
-			//$this->_redirect_unauthorized();
 			$entity['fullname'] = $info['fullname'];
 			$entity['section']  = $info['section_abbrev'];
 		}
@@ -737,7 +736,7 @@ class Admin extends CI_Controller {
 		}
 		else
 		{
-		    echo 'Message has been sent';
+		    echo 'Cancel link has been sent.';
 		}
 	}
 
