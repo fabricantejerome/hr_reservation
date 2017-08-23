@@ -141,7 +141,8 @@ class Requestor extends CI_Controller {
 		foreach ($admin as $user)
 		{
 			$mail->Subject = $params['subject'];
-			$mail->addAddress('jerome-fabricante@isuzuphil.com');
+			//$mail->addAddress('jerome-fabricante@isuzuphil.com');
+			$mail->addAddress($user->email);
 
 			$data['item']   = $params['item'];
 			$data['link']   = base_url('index.php/admin/read_approval_link/' . $params['item']['id'] . '/' . $user->employee_id);
@@ -476,7 +477,6 @@ class Requestor extends CI_Controller {
 			$mail->addCC('may-galolo@isuzuphil.com');
 			$mail->addCC('daoni-carlos@isuzuphil.com');
 			$mail->addCC('jerome-fabricante@isuzuphil.com');
-
 		}
 		else 
 		{
@@ -486,6 +486,8 @@ class Requestor extends CI_Controller {
 			$mail->addCC($this->session->userdata('email'));
 			$mail->addCC($this->session->userdata('supervisor_email'));
 			$mail->addCC('jerome-fabricante@isuzuphil.com');
+		}
+
 		$data['mail']   = $mail ? $mail : '';
 		$data['item']   = $params['item'];
 		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
@@ -496,10 +498,6 @@ class Requestor extends CI_Controller {
 		{
 		    echo 'Message could not be sent.';
 		    echo 'Mailer Error: ' . $mail->ErrorInfo;
-		}
-		else
-		{
-		    echo 'Message has been sent';
 		}
 	}
 
