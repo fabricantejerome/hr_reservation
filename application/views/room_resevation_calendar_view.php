@@ -4,7 +4,6 @@
 <style>
 	.fc-day-grid-event > .fc-content {
 	    white-space: normal;
-	    font-size: 12px;
 	}
 </style>
 <!-- Main content -->
@@ -69,7 +68,7 @@
 			success: function(data)
 			{
 				var response = $.parseJSON(data);
-				$('#calendar').css('font-size', '1.2em');
+				$('#calendar').css('font-size', '1.1em');
 				$('#calendar').fullCalendar('removeEvents');
 				$('#calendar').fullCalendar('addEventSource', response);
 				$('#calendar').fullCalendar({
