@@ -9,6 +9,33 @@ class Ipc_model extends CI_Model {
 		$this->db = $this->load->database('ipc_central', true);
 	}
 
+	public function fetch_resource()
+	{
+		$fields = array(
+				'a.id',
+				'a.employee_no',
+				"CONCAT(b.first_name,' ', b.last_name) AS fullname",
+				'a.section_id',
+				'c.email AS requestor_email',
+				'd.ash',
+				'd.sh',
+				'd.adh',
+				'd.dh',
+				'e.section_abbrev',
+				'e.section'
+			);
+
+		$query = $this->db->select($fields)
+				->from('employee_masterfile_tab AS a')
+				->join('personal_information_tab AS b', 'a.id = b.employee_id', 'LEFT')
+				->join('email_tab AS c', 'a.id = c.employee_id', 'LEFT')
+				->join('signatories_matrix_tab AS d', 'a.section_id = d.section_id', 'LEFT')
+				->join('section_tab AS e', 'a.section_id = e.id', 'LEFT')
+				->get();
+
+		return $query->result_array();
+	}
+
 	public function fetch_personal_info($params)
 	{
 		$fields = array(
