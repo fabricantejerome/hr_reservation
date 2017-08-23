@@ -43,13 +43,12 @@ class Login extends CI_Controller {
 
 		$this->session->set_userdata($config);
 
-		if($user_data['user_type'] == 'admin')
+		if($this->session->userdata('user_type') == 'admin')
 		{
 			redirect(base_url('index.php/admin/rooms'));
 		}
-			
-		redirect(base_url('index.php/requestor/rooms'));
 
+		redirect(base_url('index.php/requestor/rooms'));	
 	}
 
 	protected function _handle_session()
@@ -75,12 +74,13 @@ class Login extends CI_Controller {
 
 			$this->session->set_userdata($user_data);
 
-			if($user_data['user_type'] == 'admin')
+			if($this->session->userdata('user_type') == 'admin')
 			{
 				redirect(base_url('index.php/admin/rooms'));
 			}
-			
+
 			redirect(base_url('index.php/requestor/rooms'));
+
 		}
 
 		$data['message'] = '<span class="col-sm-12 alert alert-warning">You have no rights to access this system.</span>';
