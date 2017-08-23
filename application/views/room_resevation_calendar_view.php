@@ -4,6 +4,7 @@
 <style>
 .fc-day-grid-event > .fc-content {
     white-space: normal;
+    font-size: 12px;
 }
 </style>
 <!-- Main content -->
