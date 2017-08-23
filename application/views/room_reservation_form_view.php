@@ -54,6 +54,18 @@
 							<input type="text" name="agree" id="agree" class="hidden" value="<?php echo $agree ?>" >
 						</div>
 
+						<?php if ($this->session->userdata('user_type') == 'admin'): ?>
+							<div class="form-group">
+								<label for="requestor">Requestor</label>
+								<select name="emp_id" id="emp_id" class="form-control select2" data-live-search="true">
+									<option></option>
+									<?php foreach($users as $row): ?>
+										<option value="<?php echo $row['id']; ?>"><?php echo $row['fullname']; ?></option>
+									<?php endforeach; ?>
+								</select>
+							</div>
+						<?php endif; ?>
+
 						<div class="form-group">
 							<input type="submit" value="Submit" class="btn btn-flat btn-danger" id="btn-submit">
 						</div>
