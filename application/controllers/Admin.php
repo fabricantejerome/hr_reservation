@@ -670,10 +670,14 @@ class Admin extends CI_Controller {
 		ini_set('memory_limit', '-1');
 		ini_set('max_execution_time', 7200);
 
+		// Hardcoded uid for extracting credentials when sending reminder
+		$this->_grant_privilege(733);
+
 		$items        = $this->rooms->fetch_approved_request();
 		$current_date = date('Y-m-d');
 
-		foreach ($items as $item) {
+		foreach ($items as $item)
+		{
 			
 			$date_reserved = $item['date_reserved'];
 			$days          = $this->_date_diff($current_date, $date_reserved);
@@ -700,6 +704,8 @@ class Admin extends CI_Controller {
 				$this->_send_cancel_link($config);
 			}
 		}
+
+		$this->_remove_priviledge();
 	}
 
 	protected function _send_cancel_link($params)
