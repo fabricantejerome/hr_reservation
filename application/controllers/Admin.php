@@ -130,7 +130,7 @@ class Admin extends CI_Controller {
 
 		$config = array(
 				'room_id'       => $room_id,
-				'user_id'       => $this->session->userdata('id'),
+				'user_id'       => empty($this->input->post('emp_id')) ? $this->session->userdata('id') : $this->input->post('emp_id'),
 				'purpose'       => $this->input->post('purpose'),
 				'date_reserved' => $date_reserved,
 				'time_start'    => $time_start,
