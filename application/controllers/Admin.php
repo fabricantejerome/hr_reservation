@@ -108,7 +108,8 @@ class Admin extends CI_Controller {
 				'title'   => 'File Reservation',
 				'content' => 'room_reservation_form_view',
 				'rooms'   => $this->rooms->browse(0),
-				'agree'   => $this->rooms->exist_agreement()
+				'agree'   => $this->rooms->exist_agreement(),
+				'users'   => $this->ipc->fetch_resource()
 			);
 
 		$this->load->view('/include/template', $data);
