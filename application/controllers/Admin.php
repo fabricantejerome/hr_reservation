@@ -635,12 +635,6 @@ class Admin extends CI_Controller {
 			$mail->addCC('may-galolo@isuzuphil.com');
 			$mail->addCC('jerome-fabricante@isuzuphil.com');
 			$mail->addCC('daoni-carlos@isuzuphil.com');
-
-			if ($this->session->userdata('email') != 'joyce-ramirez@isuzuphil.com')
-			{
-				$mail->addCC($this->session->userdata('email'));
-				$mail->addCC($this->session->userdata('supervisor_email'));
-			}
 		}
 		else 
 		{
@@ -652,11 +646,6 @@ class Admin extends CI_Controller {
 			$mail->addCC('jerome-fabricante@isuzuphil.com');
 		}
 		
-		/*if ($params['email'] != $this->session->userdata('email'))
-		{
-			$mail->addCC($this->session->userdata('email'));
-			$mail->addCC($this->session->userdata('supervisor_email'));
-		}*/
 		$data['mail']   = $mail ? $mail : '';
 		$data['item']   = $params['item'];
 		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
