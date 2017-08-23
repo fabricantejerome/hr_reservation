@@ -505,26 +505,52 @@ class Requestor extends CI_Controller {
 
 	public function read_cancellation_link()
 	{
-		$approve_id = $this->uri->segment(3);
-		$uid        = $this->uri->segment(4);
-		$entity     = $this->rooms->read_approved_request($approve_id);
+		$approve_id   = $this->uri->segment(3);
+		$uid          = $this->uri->segment(4);
+		$entity       = $this->rooms->read_approved_request($approve_id);
+		$current_date = date('Y/m/d H:i:s');
+		$item         = null;
+
 
 		if (is_array($entity))
 		{
-			$info    = $this->ipc->fetch_personal_info(array('id'  => $entity['user_id']));
-			$approver = $this->ipc->fetch_personal_info(array('id' => $entity['approver_id']));
-			$entity['fullname'] = $info['fullname'];
-			$entity['section']  = $info['section_abbrev'];
-			$entity['approver'] = $approver['fullname'];
+			$config = array(
+					'room_res_id'        => $entity['room_res_id'],
+					'cancelled_datetime' => $current_date,
+					'user_id'            => $uid
+				);
+
+			$this->rooms->store_cancel_request($config);
+			$item      = $this->rooms->read_cancelled_request($entity['room_res_id']);
+			$user      = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
+			$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
+			$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
+
+			$subject                = 'Cancelled Reservation';
+			$item['fullname']       = $user['fullname'];
+			$item['section_abbrev'] = $user['section_abbrev'];
+			$item['section']        = $user['section'];
+			$item['subject']        = $subject;
+			$item['approver']       = $approver['fullname'];
+
+			$config = array(
+						'subject'          => $subject,
+						'item'             => $item,
+						'header'           => 'Cancelled by',
+						'email'            => $user['requestor_email'],
+						'supervisor_email' => $dept_head['supervisor_email']
+					);
+
+			$this->send_mail($config);
 		}
 
 		$this->_grant_privilege($uid);
 		$this->_redirect_unauthorized();
 
 		$data = array(
-				'title'   => is_array($entity) ? 'Cancel Reservation' : 'Reservation has been cancelled',
+				'title'   => 'Reservation has been cancelled',
 				'content' => 'room_cancellation_link_view',
-				'row'     => $entity
+				'row'     => ''
 			);
 		
 		$this->load->view('include/template', $data);
