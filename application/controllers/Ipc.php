@@ -9,6 +9,7 @@ class Ipc extends CI_Controller {
 
 		// Load model
 		$this->load->model('ipc_model', 'ipc');
+		$this->load->model('room_model', 'rooms');
 	}
 
 	public function ajax_personal_info()
