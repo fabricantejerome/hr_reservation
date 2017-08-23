@@ -243,11 +243,13 @@
 		});
 
 		$('#time_start').timepicker({
-			minTime: '07:00'
+			minTime: '07:00',
+			step: '15'
 		});
 
 		$('#time_end').timepicker({
-			minTime: '07:00'
+			minTime: '07:00',
+			step: '15'
 		});
 
 		$('#room_id').on('change', function() {
