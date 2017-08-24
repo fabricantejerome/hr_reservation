@@ -151,6 +151,7 @@ class Admin extends CI_Controller {
 					'user_id'           => $user_id
 				);
 
+			$this->rooms->store_agreement();
 			$this->rooms->store_approved_request($config);
 
 			$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been filed!</span>');
@@ -625,8 +626,6 @@ class Admin extends CI_Controller {
 		$mail = new EmailerPHP;
 
 		$mail->Subject = $params['subject'];
-		/*$mail->addAddress('jerome-fabricante@isuzuphil.com');
-		$mail->addCC('fabricantejerome@gmail.com');*/
 
 		if ($this->session->userdata('user_type') == 'admin')
 		{
