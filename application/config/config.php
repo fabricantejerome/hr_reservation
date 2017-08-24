@@ -23,7 +23,7 @@ defined('BASEPATH') OR exit('No direct script access allowed');
 | a PHP script and you can easily do that on your own.
 |
 */
-$config['base_url'] = 'http://' . $_SERVER['HTTP_HOST'] . '/ipc_central/gad-hr/hr_reservation/';
+$config['base_url'] = 'http://172.16.1.34/ipc_central/gad-hr/hr_reservation/';
 
 /*
 |--------------------------------------------------------------------------
