@@ -15,7 +15,9 @@ class Room_model extends CI_Model {
 		}
 		else
 		{
-			$query = $this->db->order_by('floor', 'ASC')->order_by('room_name', 'ASC')->get_where('room_tbl', array('available' => 1));
+			/*$query = $this->db->order_by('floor', 'ASC')->order_by('room_name', 'ASC')->get_where('room_tbl', array('available' => 1));*/
+
+			$query = $this->db->order_by('position', 'ASC')->get_where('room_tbl', array('available' => 1));
 		}
 
 		return $query->result();
