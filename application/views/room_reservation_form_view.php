@@ -243,14 +243,14 @@
 		});
 
 		$('#time_start').timepicker({
-			minTime: '06:30am',
-			maxTime: '8:00pm',
+			minTime: '07:00am',
+			maxTime: '7:30pm',
 			step: '15'
 		});
 
 		$('#time_end').timepicker({
-			minTime: '06:30',
-			maxTime: '8:00pm',
+			minTime: '07:00am',
+			maxTime: '7:30pm',
 			step: '15'
 		});
 
