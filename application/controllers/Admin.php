@@ -679,7 +679,7 @@ class Admin extends CI_Controller {
 		{
 			
 			$date_reserved = $item['date_reserved'];
-			$days          = $this->_date_diff($current_date, $date_reserved);
+			$date_filed    = date('Y-m-d', strtotime($item['date_filed']));
 			$user          = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
 			$dept_head     = $this->ipc->fetch_department_head($user['employee_no']);
 			$approver      = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
