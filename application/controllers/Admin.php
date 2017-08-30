@@ -684,6 +684,8 @@ class Admin extends CI_Controller {
 			$dept_head     = $this->ipc->fetch_department_head($user['employee_no']);
 			$approver      = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
+			// Days before the reservation date with reference to current date
+			$days          = $this->_date_diff($current_date, $date_reserved);
 			$item['fullname']       = $user['fullname'];
 			$item['section_abbrev'] = $user['section_abbrev'];
 			$item['section']        = $user['section'];
