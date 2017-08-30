@@ -388,6 +388,7 @@ class Room_model extends CI_Model {
 				'b.time_start',
 				'b.time_end',
 				'b.user_id',
+				'b.date_filed',
 				'd.room_no',
 				'd.room_name',
 				'd.capacity',
