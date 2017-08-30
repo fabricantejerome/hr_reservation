@@ -686,6 +686,10 @@ class Admin extends CI_Controller {
 
 			// Days before the reservation date with reference to current date
 			$days          = $this->_date_diff($current_date, $date_reserved);
+
+			// Difference between the reservation date and date filed
+			$interval      = $this->_date_diff($date_filed, $date_reserved);
+
 			$item['fullname']       = $user['fullname'];
 			$item['section_abbrev'] = $user['section_abbrev'];
 			$item['section']        = $user['section'];
