@@ -752,7 +752,11 @@ class Admin extends CI_Controller {
 		$this->load->view('include/template', $data);
 	}
 
-	// Calculate date difference
+	/** 
+	 * Calculate date difference
+	 * Params date instance
+	 * Note convert the date to Y-m-d format before using this function
+	 */
 	protected function _date_diff($s, $e)
 	{
 		$start = strtotime($s);
