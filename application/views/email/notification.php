@@ -115,7 +115,7 @@
 		<!-- Don't show the link to all CC addresses -->
 		<?php if (isset($link) && $item['subject'] == 'Reminder' && count(array_filter(array_flatten($mail->getCcAddresses(), array()))) == 0 ): ?>
 			<p>
-				<p>If your reservation is no longer needed you can cancel it by clicking the link below.</p>
+				<p><q>If your meeting was cancelled, kindly withdraw your reservation thru this link.</q></p>
 				<b>Cancellation link:</b>  < <a href="<?php echo $link; ?>">Click this to cancel the reservation</a> > <br />
 			
 				* If the above link won't work, please copy and paste the link below on your browsers address bar * <br />
