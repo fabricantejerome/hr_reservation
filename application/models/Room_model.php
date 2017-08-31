@@ -227,6 +227,7 @@ class Room_model extends CI_Model {
 				->where('f.room_res_id IS NULL')
 				->where_in('room_id', $params['room_ids'])
 				->where('date_reserved >=', $params['date_reserved'])
+				->order_by('date_reserved')
 				->get();
 
 		return $query->result();
@@ -513,6 +514,7 @@ class Room_model extends CI_Model {
 					->from('disapproved_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
+					->order_by('date_reserved')
 					->get();
 		}
 		else
@@ -526,6 +528,7 @@ class Room_model extends CI_Model {
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
 					->where($clause)
+					->order_by('date_reserved')
 					->get();
 		}
 
@@ -602,6 +605,7 @@ class Room_model extends CI_Model {
 					->from('cancelled_res_tbl AS a')
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
+					->order_by('date_reserved')
 					->get();
 		}
 		else
@@ -615,6 +619,7 @@ class Room_model extends CI_Model {
 					->join('room_res_tbl AS b', 'a.room_res_id = b.id', 'INNER')
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
 					->where($clause)
+					->order_by('date_reserved')
 					->get();
 		}
 
