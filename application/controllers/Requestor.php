@@ -466,8 +466,6 @@ class Requestor extends CI_Controller {
 		$mail = new EmailerPHP;
 
 		$mail->Subject = $params['subject'];
-		/*$mail->addAddress('jerome-fabricante@isuzuphil.com');
-		$mail->addCC('fabricantejerome@gmail.com');*/
 
 		if ($this->session->userdata('user_type') == 'admin')
 		{
