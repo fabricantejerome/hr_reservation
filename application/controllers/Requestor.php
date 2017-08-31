@@ -108,7 +108,7 @@ class Requestor extends CI_Controller {
 					'item'    => $item
 				);
 
-			$this->send_mail($config);
+			$this->send_mailv2($config);
 
 			$this->_send_approval_link($config);
 
