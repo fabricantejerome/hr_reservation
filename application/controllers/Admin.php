@@ -545,35 +545,44 @@ class Admin extends CI_Controller {
 		$current_date = date('Y/m/d H:i:s');
 		$user_id      = $this->session->userdata('id');
 		$subject      = 'Cancelled Reservation';
+		$entity       = $this->rooms->read_approved_request($room_res_id);
 
 		$config = array(
-				'room_res_id'        => $room_res_id,
-				'cancelled_datetime' => $current_date,
-				'user_id'            => $user_id
-			);
-
-		$this->rooms->store_cancel_request($config);
-
-		$item      = $this->rooms->read_cancelled_request($room_res_id);
-		$user      = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
-		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
-		$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
-
-		$item['fullname']       = $user['fullname'];
-		$item['section_abbrev'] = $user['section_abbrev'];
-		$item['section']        = $user['section'];
-		$item['subject']        = $subject;
-		$item['approver']       = $approver['fullname'];
-
-		$config = array(
-					'subject'          => $subject,
-					'item'             => $item,
-					'header'           => 'Cancelled by',
-					'email'            => $user['requestor_email'],
-					'supervisor_email' => $dept_head['supervisor_email']
+					'room_res_id'        => $room_res_id,
+					'cancelled_datetime' => $current_date,
+					'user_id'            => $user_id
 				);
 
-		$this->send_mail($config);
+		// If the admin cancel his/her own reservation it will not send a notification
+		if ($this->session->userdata('id') == $entity['user_id'] && $this->session->userdata('user_type') == 'admin')
+		{
+			$this->rooms->store_cancel_request($config);
+		}
+		else
+		{
+			$this->rooms->store_cancel_request($config);
+
+			$item      = $this->rooms->read_cancelled_request($room_res_id);
+			$user      = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
+			$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
+			$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
+
+			$item['fullname']       = $user['fullname'];
+			$item['section_abbrev'] = $user['section_abbrev'];
+			$item['section']        = $user['section'];
+			$item['subject']        = $subject;
+			$item['approver']       = $approver['fullname'];
+
+			$config = array(
+						'subject'          => $subject,
+						'item'             => $item,
+						'header'           => 'Cancelled by',
+						'email'            => $user['requestor_email'],
+						'supervisor_email' => $dept_head['supervisor_email']
+					);
+
+			$this->send_mail($config);	
+		}
 
 		$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been cancelled!</span>');
 
