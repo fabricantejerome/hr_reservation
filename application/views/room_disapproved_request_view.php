@@ -13,7 +13,7 @@
 								<th>#</th>
 								<th>Room</th>
 								<th>Purpose</th>
-								<th>Date</th>
+								<th>Date Needed</th>
 								<th>Time Start</th>
 								<th>Time End</th>
 								<th>Reserved by</th>
@@ -30,12 +30,12 @@
 									<td><?php echo $counter ?></td>
 									<td><?php echo $row['room_name'] ?></td>
 									<td><?php echo $row['purpose'] ?></td>
-									<td><?php echo date('m/d/Y', strtotime($row['date_reserved'])) ?></td>
+									<td><?php echo date('M d, Y', strtotime($row['date_reserved'])) ?></td>
 									<td><?php echo date('h:i A', strtotime($row['time_start'])) ?></td>
 									<td><?php echo date('h:i A', strtotime($row['time_end'])) ?></td>
 									<td><?php echo ucwords(strtolower($row['fullname'])) ?></td>
 									<td><?php echo $row['section'] ?></td>
-									<td><?php echo date('m/d/Y h:i A', strtotime($row['denied_datetime'])) ?></td>
+									<td><?php echo date('M d, Y h:i A', strtotime($row['denied_datetime'])) ?></td>
 									<td><?php echo $row['reason'] ?></td>
 									<td><?php echo ucwords(strtolower($row['approver'])) ?></td>
 								</tr>
