@@ -141,7 +141,6 @@ class Requestor extends CI_Controller {
 		foreach ($admin as $user)
 		{
 			$mail->Subject = $params['subject'];
-			//$mail->addAddress('jerome-fabricante@isuzuphil.com');
 			$mail->addAddress($user->email);
 
 			$data['item']   = $params['item'];
@@ -158,8 +157,10 @@ class Requestor extends CI_Controller {
 			}
 			else
 			{
-			    echo 'Message has been sent';
+			    echo 'Approval link has been sent';
 			}
+
+			$mail->clearAllRecipients();
 		}
 	}
 
