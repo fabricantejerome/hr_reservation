@@ -737,26 +737,34 @@ class Admin extends CI_Controller {
 		$this->load->library('emailerphp');
 		$this->load->helper('array_flatten');
 
+		// Create mail instance
 		$mail = new EmailerPHP;
 
 		$mail->Subject = $params['subject'];
-		$mail->addAddress($params['email']);
 
-		$data['item']   = $params['item'];
-		$data['link']   = base_url('index.php/requestor/read_cancellation_link/' . $params['item']['room_res_id'] . '/' . $params['item']['user_id']);
-		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
-		$data['mail']   = $mail ? $mail : '';
-
-		$mail->Body = $this->load->view('email/notification', $data, true);
-
-		if(!$mail->send())
+		foreach ($params['recipients'] as $row)
 		{
-		    echo 'Message could not be sent.';
-		    echo 'Mailer Error: ' . $mail->ErrorInfo;
-		}
-		else
-		{
-		    echo 'Cancel link has been sent.';
+			$mail->addAddress($row['email']);
+
+			$data['item']   = $params['item'];
+			$data['link']   = base_url('index.php/requestor/read_cancellation_link/' . $params['item']['room_res_id'] . '/' . $row['id']);
+			$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
+			$data['mail']   = $mail ? $mail : '';
+
+			$mail->Body = $this->load->view('email/notification', $data, true);
+
+			if(!$mail->send())
+			{
+			    echo 'Message could not be sent.';
+			    echo 'Mailer Error: ' . $mail->ErrorInfo;
+			}
+			else
+			{
+			    echo 'Cancel link has been sent.';
+			}
+
+			// Clear all recipients
+			$mail->clearAllRecipients();
 		}
 	}
 
