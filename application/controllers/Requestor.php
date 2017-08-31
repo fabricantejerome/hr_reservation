@@ -533,6 +533,8 @@ class Requestor extends CI_Controller {
 		$current_date = date('Y/m/d H:i:s');
 		$item         = null;
 
+		$this->_grant_privilege($uid);
+		$this->_redirect_unauthorized();
 
 		if (is_array($entity))
 		{
@@ -542,32 +544,36 @@ class Requestor extends CI_Controller {
 					'user_id'            => $uid
 				);
 
-			$this->rooms->store_cancel_request($config);
-			$item      = $this->rooms->read_cancelled_request($entity['room_res_id']);
-			$user      = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
-			$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
-			$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
+			if ($this->session->userdata('id') == $entity['user_id'] && $this->session->userdata('user_type') == 'admin')
+			{
+				$this->rooms->store_cancel_request($config);
+			}
+			else
+			{
+				$this->rooms->store_cancel_request($config);
+				$item      = $this->rooms->read_cancelled_request($entity['room_res_id']);
+				$user      = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
+				$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
+				$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-			$subject                = 'Cancelled Reservation';
-			$item['fullname']       = $user['fullname'];
-			$item['section_abbrev'] = $user['section_abbrev'];
-			$item['section']        = $user['section'];
-			$item['subject']        = $subject;
-			$item['approver']       = $approver['fullname'];
+				$subject                = 'Cancelled Reservation';
+				$item['fullname']       = $user['fullname'];
+				$item['section_abbrev'] = $user['section_abbrev'];
+				$item['section']        = $user['section'];
+				$item['subject']        = $subject;
+				$item['approver']       = $approver['fullname'];
 
-			$config = array(
-						'subject'          => $subject,
-						'item'             => $item,
-						'header'           => 'Cancelled by',
-						'email'            => $user['requestor_email'],
-						'supervisor_email' => $dept_head['supervisor_email']
-					);
+				$config = array(
+							'subject'          => $subject,
+							'item'             => $item,
+							'header'           => 'Cancelled by',
+							'email'            => $user['requestor_email'],
+							'supervisor_email' => $dept_head['supervisor_email']
+						);
 
-			$this->send_mail($config);
+				$this->send_mail($config);
+			}
 		}
-
-		$this->_grant_privilege($uid);
-		$this->_redirect_unauthorized();
 
 		$data = array(
 				'title'   => 'Reservation has been cancelled',
