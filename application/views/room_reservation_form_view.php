@@ -103,7 +103,7 @@
 	<div class="modal-dialog">
 		<div class="modal-content">
 			<div class="modal-header">
-				<h4 class="modal-title">Guidelines for Using Training/Meeting Rooms in HR Building</h4>
+				<h4 class="modal-title">Below are the Guidelines for using Training and Meeting Rooms in HR Building:</h4>
 			</div>
 
 			<div class="modal-body">
