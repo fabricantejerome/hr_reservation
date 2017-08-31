@@ -113,7 +113,7 @@
 		<?php endif; ?>
 
 		<!-- Don't show the link to all CC addresses -->
-		<?php if (isset($link) && $item['subject'] == 'Reminder' && count(array_filter(array_flatten($mail->getCcAddresses(), array()))) == 0 ): ?>
+		<?php if (isset($link) && $item['subject'] == 'Reminder'): ?>
 			<p>
 				<p><q>If your meeting was cancelled, kindly withdraw your reservation thru this link.</q></p>
 				<b>Cancellation link:</b>  < <a href="<?php echo $link; ?>">Click this to cancel the reservation</a> > <br />
