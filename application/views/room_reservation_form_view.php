@@ -82,8 +82,7 @@
 						<tr>
 							<th>Room</th>
 							<th>Purpose</th>
-							<th>Capacity</th>
-							<th>Date Reserved</th>
+							<th>Date Needed</th>
 							<th>Time</th>
 							<th>Reserved by</th>
 							<th>Section</th>
@@ -289,7 +288,6 @@
 							markup += '<tr>'; 
 							markup += '<td>' + item.room_name + '</td>';
 							markup += '<td>' + item.purpose + '</td>';
-							markup += '<td>' + item.capacity + '</td>';
 							markup += '<td>' + item.date_reserved + '</td>';
 							markup += '<td>' + convertTo12HourFormat(item.time_start) + ' - ' + convertTo12HourFormat(item.time_end) + '</td>';
 							markup += '<td>' + _.chain(item.fullname).toLower().startCase() + '</td>';
