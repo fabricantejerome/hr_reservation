@@ -716,15 +716,15 @@ class Admin extends CI_Controller {
 					)
 				);
 
+			// Send the reminder one(1) day before the reservation date
+			if ($days == 1 && $interval > 1)
 			{
 				$config = array(
-							'subject'          => 'Reminder',
-							'item'             => $item,
-							'email'            => $user['requestor_email'],
-							'supervisor_email' => $dept_head['supervisor_email']
+							'subject'    => 'Reminder',
+							'item'       => $item,
+							'recipients' => $recipients
 						);
 
-				$this->send_mail($config);
 				$this->_send_cancel_link($config);
 			}
 		}
