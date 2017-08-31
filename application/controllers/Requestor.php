@@ -232,7 +232,7 @@ class Requestor extends CI_Controller {
 					'room_res_id'       => $row->room_res_id,
 					'approved_datetime' => $row->approved_datetime,
 					'approver_id'       => $row->approver_id,
-					'date_reserved'     => $row->date_reserved,
+					'date_reserved'     => date('M d, Y', strtotime($row->date_reserved)),
 					'purpose'           => $row->purpose,
 					'capacity'          => $row->capacity,
 					'time_start'        => $row->time_start,
