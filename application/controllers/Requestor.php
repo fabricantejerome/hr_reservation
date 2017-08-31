@@ -501,6 +501,32 @@ class Requestor extends CI_Controller {
 		}
 	}
 
+	public function send_mailv2($params)
+	{
+		$this->load->library('emailerphp');
+		$this->load->helper('array_flatten');
+
+		$mail = new EmailerPHP;
+
+		$mail->Subject = $params['subject'];
+
+		$mail->addAddress($this->session->userdata('email'));
+		$mail->addCC($this->session->userdata('supervisor_email'));
+		$mail->addCC('jerome-fabricante@isuzuphi.com');
+
+		$data['mail']   = $mail ? $mail : '';
+		$data['item']   = $params['item'];
+		$data['header'] = isset($params['header']) ? $params['header'] : 'Approved by';
+
+		$mail->Body = $this->load->view('email/notification', $data, true);
+
+		if(!$mail->send())
+		{
+		    echo 'Message could not be sent.';
+		    echo 'Mailer Error: ' . $mail->ErrorInfo;
+		}
+	}
+
 	public function read_cancellation_link()
 	{
 		$approve_id   = $this->uri->segment(3);
