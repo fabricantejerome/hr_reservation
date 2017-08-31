@@ -686,7 +686,6 @@ class Admin extends CI_Controller {
 
 		foreach ($items as $item)
 		{
-			
 			$date_reserved = $item['date_reserved'];
 			$date_filed    = date('Y-m-d', strtotime($item['date_filed']));
 			$user          = $this->ipc->fetch_personal_info(array('id' => $item['user_id']));
@@ -705,7 +704,18 @@ class Admin extends CI_Controller {
 			$item['subject']        = 'Reminder';
 			$item['approver']       = $approver['fullname'];
 
-			if ($days >= 0 && $days <= 1) 
+			// Create format for recipients
+			$recipients = array(
+					array(
+						'id'    => $user['id'],
+						'email' => $user['requestor_email']
+					),
+					array(
+						'id'    => $dept_head['id'],
+						'email' => $dept_head['supervisor_email']
+					)
+				);
+
 			{
 				$config = array(
 							'subject'          => 'Reminder',
