@@ -560,6 +560,7 @@ class Requestor extends CI_Controller {
 
 		$user = $this->ipc->fetch_personal_info(array('id' => $uid));
 		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
+		$user_access = $this->ipc->fetch_user_access($uid);
 
 		$config = array(
 				'id'               => $user['id'],
@@ -568,7 +569,7 @@ class Requestor extends CI_Controller {
 				'section'          => $user['section'],
 				'email'            => $user['requestor_email'],
 				'supervisor_email' => $dept_head['supervisor_email'],
-				'user_type'        => 'requestor',
+				'user_type'        => $user_access['user_type_id'] == 2 ? 'admin' : 'requestor',
 				'grant'            => true
 			);
 
