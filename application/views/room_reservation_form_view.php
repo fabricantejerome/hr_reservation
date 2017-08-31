@@ -110,55 +110,53 @@
 				<ol type="I">
 					<li class="list-header">Scheduling</li>
 					<ol>
-						<li>All reservations must be done online thru the Training Reservations System (Pls. refer to the IPC Centralized Portal, under HRS).</li>
+						<li>All reservations must be done online thru the Training Reservations System (Pls. refer to the IPC Centralized Database Portal, under HRS).</li>
 						<li>It is the responsibility of the requestor to make sure HRS PIC has approved or declined the reservation.</li>
 					</ol>
 
 					<li class="list-header">Conference Room Etiquette</li>
-					<ol>
-						<li>General Cleanliness</li>
 
-						<ol type="a">
-							<li class="list-title">No food or drinks are allowed inside the training/meeting rooms. Coffee/snacks must be served in the pantry.</li>
-							<p>The requestor will be responsible for ensuring the reserved room is cleaned of any trash used during the meeting. Glass boards should be erased and cleaned to be ready for the next user. Any remaining handouts, agendas, etc. be removed from the room.</p>
+					<ol type="a">
+						<li><u>General Cleanliness</u></li>
+						<p>No food or drinks are allowed inside the training/meeting rooms. Coffee/snacks must be served in the pantry.</p>
+						<p>The requestor will be responsible for ensuring the reserved room is cleaned of any trash used during the meeting. Glass boards should be erased and cleaned to be ready for the next user. Any remaining handouts, agendas, etc. be removed from the room.</p>
 
-							<li>The requestor is responsible for:</li>
-							<ul>
-								<li>Making sure the meeting is on the calendar for applicable conference room</li>
-								<li>Only using the allotted time scheduled for set meeting</li>
-								<li>Avoid exceeding the maximum seating capacity</li>
-								<li>If additional seat(s) are borrowed, making sure to return to their original location/placement</li>
-								<li>Ensuring training/conference room is returned to its original state</li>
-								<li>Aircon, projector and lights are turned off</li>
-								<li>Closing the door when meeting is in progress as noise and/or conversations could be interruptive to nearby rooms.</li>
-							</ul>
+						<li><u>The requestor is responsible for:</u></li>
+						<ul>
+							<li>Making sure the meeting is on the calendar for applicable conference room</li>
+							<li>Only using the allotted time scheduled for set meeting</li>
+							<li>Avoid exceeding the maximum seating capacity</li>
+							<li>If additional seat(s) are borrowed, making sure to return to their original location/placement</li>
+							<li>Ensuring training/conference room is returned to its original state</li>
+							<li>Aircon, projector and lights are turned off</li>
+							<li>Closing the door when meeting is in progress as noise and/or conversations could be interruptive to nearby rooms.</li>
+							<li>Returning borrowed microphones to HRS in good condition after the training/meeting </li>
+						</ul>
 
-							<li>Reporting</li>
-							<p>If an item is found to be broken or nonfunctioning; it will be the responsibility of the requestor to report to HRS.</p>
+						<li><u>Reporting</u></li>
+						<p>If an item is found to be broken or nonfunctioning; it will be the responsibility of the requestor to report to HRS.</p>
 
-							<li>Lost and Found</li>
-							<p>All items found or items lost within a conference/training room should be turned in or reported to HRS.</p>
-						</ol>
+						<li><u>Lost and Found</u></li>
+						<p>All items found or items lost within a conference/training room should be turned in or reported to HRS.</p>
 					</ol>
 
 					<li class="list-header">Meeting Time</li>
 					<ol>
 						<li>When scheduling a meeting, please schedule enough time to avoid meeting overrun.</li>
-						<li>If your meeting extends beyond the allotted time and another meeting is scheduled to begin, the requesting section must adjourn the meeting or find another room to complete the meeting extension. Those reservations listed on the calendar will have priority over any impromptu meeting</li>
+						<li>If your meeting extends beyond the allotted time and another meeting is scheduled to begin, the requesting section must adjourn the meeting or find another room to complete the meeting extension. Those reservations listed on the calendar will have priority over any impromptu meeting.</li>
 						<li>HRS reserves the right to cancel other meetings scheduled when there are urgent meetings by Executives or top management.</li>
 					</ol>
 
 					<li class="list-header">Computer Training Rm. Usage</li>
 					<ol>
-						<li>Do not eat or drink near a computer or while utilizing.</li>
-						<li>Do not push the on and off switch on the computer</li>
+						<li>Do not push the on and off switch on the computer </li>
 						<li>Do not remove any equipment from the training room.</li>
 						<li>Do not download or install software, games, or chat programs onto any computers.</li>
 						<li>Place your items (purses, jackets, bags, etc.) under the chairs to keep the aisles clear for walking.</li>
 						<li>Log off your computer, push in your chair and make sure the area is neat for the next trainees when leaving the room.</li>
 						<li>Report all computer malfunctions to HRS or MIS immediately.</li>
 						<li>Respect users who want to be in a quiet environment free of interruptions.</li>
-						<li>To request software installation for instruction or training, please inform HRS one(1) week before the training.</li>
+						<li>To request software installation for instruction or training, please inform HRS one (1) week before the training.</li>
 						<li>TMs and Trainers are responsible for taking reasonable safety precautions in using computer equipment. They will be held responsible for damage to such equipment arising out of their negligence.</li>
 					</ol>
 				</ol>
