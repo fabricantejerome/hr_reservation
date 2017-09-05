@@ -417,8 +417,14 @@ class Admin extends CI_Controller {
 		{
 			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
 
+			// Add elipsis
+			if (strlen($row['purpose']) > 10)
+			{
+				$row['purpose'] = substr($row['purpose'], 0, 10) . '...';
+			}
+
 			$config[] = array(
-					'title'           => $row['room_name'] . ' / ' . ucwords(strtolower($requestor['fullname'])) . ' / ' . $requestor['section_abbrev'],
+					'title'           => $row['room_name'] . ' / ' . ucwords(strtolower($requestor['fullname'])) . ' / ' . $row['purpose'],
 					'start'           => date('D M d Y H:i:s', strtotime($row['date_reserved'] . ' ' . $row['time_start'])),
 					'end'             => date('D M d Y H:i:s', strtotime($row['date_reserved'] . ' ' . $row['time_end'])),
 					'backgroundColor' => '#77dd77',
