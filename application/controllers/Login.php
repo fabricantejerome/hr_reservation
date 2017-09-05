@@ -37,7 +37,8 @@ class Login extends CI_Controller {
 				'department'       => $prev_session['department'],
 				'email'            => $user['requestor_email'],
 				'supervisor_email' => $dept_head['supervisor_email'],
-				'user_type'        => $user_access['user_type_id'] == 2 ? 'admin' : 'requestor'
+				'user_type'        => $user_access['user_type_id'] == 2 ? 'admin' : 'requestor',
+				'grant'            => false
 
 			);
 
