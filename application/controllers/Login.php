@@ -149,4 +149,12 @@ class Login extends CI_Controller {
 
 		return is_array($this->user->exist()) ? $this->user->exist() : false;
 	}
+
+	protected function _remove_priviledge()
+	{
+		if ($this->session->userdata('grant'))
+		{
+			$this->session->sess_destroy();
+		}
+	}
 }
