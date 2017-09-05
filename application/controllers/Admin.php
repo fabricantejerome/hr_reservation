@@ -230,6 +230,7 @@ class Admin extends CI_Controller {
 
 		$user = $this->ipc->fetch_personal_info(array('id' => $uid));
 		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
+		$user_access = $this->ipc->fetch_user_access($user['id']);
 
 		$config = array(
 				'id'               => $user['id'],
@@ -238,7 +239,7 @@ class Admin extends CI_Controller {
 				'section'          => $user['section'],
 				'email'            => $user['requestor_email'],
 				'supervisor_email' => $dept_head['supervisor_email'],
-				'user_type'        => 'admin',
+				'user_type'        => $user_access['user_type_id'] == 2 ? 'admin' : 'requestor',
 				'grant'            => true
 			);
 
@@ -301,13 +302,13 @@ class Admin extends CI_Controller {
 			$this->send_mail($config);
 
 			$this->session->set_flashdata('success_message', '<span class="col-sm-12 alert alert-success">Reservation has been approved!</span>');
-
-			$this->_remove_priviledge();
 		}
 		else
 		{
 			$this->session->set_flashdata('error_message', '<span class="col-sm-12 alert alert-error">The time slot for this room has been taken!</span>');
 		}
+
+		$this->_remove_priviledge();
 
 		redirect($this->agent->referrer());
 	}
