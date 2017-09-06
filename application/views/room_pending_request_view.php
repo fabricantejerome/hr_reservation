@@ -42,7 +42,7 @@
 									<td><?php echo date('h:i A', strtotime($row['time_start'])) ?></td>
 									<td><?php echo date('h:i A', strtotime($row['time_end'])) ?></td>
 									<td><?php echo date('M d, Y h:i A', strtotime($row['date_filed'])) ?></td>
-									<td><?php echo ucwords(strtolower($row['fullname'])) ?></td>
+									<td><?php echo $row['fullname'] ?></td>
 									<td><?php echo $row['section'] ?></td>
 									<?php if ($this->session->userdata('user_type') == 'admin'): ?>
 										<td>
