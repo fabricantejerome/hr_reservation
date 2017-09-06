@@ -357,6 +357,7 @@ class Room_model extends CI_Model {
 					->join('room_tbl AS d', 'b.room_id = d.id', 'INNER')
 					->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
 					->where('f.room_res_id IS NULL')
+					->order_by('date_reserved')
 					->get();
 
 		}
@@ -373,6 +374,7 @@ class Room_model extends CI_Model {
 					->join('cancelled_res_tbl AS f', 'a.room_res_id = f.room_res_id', 'LEFT')
 					->where('f.room_res_id IS NULL')
 					->where($clause)
+					->order_by('date_reserved')
 					->get();
 		}
 
