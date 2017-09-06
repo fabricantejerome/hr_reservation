@@ -14,7 +14,7 @@ class Admin extends CI_Controller {
 		date_default_timezone_set('Asia/Manila');
 
 		// Load helpers
-		$helpers = array('form');
+		$helpers = array('form', 'name_format');
 
 		$this->load->helper($helpers);
 
@@ -186,7 +186,7 @@ class Admin extends CI_Controller {
 					'date_filed'    => $row['date_filed'],
 					'room_no'       => $row['room_no'],
 					'room_name'     => $row['room_name'],
-					'fullname'      => $info['fullname'],
+					'fullname'      => name_format($info['fullname']),
 					'section'       => $info['section_abbrev']
 				);
 		}
@@ -209,7 +209,7 @@ class Admin extends CI_Controller {
 		if (is_array($entity))
 		{
 			$info    = $this->ipc->fetch_personal_info(array('id' => $entity['user_id']));
-			$entity['fullname'] = $info['fullname'];
+			$entity['fullname'] = name_format($info['fullname']);
 			$entity['section']  = $info['section_abbrev'];
 		}
 
@@ -235,7 +235,7 @@ class Admin extends CI_Controller {
 		$config = array(
 				'id'               => $user['id'],
 				'employee_no'      => $user['employee_no'],
-				'fullname'         => $user['fullname'],
+				'fullname'         => name_format($user['fullname']),
 				'section'          => $user['section'],
 				'email'            => $user['requestor_email'],
 				'supervisor_email' => $dept_head['supervisor_email'],
@@ -286,11 +286,11 @@ class Admin extends CI_Controller {
 			$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
 			$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-			$item['fullname']       = $user['fullname'];
+			$item['fullname']       = name_format($user['fullname']);
 			$item['section_abbrev'] = $user['section_abbrev'];
 			$item['section']        = $user['section'];
 			$item['subject']        = $subject;
-			$item['approver']       = $approver['fullname'];
+			$item['approver']       = name_format($approver['fullname']);
 
 			$config = array(
 						'subject'          => $subject,
@@ -373,12 +373,12 @@ class Admin extends CI_Controller {
 					'id'                => $row['id'],
 					'room_res_id'       => $row['room_res_id'],
 					'approved_datetime' => $row['approved_datetime'],
-					'approver'          => $approver['fullname'],
+					'approver'          => name_format($approver['fullname']),
 					'date_reserved'     => $row['date_reserved'],
 					'purpose'           => $row['purpose'],
 					'time_start'        => $row['time_start'],
 					'time_end'          => $row['time_end'],
-					'fullname'          => $requestor['fullname'],
+					'fullname'          => name_format($requestor['fullname']),
 					'section'           => $requestor['section_abbrev'],
 					'room_name'         => $row['room_name']
 				);
@@ -424,7 +424,7 @@ class Admin extends CI_Controller {
 			}
 
 			$config[] = array(
-					'title'           => $row['room_name'] . ' / ' . ucwords(strtolower($requestor['fullname'])) . ' / ' . $row['purpose'],
+					'title'           => $row['room_name'] . ' / ' . name_format($requestor['fullname']) . ' / ' . $row['purpose'],
 					'start'           => date('D M d Y H:i:s', strtotime($row['date_reserved'] . ' ' . $row['time_start'])),
 					'end'             => date('D M d Y H:i:s', strtotime($row['date_reserved'] . ' ' . $row['time_end'])),
 					'backgroundColor' => '#77dd77',
@@ -475,11 +475,11 @@ class Admin extends CI_Controller {
 		$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
 		$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-		$item['fullname']       = $user['fullname'];
+		$item['fullname']       = name_format($user['fullname']);
 		$item['section_abbrev'] = $user['section_abbrev'];
 		$item['section']        = $user['section'];
 		$item['subject']        = $subject;
-		$item['approver']       = $approver['fullname'];
+		$item['approver']       = name_format($approver['fullname']);
 
 		$config = array(
 					'subject'          => $subject,
@@ -513,12 +513,12 @@ class Admin extends CI_Controller {
 					'id'              => $row['id'],
 					'room_res_id'     => $row['room_res_id'],
 					'denied_datetime' => $row['denied_datetime'],
-					'approver'        => $approver['fullname'],
+					'approver'        => name_format($approver['fullname']),
 					'date_reserved'   => $row['date_reserved'],
 					'purpose'         => $row['purpose'],
 					'time_start'      => $row['time_start'],
 					'time_end'        => $row['time_end'],
-					'fullname'        => $requestor['fullname'],
+					'fullname'        => name_format($requestor['fullname']),
 					'section'         => $requestor['section_abbrev'],
 					'room_name'       => $row['room_name'],
 					'reason'          => $row['reason']
@@ -574,11 +574,11 @@ class Admin extends CI_Controller {
 			$dept_head = $this->ipc->fetch_department_head($user['employee_no']);
 			$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
-			$item['fullname']       = $user['fullname'];
+			$item['fullname']       = name_format($user['fullname']);
 			$item['section_abbrev'] = $user['section_abbrev'];
 			$item['section']        = $user['section'];
 			$item['subject']        = $subject;
-			$item['approver']       = $approver['fullname'];
+			$item['approver']       = name_format($approver['fullname']);
 
 			$config = array(
 						'subject'          => $subject,
@@ -613,12 +613,12 @@ class Admin extends CI_Controller {
 					'id'                 => $row['id'],
 					'room_res_id'        => $row['room_res_id'],
 					'cancelled_datetime' => $row['cancelled_datetime'],
-					'approver'           => $approver['fullname'],
+					'approver'           => name_format($approver['fullname']),
 					'date_reserved'      => $row['date_reserved'],
 					'purpose'            => $row['purpose'],
 					'time_start'         => $row['time_start'],
 					'time_end'           => $row['time_end'],
-					'fullname'           => $requestor['fullname'],
+					'fullname'           => name_format($requestor['fullname']),
 					'section'            => $requestor['section_abbrev'],
 					'room_name'          => $row['room_name'],
 					'reason'             => $row['reason']
@@ -705,11 +705,11 @@ class Admin extends CI_Controller {
 			// Difference between the reservation date and date filed
 			$interval      = $this->_date_diff($date_filed, $date_reserved);
 
-			$item['fullname']       = $user['fullname'];
+			$item['fullname']       = name_format($user['fullname']);
 			$item['section_abbrev'] = $user['section_abbrev'];
 			$item['section']        = $user['section'];
 			$item['subject']        = 'Reminder';
-			$item['approver']       = $approver['fullname'];
+			$item['approver']       = name_format($approver['fullname']);
 
 			// Create format for recipients
 			$recipients = array(
@@ -858,5 +858,4 @@ class Admin extends CI_Controller {
 
 		$this->load->view('include/template', $data);
 	}
-
 }

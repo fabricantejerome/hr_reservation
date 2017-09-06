@@ -14,7 +14,7 @@ class Requestor extends CI_Controller {
 		date_default_timezone_set('Asia/Manila');
 
 		// Load helpers
-		$helpers = array('form');
+		$helpers = array('form', 'name_format');
 
 		$this->load->helper($helpers);
 
@@ -98,7 +98,7 @@ class Requestor extends CI_Controller {
 
 			$this->rooms->store_agreement();
 
-			$item['fullname']       = $user['fullname'];
+			$item['fullname']       = name_format($user['fullname']);
 			$item['section_abbrev'] = $user['section_abbrev'];
 			$item['section']        = $user['section'];
 			$item['subject']        = $subject;
@@ -239,9 +239,9 @@ class Requestor extends CI_Controller {
 					'time_end'          => $row->time_end,
 					'user_id'           => $row->user_id,
 					'room_name'         => $row->room_name,
-					'fullname'          => $user['fullname'],
+					'fullname'          => name_format($user['fullname']),
 					'section'           => $user['section_abbrev'],
-					'approver'          => $approver['fullname']
+					'approver'          => name_format($approver['fullname'])
 				);
 		}
 
@@ -316,7 +316,7 @@ class Requestor extends CI_Controller {
 					'date_filed'    => $row['date_filed'],
 					'room_no'       => $row['room_no'],
 					'room_name'     => $row['room_name'],
-					'fullname'      => $info['fullname'],
+					'fullname'      => name_format($info['fullname']),
 					'section'       => $info['section_abbrev']
 				);
 		}
@@ -349,12 +349,12 @@ class Requestor extends CI_Controller {
 					'id'                => $row['id'],
 					'room_res_id'       => $row['room_res_id'],
 					'approved_datetime' => $row['approved_datetime'],
-					'approver'          => $approver['fullname'],
+					'approver'          => name_format($approver['fullname']),
 					'date_reserved'     => $row['date_reserved'],
 					'purpose'           => $row['purpose'],
 					'time_start'        => $row['time_start'],
 					'time_end'          => $row['time_end'],
-					'fullname'          => $requestor['fullname'],
+					'fullname'          => name_format($requestor['fullname']),
 					'section'           => $requestor['section_abbrev'],
 					'room_name'         => $row['room_name']
 				);
@@ -388,12 +388,12 @@ class Requestor extends CI_Controller {
 					'id'              => $row['id'],
 					'room_res_id'     => $row['room_res_id'],
 					'denied_datetime' => $row['denied_datetime'],
-					'approver'        => $approver['fullname'],
+					'approver'        => name_format($approver['fullname']),
 					'date_reserved'   => $row['date_reserved'],
 					'purpose'         => $row['purpose'],
 					'time_start'      => $row['time_start'],
 					'time_end'        => $row['time_end'],
-					'fullname'        => $requestor['fullname'],
+					'fullname'        => name_format($requestor['fullname']),
 					'section'         => $requestor['section_abbrev'],
 					'room_name'       => $row['room_name'],
 					'reason'          => $row['reason']
@@ -428,12 +428,12 @@ class Requestor extends CI_Controller {
 					'id'                 => $row['id'],
 					'room_res_id'        => $row['room_res_id'],
 					'cancelled_datetime' => $row['cancelled_datetime'],
-					'approver'           => $approver['fullname'],
+					'approver'           => name_format($approver['fullname']),
 					'date_reserved'      => $row['date_reserved'],
 					'purpose'            => $row['purpose'],
 					'time_start'         => $row['time_start'],
 					'time_end'           => $row['time_end'],
-					'fullname'           => $requestor['fullname'],
+					'fullname'           => name_format($requestor['fullname']),
 					'section'            => $requestor['section_abbrev'],
 					'room_name'          => $row['room_name'],
 					'reason'             => $row['reason']
@@ -558,11 +558,11 @@ class Requestor extends CI_Controller {
 				$approver  = $this->ipc->fetch_personal_info(array('id' => $item['approver_id']));
 
 				$subject                = 'Cancelled Reservation';
-				$item['fullname']       = $user['fullname'];
+				$item['fullname']       = name_format($user['fullname']);
 				$item['section_abbrev'] = $user['section_abbrev'];
 				$item['section']        = $user['section'];
 				$item['subject']        = $subject;
-				$item['approver']       = $approver['fullname'];
+				$item['approver']       = name_format($approver['fullname']);
 
 				$config = array(
 							'subject'          => $subject,
@@ -596,7 +596,7 @@ class Requestor extends CI_Controller {
 		$config = array(
 				'id'               => $user['id'],
 				'employee_no'      => $user['employee_no'],
-				'fullname'         => $user['fullname'],
+				'fullname'         => name_format($user['fullname']),
 				'section'          => $user['section'],
 				'email'            => $user['requestor_email'],
 				'supervisor_email' => $dept_head['supervisor_email'],
