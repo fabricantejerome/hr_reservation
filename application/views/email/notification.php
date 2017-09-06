@@ -87,7 +87,7 @@
 							<td><?php echo date('h:i A', strtotime($item['time_end'])) ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['fullname'])): ?>
-							<td><?php echo ucwords(strtolower($item['fullname'])) ?></td>
+							<td><?php echo $item['fullname'] ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['date_filed'])): ?>
 							<td><?php echo date('m/d/Y h:i A', strtotime($item['date_filed'])) ?></td>
@@ -96,7 +96,7 @@
 							<td><?php echo $item['reason'] ?></td>
 						<?php endif; ?>
 						<?php if(isset($item['approver'])): ?>
-							<td><?php echo ucwords(strtolower($item['approver'])) ?></td>
+							<td><?php echo $item['approver'] ?></td>
 						<?php endif; ?>
 					</tr>
 				</tbody>
