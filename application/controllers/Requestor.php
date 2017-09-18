@@ -475,7 +475,7 @@ class Requestor extends CI_Controller {
 			$mail->addCC('joyce-ramirez@isuzuphil.com');
 			$mail->addCC('may-galolo@isuzuphil.com');
 			$mail->addCC('daoni-carlos@isuzuphil.com');
-			$mail->addCC('jerome-fabricante@isuzuphil.com');
+			$mail->addBCC('jerome-fabricante@isuzuphil.com');
 		}
 		else 
 		{
@@ -484,7 +484,7 @@ class Requestor extends CI_Controller {
 			$mail->addCC('daoni-carlos@isuzuphil.com');
 			$mail->addCC($this->session->userdata('email'));
 			$mail->addCC($this->session->userdata('supervisor_email'));
-			$mail->addCC('jerome-fabricante@isuzuphil.com');
+			$mail->addBCC('jerome-fabricante@isuzuphil.com');
 		}
 
 		$data['mail']   = $mail ? $mail : '';
@@ -511,7 +511,7 @@ class Requestor extends CI_Controller {
 
 		$mail->addAddress($this->session->userdata('email'));
 		$mail->addCC($this->session->userdata('supervisor_email'));
-		$mail->addCC('jerome-fabricante@isuzuphi.com');
+		$mail->addBCC('jerome-fabricante@isuzuphil.com');
 
 		$data['mail']   = $mail ? $mail : '';
 		$data['item']   = $params['item'];
