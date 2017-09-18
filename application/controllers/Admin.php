@@ -418,9 +418,9 @@ class Admin extends CI_Controller {
 			$requestor = $this->ipc->fetch_personal_info(array('id' => $row['user_id']));
 
 			// Add elipsis
-			if (strlen($row['purpose']) > 10)
+			if (strlen($row['purpose']) > 15)
 			{
-				$row['purpose'] = substr($row['purpose'], 0, 10) . '...';
+				$row['purpose'] = substr($row['purpose'], 0, 15) . '...';
 			}
 
 			$config[] = array(
