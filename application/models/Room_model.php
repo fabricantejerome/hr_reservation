@@ -261,6 +261,7 @@ class Room_model extends CI_Model {
 					->where('b.room_res_id IS NULL')
 					->where('e.room_res_id IS NULL')
 					->where('f.room_res_id IS NULL')
+					->order_by('date_reserved')
 					->get();
 		}
 		else
@@ -279,6 +280,7 @@ class Room_model extends CI_Model {
 					->where('e.room_res_id IS NULL')
 					->where('f.room_res_id IS NULL')
 					->where($clause)
+					->order_by('date_reserved')
 					->get();
 		}
 		
