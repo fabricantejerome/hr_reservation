@@ -103,7 +103,7 @@
 			</table><!-- End of table -->
 		</div>
 		
-		<?php if (isset($link) && $item['subject'] == 'Request Room Reservation'): ?>
+		<?php if (isset($link) && $item['subject'] == 'Request for Room Reservation'): ?>
 			<p>
 				<b>Approval link:</b>  < <a href="<?php echo $link; ?>">Click this to approve the request</a> > <br />
 			

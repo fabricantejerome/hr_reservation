@@ -93,7 +93,7 @@ class Requestor extends CI_Controller {
 		{
 			$id      = $this->rooms->store_reservation($config);
 			$item    = $this->rooms->read_pending_request($id);
-			$subject = $this->input->post('id') ? 'Update Reservation Details' : 'Request Room Reservation';
+			$subject = $this->input->post('id') ? 'Update Reservation Details' : 'Request for Room Reservation';
 			$user    = $this->ipc->fetch_personal_info(array('id' => $this->session->userdata('id')));
 
 			$this->rooms->store_agreement();
