@@ -55,5 +55,8 @@
 
 		$('#cancellation-table').DataTable();
 
+		$('.btn-warning').on('click', function(e) {
+			$('.btn-warning').attr('disabled', 'disabled');
+		});
 	})
 </script>
